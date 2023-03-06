@@ -12,7 +12,7 @@ jobs:
         id: preflight
         uses: c2dh/journal-of-digital-history-ipynb-preflight-action@master
         with:
-          notebook: 'example/checkmd.ipynb'
+          notebook: 'example/checkmdok.ipynb'
           functions: 'checkmd'
       # Use the output from the `preflight` step
       - name: Use the output

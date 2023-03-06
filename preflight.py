@@ -28,7 +28,7 @@ def set_action_outputs(output_pairs):
             print("::set-output name={0}::{1}".format(key, value))
 
 
-def main(notebook='notebook.ipynb', functions='checkmd,checkurls,checkzotero'):
+def main(notebook='notebook.ipynb', functions='checkmd,checkurls'):
     workspace = os.getenv("GITHUB_WORKSPACE", "")
     notebook_filepath = os.path.join(workspace, notebook)
     if not os.path.exists(notebook_filepath):

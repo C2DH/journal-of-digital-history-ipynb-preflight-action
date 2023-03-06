@@ -38,21 +38,19 @@ def checkmd(contents):
     # print out all headers 
     for h in headers:
         print(f"::debug::header {h.get('level')} at cell {h.get('idx')} - {h.get('source', '')}")
-
+    
+    h1_headers = [h for h in headers if h.get("level") == 1]
+   
     if len(headers) == 0:
         errors.append({ 'message': 'There should be at least one header' })
-    else:
-        h1_headers = [h for h in headers if h.get("level") == 1]
-        if len(h1_headers) != 1:
-            errors.append({ 'message': 'There should be only one level 1 header' })
+    elif len(h1_headers) != 1:
+        errors.append({ 'message': 'There should be only one level 1 header' })
+    
     if len(errors) > 0:
         print(f"::error::Found {len(errors)} errors")
         for error in errors:
             print(f"::error:: {error.get('message')} at cell {error.get('idx')} - {error.get('source', '')}")
         sys.exit(1)
-    else:
-        print(f"::debug::Found {len(headers)} headers")
-        print(f"::debug::Found {len(errors)} errors")
-
+    return f'SUCCESS :) - markdown correct, {len(headers)} headers found. Title: {h1_headers[0].get("source", [])}'
 
         

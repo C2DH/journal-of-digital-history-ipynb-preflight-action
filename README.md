@@ -23,14 +23,17 @@ jobs:
         uses: actions/checkout@v3
       - name: Run preflight checks
         id: preflight
-        uses: c2dh/journal-of-digital-history-ipynb-skim-action@master
+        uses: c2dh/journal-of-digital-history-ipynb-preflight-action@master
         with:
           notebook: 'example/display-image.ipynb'
         with:
-          scripts: 'check-md,check-urls,check-zotero'
+          scripts: 'checkmd,checkurls'
       - name: Use the output, if needed
         run: echo "number of cells ${{ steps.preflight.outputs.size }}"
 ```
 ## Contributing
 
 Contributions are welcome! If you find a bug or would like to suggest a new feature, please open an issue or submit a pull request.
+
+## License
+
