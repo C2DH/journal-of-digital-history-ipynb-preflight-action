@@ -1,0 +1,39 @@
+name: Notebook Preflight
+
+description: |
+  This action performs preflight checks on your notebook to ensure that it meets the standards required for publication on the Journal of Digital History.
+
+inputs:
+  notebook:
+    description: 'The filename of the notebook to check.'
+    required: true
+  functions:
+    description: 'A comma-separated list of functions to apply to the notebook.'
+    required: true
+    default: 'checkmd,checkurls'
+
+outputs:
+  size:
+    description: 'The number of total cells'
+    value: ${{ steps.preflight.outputs.size }}
+  checkmd:
+    description: 'A markdown validation report'
+    value: ${{ steps.preflight.outputs.checkmd }}
+  checkurls:
+    description: 'The number of URLs that were checked.'
+    value: ${{ steps.preflight.outputs.checkurls }}
+
+runs: 
+  using: 'composite'
+
+  steps:
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10.7'
+    - name: Install Dependencies and run preflight
+      id: preflight
+      run: |
+        pip install -r ${{ github.action_path }}/requirements.txt
+        python ${{ github.action_path }}/preflight.py ${{ inputs.notebook }} ${{ inputs.functions }}
+      shell: bash
