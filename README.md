@@ -26,14 +26,19 @@ jobs:
         uses: c2dh/journal-of-digital-history-ipynb-preflight-action@master
         with:
           notebook: 'example/display-image.ipynb'
-        with:
-          scripts: 'checkmd,checkurls'
+          functions: 'checkmd,checkurls'
       - name: Use the output, if needed
         run: echo "number of cells ${{ steps.preflight.outputs.size }}"
 ```
 ## Contributing
 
 Contributions are welcome! If you find a bug or would like to suggest a new feature, please open an issue or submit a pull request.
+To execute a new command:
+- add a new file in the `checks` folder, e.g. `checkthis` only a-z characters in the name :)
+- Inside the file, add a function with the same name as the file, e.g. `def checkthis(contents)`
+- The function takes the JSON dict of the notebook as input and returns a simple text string if everything is ok, or it raises an exception if something is wrong.
+- Handle the errors conveniently in your script.
+- Add its name to the `checks` input of the action. The script will be executed in the order specified in the input.
 
 ## License
 
