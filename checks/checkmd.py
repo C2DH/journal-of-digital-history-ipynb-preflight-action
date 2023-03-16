@@ -55,33 +55,29 @@ def checkmd(contents, output=None):
     elif len(h1_headers) != 1:
         errors.append({"message": "There should be only one level 1 header"})
 
+    result_as_md = "\n### Check markdown\n"
+    result_as_stdout = "Check markdown -"
     if len(errors) > 0:
         print(f"::error::Found {len(errors)} errors")
         for error in errors:
             print(
                 f"::error:: {error.get('message')} at cell {error.get('idx')} - {error.get('source', '')}"
             )
-        if not output:
-            sys.exit(1)
-        else:
-            # rpint error messages as multiline strings
-            error_as_md = (
-                "\n### Check markdown FAILED \n"
-                + f"**{len(errors)} errors found**\n\n ```\n"
-            )
-            for i, error in enumerate(errors):
-                print(f"::set-output name=error{i}::{error.get('message')}")
-                error_as_md += f"  message: {error.get('message')} \n  source: \n{json.dumps(error.get('source', []), indent=2)} \n\n"
-            error_as_md += "```"
-            return error_as_md
-    elif output:
-        headers_as_md = (
-            "### Check markdown success \n" + f"**Table of Content**\n\n ```\n"
+        # rpint error messages as multiline strings
+        result_as_md += f"**FAILED, {len(errors)} errors found**\n\n ```\n"
+        for i, error in enumerate(errors):
+            print(f"::set-output name=error{i}::{error.get('message')}")
+            result_as_md += f"  message: {error.get('message')} \n  source: \n{json.dumps(error.get('source', []), indent=2)} \n\n"
+        result_as_md += "```"
+        result_as_stdout = (
+            f"FAILED, {len(errors)} errors found. Check report for details."
         )
+    else:
+        result_as_md += f"**SUCCESS! Table of Content**\n\n ```\n"
         for i, header in enumerate(headers):
             print(f"::set-output name=header{i}::{header.get('source', [])}")
-            headers_as_md += f"  level: {header.get('level')} \n  cell index:{header.get('idx')} \n  text: {header.get('source', [])} \n"
-        headers_as_md += "```"
-        return headers_as_md
-    else:
-        return f'SUCCESS :) - markdown correct, {len(headers)} headers found. Title: {h1_headers[0].get("source", [])}'
+            result_as_md += f"  level: {header.get('level')} \n  cell index:{header.get('idx')} \n  text: {header.get('source', [])} \n"
+        result_as_md += "```"
+        result_as_stdout += 'SUCCESS :) - markdown correct, {len(headers)} headers found. Title: {h1_headers[0].get("source", [])}'
+
+    return (result_as_md, result_as_stdout)

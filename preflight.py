@@ -60,11 +60,11 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
                         cell_types["code_empty"] += 1
             # write cell counts
             output_file.write("## Cell Counts   \n")
-            output_file.write(f"all cells: {count}   \n")
+            output_file.write(f"**all cells: {count} **  \n")
             for cell_type, count in cell_types.items():
                 output_file.write(f"{cell_type}: {count}   \n")
             # write every action_output
-            output_file.write("\n## Action Outputs\n\n")
+            output_file.write("\n## Action Outputs\n")
             for key, value in action_outputs.items():
                 output_file.write(f"{value}\n")
     except IOError:
@@ -73,7 +73,11 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
         sys.exit(1)
 
 
-def main(notebook="notebook.ipynb", functions="checkmd,checkurls", output_md=None):
+def main(
+    notebook="notebook.ipynb",
+    functions="checkmd,checkurls",
+    output_md="preflight_report.md",
+):
     workspace = os.getenv("GITHUB_WORKSPACE", "")
     notebook_filepath = os.path.join(workspace, notebook)
     if not os.path.exists(notebook_filepath):
@@ -86,11 +90,8 @@ def main(notebook="notebook.ipynb", functions="checkmd,checkurls", output_md=Non
         [a for a in functions] if isinstance(functions, tuple) else functions.split(",")
     )
     size = len(notebook_json_contents["cells"])
-    actions_outputs = (
-        {"size": f"\n### Size\n**total cells: {size}**"}
-        if output_md
-        else {"size": size}
-    )
+    actions_outputs = {"size": size}
+    actions_md_outputs = {"size": f"\n### Size\n**total cells: {size}**"}
     # Import the specified functions from external modules
     for func in function_names:
         module_name = f"checks.{func}"
@@ -100,18 +101,19 @@ def main(notebook="notebook.ipynb", functions="checkmd,checkurls", output_md=Non
             sys.exit(1)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
-        actions_outputs[func] = getattr(module, func)(notebook_json_contents, output_md)
+        func_as_md, func_as_output = getattr(module, func)(notebook_json_contents)
+        actions_outputs[func] = func_as_output
+        actions_md_outputs[func] = func_as_md
     # Set the GitHub Action outputs
     set_action_outputs(actions_outputs)
     # if output is provided, check output file then generate report
-    if output_md is not None:
-        generate_report(
-            output_md,
-            notebook,
-            workspace=workspace,
-            action_outputs=actions_outputs,
-            contents=notebook_json_contents,
-        )
+    generate_report(
+        output_md,
+        notebook,
+        workspace=workspace,
+        action_outputs=actions_md_outputs,
+        contents=notebook_json_contents,
+    )
 
 
 if __name__ == "__main__":
