@@ -7,6 +7,10 @@ inputs:
   notebook:
     description: 'The filename of the notebook to check.'
     required: true
+  output:
+    description: 'The filename of the output report.'
+    required: true
+    default: 'preflight_report.md'
   functions:
     description: 'A comma-separated list of functions to apply to the notebook.'
     required: true
@@ -23,7 +27,7 @@ outputs:
     description: 'The number of URLs that were checked.'
     value: ${{ steps.preflight.outputs.checkurls }}
 
-runs: 
+runs:
   using: 'composite'
 
   steps:
