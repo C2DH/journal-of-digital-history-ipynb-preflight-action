@@ -6,7 +6,6 @@ We provide a set of tools to facilitate the life of authors (and reviewers) in p
 
 ## Features
 
-
 ## Usage
 
 To use this action, simply include it in your GitHub Actions workflow file and configure it to run on pull request events. You can then use the outputs of the action to automate certain tasks or to provide additional context to reviewers.
@@ -27,13 +26,16 @@ jobs:
         with:
           notebook: 'example/display-image.ipynb'
           functions: 'checkmd,checkurls'
-      - name: Use the output, if needed
+          output: 'report.md'
+      - name: Use the github output, if needed
         run: echo "number of cells ${{ steps.preflight.outputs.size }}"
 ```
+
 ## Contributing
 
 Contributions are welcome! If you find a bug or would like to suggest a new feature, please open an issue or submit a pull request.
 To execute a new command:
+
 - add a new file in the `checks` folder, e.g. `checkthis` only a-z characters in the name :)
 - Inside the file, add a function with the same name as the file, e.g. `def checkthis(contents)`
 - The function takes the JSON dict of the notebook as input and returns a simple text string if everything is ok, or it raises an exception if something is wrong.
@@ -41,4 +43,3 @@ To execute a new command:
 - Add its name to the `checks` input of the action. The script will be executed in the order specified in the input.
 
 ## License
-
