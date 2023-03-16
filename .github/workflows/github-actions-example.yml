@@ -14,6 +14,11 @@ jobs:
         with:
           notebook: 'example/checkmdok.ipynb'
           functions: 'checkmd'
+          output: 'report.md'
       # Use the output from the `preflight` step
       - name: Use the output
         run: echo "number of cells ${{ steps.preflight.outputs.size }} - output ${{ steps.preflight.outputs.checkmd }}"
+      - name: commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: '*.md'
