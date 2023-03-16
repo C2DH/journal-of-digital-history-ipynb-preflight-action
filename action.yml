@@ -7,7 +7,7 @@ inputs:
   notebook:
     description: 'The filename of the notebook to check.'
     required: true
-  output:
+  output_md:
     description: 'The filename of the output report.'
     required: true
     default: 'preflight_report.md'
@@ -39,5 +39,5 @@ runs:
       id: preflight
       run: |
         pip install -r ${{ github.action_path }}/requirements.txt
-        python ${{ github.action_path }}/preflight.py ${{ inputs.notebook }} ${{ inputs.functions }}
+        python ${{ github.action_path }}/preflight.py ${{ inputs.notebook }} ${{ inputs.functions }}  ${{ inputs.output_md }}
       shell: bash

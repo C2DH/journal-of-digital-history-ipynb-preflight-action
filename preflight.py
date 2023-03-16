@@ -73,7 +73,7 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
         sys.exit(1)
 
 
-def main(notebook="notebook.ipynb", functions="checkmd,checkurls", output=None):
+def main(notebook="notebook.ipynb", functions="checkmd,checkurls", output_md=None):
     workspace = os.getenv("GITHUB_WORKSPACE", "")
     notebook_filepath = os.path.join(workspace, notebook)
     if not os.path.exists(notebook_filepath):
@@ -87,7 +87,9 @@ def main(notebook="notebook.ipynb", functions="checkmd,checkurls", output=None):
     )
     size = len(notebook_json_contents["cells"])
     actions_outputs = (
-        {"size": f"\n### Size\n**total cells: {size}**"} if output else {"size": size}
+        {"size": f"\n### Size\n**total cells: {size}**"}
+        if output_md
+        else {"size": size}
     )
     # Import the specified functions from external modules
     for func in function_names:
@@ -98,13 +100,13 @@ def main(notebook="notebook.ipynb", functions="checkmd,checkurls", output=None):
             sys.exit(1)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
-        actions_outputs[func] = getattr(module, func)(notebook_json_contents, output)
+        actions_outputs[func] = getattr(module, func)(notebook_json_contents, output_md)
     # Set the GitHub Action outputs
     set_action_outputs(actions_outputs)
     # if output is provided, check output file then generate report
-    if output is not None:
+    if output_md is not None:
         generate_report(
-            output,
+            output_md,
             notebook,
             workspace=workspace,
             action_outputs=actions_outputs,
