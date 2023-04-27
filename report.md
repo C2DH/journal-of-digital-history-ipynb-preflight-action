@@ -1,4 +1,4 @@
-# Report for example/checkmdok.ipynb ❤ 
+# Report for example/checkmd.ipynb ❤ 
 
 ## Cell Counts   
 **all cells: 3 **  
@@ -11,16 +11,15 @@ markdown: 3
 **total cells: 3**
 
 ### Check markdown
-**SUCCESS! Table of Content**
+**FAILED, 1 errors found**
 
  ```
-  level: 1 
-  cell index:0 
-  text: ['# Example to check if the markdown of the Notebook is ok'] 
-  level: 2 
-  cell index:1 
-  text: ['## Introduction'] 
-  level: 2 
-  cell index:2 
-  text: ['## this is correct'] 
+  message: Markdown heading found in the middle of cell 2 at line 3 
+  source: 
+[
+  "You cannot put a title in the middle of a Markdown Cell\n",
+  "\n",
+  "## this is not correct"
+] 
+
 ```
