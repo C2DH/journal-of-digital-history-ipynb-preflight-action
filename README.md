@@ -11,8 +11,8 @@ We provide a set of tools to facilitate the life of authors (and reviewers) in p
 To use this action, simply include it in your GitHub Actions workflow file and configure it to run on pull request events. You can then use the outputs of the action to automate certain tasks or to provide additional context to reviewers.
 
 ```yaml
-on: [pull_request, worflow_dispatch]
-
+on: [pull_request,worflow_dispatch]
+name: GitHub Actions Ipynb for preflight checks
 jobs:
   preflight:
     runs-on: ubuntu-latest
@@ -26,9 +26,13 @@ jobs:
         with:
           notebook: 'example/display-image.ipynb'
           functions: 'checkmd,checkurls'
-          output: 'report.md'
+          output_md: 'report.md'
       - name: Use the github output, if needed
         run: echo "number of cells ${{ steps.preflight.outputs.size }}"
+      - name: commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: '*.md'
 ```
 
 ## Contributing
@@ -41,5 +45,13 @@ To execute a new command:
 - The function takes the JSON dict of the notebook as input and returns a simple text string if everything is ok, or it raises an exception if something is wrong.
 - Handle the errors conveniently in your script.
 - Add its name to the `checks` input of the action. The script will be executed in the order specified in the input.
+
+## Development
+
+TO test locally
+
+```sh
+python preflight.py example/checkmd.ipynb "checkmd"
+```
 
 ## License
