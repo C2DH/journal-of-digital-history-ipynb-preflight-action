@@ -26,3 +26,7 @@ code: 36
 - https://github.com/DARIAH-DE/TopicsExplorer is valid: True
 - https://github.com/mkrzmr/jdh/blob/main/script/ldavis_prepared_10.html is valid: True
 
+
+### Check JavaScript
+No JavaScript code found in output cells.
+
