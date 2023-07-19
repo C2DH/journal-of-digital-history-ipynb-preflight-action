@@ -32,11 +32,11 @@ def checktags(contents):
     if missing_tags or invalid_tags:
         result_as_md += "\n**WARNING: The following tags are missing or invalid:**\n"
         if missing_tags:
-            result_as_md += "**Missing Tags:**\n"
+            result_as_md += "\n#### Missing Tags:\n"
             for tag in missing_tags:
                 result_as_md += f"- {tag}\n"
         if invalid_tags:
-            result_as_md += "**Invalid Tags:**\n"
+            result_as_md += "\n#### Invalid Tags:\n"
             for tag in invalid_tags:
                 result_as_md += f"- {tag}\n"
         result_as_stdout = "WARNING: The following tags are missing or invalid."
