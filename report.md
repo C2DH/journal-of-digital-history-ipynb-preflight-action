@@ -1,80 +1,97 @@
-# Report for example/article.ipynb ❤ 
+# Report for example/javascript.ipynb ❤ 
 
 ## Cell Counts   
-**all cells: 71 **  
+**all cells: 117 **  
 code_empty: 1   
-markdown: 35   
-code: 36   
+markdown: 96   
+code: 21   
 
 ## Action Outputs
 
 ### Size
-**total cells: 71**
+**total cells: 117**
 
 ### Check URLs
-**WARNING: 11 cells contain URLs.**
+**WARNING: 16 cells contain URLs.**
 
-- https://www.merriam-webster.com/dictionary/black%20hat is valid: True
-- https://www.merriam-webster.com/dictionary/white%20hat is valid: True
-- https://github.com/attrition-org/web-hack-mirror is valid: True
-- https://www.clamav.net/ is valid: False
-- https://cve.circl.lu/cve/CVE-2015-1761 is valid: False
-- https://www.f-secure.com/v-descs/ramen.shtml is valid: True
-- https://github.com/webrecorder/warcit is valid: True
-- https://github.com/netarchivesuite/solrwayback is valid: True
-- https://app.vosviewer.com/?json=https://raw.githubusercontent.com/mkrzmr/jdh/main/media/network/VOSviewer-network.json&dark_ui=True is valid: True
-- https://github.com/DARIAH-DE/TopicsExplorer is valid: True
-- https://github.com/mkrzmr/jdh/blob/main/script/ldavis_prepared_10.html is valid: True
+- https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7703-1791 is valid: True
+- https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-2003-4200 is valid: True
+- https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/ is valid: False
+- https://creativecommons.org/licenses/by/4.0/ is valid: True
+- http://emlo-portal.bodleian.ox.ac.uk/collections/?page_id=907 is valid: True
+- https://ckcc.huygens.knaw.nl/epistolarium/ is valid: True
+- https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/blob/main/README.md is valid: True
+- https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/tree/main/data/raw is valid: True
+- https://dataverse.nl/dataset.xhtml?persistentId=doi:10.34894/GTV2RN is valid: True
+- https://picarta.oclc.org/ is valid: True
+- https://picarta.on.worldcat.org is valid: False
+- http://www.biografischportaal.nl is valid: True
+- https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/blob/main/data/raw/letters_CEN_1200to1820_cleanedSkillnet.csv is valid: True
+- https://dataverse.nl/dataset.xhtml?persistentId=doi:10.34894/G8XQI0 is valid: True
+- https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/tree/main/src is valid: True
+- https://picarta.oclc.org/psi/DB=3.23/XMLPRS=Y/PPN?PPN=310885922 is valid: True
 
 
 ### Check JavaScript
-No JavaScript code found in output cells.
+**WARNING: 1 output cells contain JavaScript code.**
+
+- Cell 38
 
 
 ### Check Tags
 - Cell 1: Tags: ['title']
-- Cell 3: Tags: ['keywords']
-- Cell 4: Tags: ['abstract']
-- Cell 10: Tags: ['figure-1-Flowchart-of-the-workflow-*']
-- Cell 13: Tags: ['hermeneutics']
-- Cell 14: Tags: ['hermeneutics']
-- Cell 15: Tags: ['hermeneutics']
-- Cell 16: Tags: ['hermeneutics']
-- Cell 20: Tags: ['hermeneutics']
-- Cell 22: Tags: ['figure-2-Distribution-of-content-over-time-*']
-- Cell 24: Tags: ['figure-3-Directed-incoming-link-network-of-the-archive-content-size-indicates-number-of-incoming-links-clustered-minimum-connectivity-=-5"-*']
-- Cell 26: Tags: ['figure-4-Link-Network-Detail-for-2600.com-*']
-- Cell 28: Tags: ["figure-4-Link-Network-Detail-for-a-Defacer's-Email-Address-*"]
-- Cell 31: Tags: ['figure-5-Frequencies-for-Keywords-relating-to-the-Kashmir-Conflict-over-Time-*']
-- Cell 33: Tags: ['figure-6-Exporting-a-derived-Dataset-from-Solrwayback-*']
-- Cell 35: Tags: ['figure-7-Visualization-of-Search-Results-by-Domain-*']
-- Cell 39: Tags: ['figure-8-The-defaced-Labour.org.uk-website-*']
-- Cell 41: Tags: ['figure-9-November-1996-Copy-of-the-Labour.org.uk-website-*']
-- Cell 43: Tags: ['figure-10-Comparison-of-the-two-versions-*']
-- Cell 45: Tags: ['figure-11-Link-Network-relating-to-2600.com-*']
+- Cell 2: Tags: ['contributor']
+- Cell 3: Tags: ['contributor']
+- Cell 4: Tags: ['copyright']
+- Cell 5: Tags: ['cover']
+- Cell 7: Tags: ['disclaimer']
+- Cell 8: Tags: ['keywords']
+- Cell 9: Tags: ['abstract']
+- Cell 24: Tags: ['figure(-Structural-Balance)-*']
+  - Invalid tag: figure(-Structural-Balance)-*
+- Cell 31: Tags: ['hermeneutics']
+- Cell 32: Tags: ['hermeneutics']
+- Cell 33: Tags: ['hermeneutics']
+- Cell 34: Tags: ['hermeneutics']
+- Cell 35: Tags: ['hermeneutics']
+- Cell 36: Tags: ['hermeneutics']
+- Cell 37: Tags: ['hermeneutics']
+- Cell 38: Tags: ['hermeneutics']
+- Cell 39: Tags: ['hermeneutics']
+- Cell 40: Tags: ['hermeneutics']
+- Cell 41: Tags: ['hermeneutics']
+- Cell 42: Tags: ['hermeneutics']
+- Cell 43: Tags: ['hermeneutics']
+- Cell 44: Tags: ['hermeneutics']
+- Cell 45: Tags: ['hermeneutics']
+- Cell 46: Tags: ['hermeneutics']
+- Cell 47: Tags: ['hermeneutics']
 - Cell 48: Tags: ['hermeneutics']
 - Cell 49: Tags: ['hermeneutics']
 - Cell 50: Tags: ['hermeneutics']
 - Cell 51: Tags: ['hermeneutics']
+- Cell 52: Tags: ['hermeneutics']
+- Cell 53: Tags: ['hermeneutics']
 - Cell 54: Tags: ['hermeneutics']
 - Cell 55: Tags: ['hermeneutics']
 - Cell 56: Tags: ['hermeneutics']
 - Cell 57: Tags: ['hermeneutics']
 - Cell 58: Tags: ['hermeneutics']
-- Cell 59: Tags: ['hermeneutics']
+- Cell 59: Tags: ['hermeneutics', 'narrative']
 - Cell 60: Tags: ['hermeneutics']
 - Cell 61: Tags: ['hermeneutics']
 - Cell 62: Tags: ['hermeneutics']
 - Cell 63: Tags: ['hermeneutics']
 - Cell 64: Tags: ['hermeneutics']
 - Cell 65: Tags: ['hermeneutics']
-- Cell 66: Tags: ['hermeneutics']
-- Cell 67: Tags: ['figure-12-Lda-Model-with-10-topics-based-on-entire-corpus-*']
-- Cell 70: Tags: ['hidden']
+- Cell 66: Tags: ['hidden']
+- Cell 69: Tags: ['figure(-figure3)-*']
+  - Invalid tag: figure(-figure3)-*
+- Cell 113: Tags: ['hidden']
 
 **WARNING: The following tags are missing or invalid:**
-**Missing Tags:**
-- cover
-- copyright
-- contributor
+
+#### Invalid Tags:
+- figure(-Structural-Balance)-*
+- figure(-figure3)-*
 
