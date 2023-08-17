@@ -1,21 +1,26 @@
-# Method to check the output of the cells
-# Warning if the size of the output is too large
-# If binary output and no tag figure or table, then wartning
-# Check also if the cell is tagged correcltytable or figure , metadata are there
-
-
 import pickle
 from datetime import datetime
 import nbformat
+import re
 
 def checkoutput(notebook_json):
-    result_as_md = "\n### Check Output Sizes\n"
+    result_as_md = "\n### Check Output Sizes and Rules\n"
     result_as_stdout = ""
 
     # Convert JSON to notebook object
     notebook = nbformat.from_dict(notebook_json)
 
     total_size_kb = 0
+    total_images = 0
+    total_tables = 0
+
+    # List of desired MIME types
+    desired_mimetypes = ['text/html', 'image/png', 'application/vnd.plotly.v1+json', 'application/vdom.v1+json', 'application/geo+json']
+
+
+
+    # Define the regex pattern for a <table> tag
+    table_tag_pattern = r'<table\b[^>]*>'
 
     for i, cell in enumerate(notebook.cells):
         if cell.get("outputs"):
@@ -26,23 +31,38 @@ def checkoutput(notebook_json):
                 # Get the input cell source and extract the first few words
                 input_cell = " ".join(cell["source"]).strip()
                 first_words = " ".join(input_cell.split()[:5])
-                # Print the output size if it's greater than 1MB
-                if size > 1000:
-                    result_as_md += f"- Output cell {i + 1} size: {size:.2f} KB\n"
-                    result_as_md += f"> First words of input cell: {first_words}\n"
-                    result_as_stdout += f"Output cell {i + 1} size: {size:.2f} KB\n"
-                    result_as_stdout += f"First words of input cell: {first_words}\n"
-                total_size_kb += size
+                # Check if the output MIME type is in the desired list
+                output_mimetype = next((mimetype for mimetype in desired_mimetypes if mimetype in output.get("data", {})), None)
 
+                if output_mimetype:
+                    if output_mimetype == 'text/html':
+                        html_content = output["data"].get(output_mimetype, [])
+                        # Join the list of strings into a single string
+                        html_content = "".join(html_content)
+                        # Use regex to search for the presence of a <table> tag
+                        if re.search(table_tag_pattern, html_content):
+                            total_tables += 1
+                            result_as_md += f"- Table found in output of cell {i + 1}\n"
+                            result_as_md += f"> First words of input cell: {first_words}\n"
+                    elif output_mimetype == 'image/png':
+                        total_images += 1
+                    # Print the output size if it's greater than 1MB
+                    if size > 1000:
+                        result_as_md += f"- Output cell {i + 1} size: {size:.2f} KB\n"
+                        result_as_md += f"> First words of input cell: {first_words}\n"
+                        result_as_stdout += f"Output cell {i + 1} size: {size:.2f} KB\n"
+                        result_as_stdout += f"First words of input cell: {first_words}\n"
+                    total_size_kb += size
 
-
-
-    result_as_md += f"\nTotal output size: {total_size_kb:.2f} KB"
-    result_as_stdout += f"Total output size: {total_size_kb:.2f} KB"
+    result_as_md += f"\nTotal output size: {total_size_kb:.2f} KB\n"
+    result_as_md += f"Total number of images: {total_images}\n"
+    result_as_md += f"Total number of tables: {total_tables}"
+    
+    result_as_stdout += f"Total output size: {total_size_kb:.2f} KB\n"
+    result_as_stdout += f"Total number of images: {total_images}\n"
+    result_as_stdout += f"Total number of tables: {total_tables}"
 
     return result_as_md, result_as_stdout
 
 # Assuming you have the 'contents' variable which contains your notebook JSON contents
 # result_as_md, result_as_stdout = checkoutput(contents)
-
-
