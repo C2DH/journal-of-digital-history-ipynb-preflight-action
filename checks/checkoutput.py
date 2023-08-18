@@ -17,10 +17,11 @@ def checkoutput(notebook_json):
     # List of desired MIME types
     desired_mimetypes = ['text/html', 'image/png', 'application/vnd.plotly.v1+json', 'application/vdom.v1+json', 'application/geo+json']
 
-
-
     # Define the regex pattern for a <table> tag
     table_tag_pattern = r'<table\b[^>]*>'
+    
+    # Define the tag pattern
+    allowed_tag_pattern = r'(table|figure)-(\d+|[\w]+-\*)'
 
     for i, cell in enumerate(notebook.cells):
         if cell.get("outputs"):
@@ -46,6 +47,16 @@ def checkoutput(notebook_json):
                             result_as_md += f"> First words of input cell: {first_words}\n"
                     elif output_mimetype == 'image/png':
                         total_images += 1
+                        if 'tags' in cell.metadata and cell.metadata['tags']:
+                            cell_tags = cell.metadata['tags']
+                            for tag in cell_tags:
+                                if re.match(allowed_tag_pattern, tag):
+                                    result_as_md += f"  - Valid tag: {tag} for image output in cell {i + 1}\n"
+                            if not any(re.match(allowed_tag_pattern, tag) for tag in cell_tags):
+                                result_as_md += f"  - No valid tags found for image output in cell {i + 1}\n"
+                        else:
+                            result_as_md += f"  - No tags found for image output in cell {i + 1}\n"
+                            
                     # Print the output size if it's greater than 1MB
                     if size > 1000:
                         result_as_md += f"- Output cell {i + 1} size: {size:.2f} KB\n"
@@ -63,6 +74,3 @@ def checkoutput(notebook_json):
     result_as_stdout += f"Total number of tables: {total_tables}"
 
     return result_as_md, result_as_stdout
-
-# Assuming you have the 'contents' variable which contains your notebook JSON contents
-# result_as_md, result_as_stdout = checkoutput(contents)
