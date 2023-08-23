@@ -45,27 +45,27 @@ def checkoutput(notebook_json):
                             # Use regex to search for the presence of a <table> tag
                             if re.search(table_tag_pattern, html_content):
                                 total_tables += 1
-                                result_as_md += f"Table found in output of cell {i + 1}\n"
-                                result_as_md += f"First words of input cell: {first_words}\n"
+                                result_as_md += f"- Table found in output of cell {i + 1}\n"
+                                result_as_md += f"> First words of input cell: {first_words}\n"
                         elif output_mimetype == 'image/png':
                             total_images += 1
                             if 'tags' in cell.metadata and cell.metadata['tags']:
                                 cell_tags = cell.metadata['tags']
                                 for tag in cell_tags:
                                     if re.match(allowed_tag_pattern, tag):
-                                        result_as_md += f"Valid tag: {tag} for image output in cell {i + 1}\n"
+                                        result_as_md += f"  - Valid tag: {tag} for image output in cell {i + 1}\n"
                                 if not any(re.match(allowed_tag_pattern, tag) for tag in cell_tags):
-                                    result_as_md += f"No valid tags found for image output in cell {i + 1}\n"
+                                    result_as_md += f"  - No valid tags found for image output in cell {i + 1}\n"
                             else:
-                                result_as_md += f"No tags found for image output in cell {i + 1}\n"
+                                result_as_md += f"  - No tags found for image output in cell {i + 1}\n"
 
                         # Print the output size if it's greater than 1MB
-                    """     if size > 1000:
+                        if size > 1000:
                             result_as_md += f"- Output cell {i + 1} size: {size:.2f} KB\n"
                             result_as_md += f"> First words of input cell: {first_words}\n"
                             result_as_stdout += f"Output cell {i + 1} size: {size:.2f} KB\n"
                             result_as_stdout += f"First words of input cell: {first_words}\n"
-                        total_size_kb += size """
+                        total_size_kb += size
 
         result_as_md += f"\nTotal output size: {total_size_kb:.2f} KB\n"
         result_as_md += f"Total number of images: {total_images}\n"
