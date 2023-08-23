@@ -59,9 +59,11 @@ def checkoutput(notebook_json):
                             
                     # Print the output size if it's greater than 1MB
                     if size > 1000:
-                        result_as_md += f"- Output cell {i + 1} size: {size:.2f} KB\n"
+                        result_as_md += f"- Output cell {i + 1}\n"
+                        result_as_stdout += f"Output cell {i + 1}\n"
+                        #result_as_md += f"- Output cell {i + 1} size: {size:.2f} KB\n"
                         #result_as_md += f"> First words of input cell: {first_words}\n"
-                        result_as_stdout += f"Output cell {i + 1} size: {size:.2f} KB\n"
+                        #result_as_stdout += f"Output cell {i + 1} size: {size:.2f} KB\n"
                         #result_as_stdout += f"First words of input cell: {first_words}\n"
                     total_size_kb += size
 
