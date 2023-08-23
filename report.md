@@ -1,39 +1,34 @@
-# Report for example/article.ipynb ❤ 
+# Report for example/javascript.ipynb ❤ 
 
 ## Cell Counts   
-**all cells: 71 **  
+**all cells: 117 **  
 code_empty: 1   
-markdown: 35   
-code: 36   
+markdown: 96   
+code: 21   
 
 ## Action Outputs
 
 ### Size
-**total cells: 71**
+**total cells: 117**
 
 ### Check Output Sizes and Rules
-Table found in output of cell 16
-First words of input cell: df=pd.read_csv("https://raw.githubusercontent.com/mkrzmr/jdh/main/script/file_AA_sm.csv") df.drop('Unnamed: 0', axis=1, inplace=True)
-Valid tag: figure-2-Distribution-of-content-over-time-* for image output in cell 22
-Valid tag: figure-3-Directed-incoming-link-network-of-the-archive-content-size-indicates-number-of-incoming-links-clustered-minimum-connectivity-=-5"-* for image output in cell 24
-Valid tag: figure-4-Link-Network-Detail-for-2600.com-* for image output in cell 26
-Valid tag: figure-4-Link-Network-Detail-for-a-Defacer's-Email-Address-* for image output in cell 28
-Valid tag: figure-5-Frequencies-for-Keywords-relating-to-the-Kashmir-Conflict-over-Time-* for image output in cell 31
-Valid tag: figure-6-Exporting-a-derived-Dataset-from-Solrwayback-* for image output in cell 33
-Valid tag: figure-7-Visualization-of-Search-Results-by-Domain-* for image output in cell 35
-Valid tag: figure-8-The-defaced-Labour.org.uk-website-* for image output in cell 39
-Valid tag: figure-9-November-1996-Copy-of-the-Labour.org.uk-website-* for image output in cell 41
-Valid tag: figure-10-Comparison-of-the-two-versions-* for image output in cell 43
-Valid tag: figure-10-Comparison-of-the-two-versions-* for image output in cell 43
-Valid tag: figure-11-Link-Network-relating-to-2600.com-* for image output in cell 45
-Table found in output of cell 50
-First words of input cell: #df.drop('Unnamed: 0', axis=1, inplace=True) df.head(100)
-Table found in output of cell 55
-First words of input cell: df_small['processed_text'] = 'NaN' #add empty
-Table found in output of cell 63
-First words of input cell: df_small.head(100)
-Valid tag: figure-12-Lda-Model-with-10-topics-based-on-entire-corpus-* for image output in cell 67
+No valid tags found for image output in cell 5
+No valid tags found for image output in cell 24
+Table found in output of cell 36
+First words of input cell: #importing the edge list of
+Table found in output of cell 48
+First words of input cell: # read example files, here
+Table found in output of cell 48
+First words of input cell: # read example files, here
+No valid tags found for image output in cell 52
+No valid tags found for image output in cell 53
+Table found in output of cell 59
+First words of input cell: # Combine the counts for
+Table found in output of cell 64
+First words of input cell: # Counting signed triads per
+No valid tags found for image output in cell 65
+No valid tags found for image output in cell 69
 
 Total output size: 0.00 KB
-Total number of images: 13
-Total number of tables: 4
+Total number of images: 6
+Total number of tables: 5
