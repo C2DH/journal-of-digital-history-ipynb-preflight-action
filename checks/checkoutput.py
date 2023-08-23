@@ -45,19 +45,19 @@ def checkoutput(notebook_json):
                             # Use regex to search for the presence of a <table> tag
                             if re.search(table_tag_pattern, html_content):
                                 total_tables += 1
-                                result_as_md += f"- Table found in output of cell {i + 1}\n"
-                                result_as_md += f"> First words of input cell: {first_words}\n"
+                                result_as_md += f"Table found in output of cell {i + 1}\n"
+                                result_as_md += f"First words of input cell: {first_words}\n"
                         elif output_mimetype == 'image/png':
                             total_images += 1
                             if 'tags' in cell.metadata and cell.metadata['tags']:
                                 cell_tags = cell.metadata['tags']
                                 for tag in cell_tags:
                                     if re.match(allowed_tag_pattern, tag):
-                                        result_as_md += f"  - Valid tag: {tag} for image output in cell {i + 1}\n"
+                                        result_as_md += f"Valid tag: {tag} for image output in cell {i + 1}\n"
                                 if not any(re.match(allowed_tag_pattern, tag) for tag in cell_tags):
-                                    result_as_md += f"  - No valid tags found for image output in cell {i + 1}\n"
+                                    result_as_md += f"No valid tags found for image output in cell {i + 1}\n"
                             else:
-                                result_as_md += f"  - No tags found for image output in cell {i + 1}\n"
+                                result_as_md += f"No tags found for image output in cell {i + 1}\n"
 
                         # Print the output size if it's greater than 1MB
                     """     if size > 1000:
@@ -75,7 +75,7 @@ def checkoutput(notebook_json):
         result_as_stdout += f"Total number of images: {total_images}\n"
         result_as_stdout += f"Total number of tables: {total_tables}"
 
-        return result_as_md, result_as_stdout
+        return result_as_md, ""
 
     except Exception as e:
         error_message = f"An error occurred: {str(e)}"
