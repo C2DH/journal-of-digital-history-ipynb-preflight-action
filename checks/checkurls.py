@@ -21,45 +21,75 @@ def extract_url_md_html(text):
 def is_valid_url(url):
     try:
         response = requests.head(url)
-        return response.status_code in range(200, 400)
+        return response.status_code
     except requests.exceptions.RequestException:
         return False
 
 
-def format_output_md(urls, valid_urls):
+def format_output_md(urls_dict):
     result_as_md = "\n### Check URLs\n"
     result_as_stdout = ""
 
-    if urls:
-        result_as_md += f"**WARNING: {len(urls)} cells contain URLs.**\n\n"
-        for i, url in enumerate(urls):
-            result_as_md += f"- {url} is valid: {valid_urls[i]}\n"
-        result_as_stdout = f"WARNING: {len(urls)} cells contain URLs."
-    else:
+    valid_count = 0
+    invalid_404_count = 0
+    invalid_other_count = 0
+
+    valid_urls_md = []
+    invalid_404_urls_md = []
+    invalid_other_urls_md = []
+
+    for url, status_code in urls_dict.items():
+        if status_code == 404:
+            invalid_404_count += 1
+            invalid_404_urls_md.append(f"- {url} returned a 404 status code.")
+        elif status_code == 200:
+            valid_count += 1
+            valid_urls_md.append(f"- {url} is valid: {status_code}")
+        else:
+            invalid_other_count += 1
+            invalid_other_urls_md.append(f"- {url} returned an unknown status code: {status_code}")
+
+    if invalid_404_count > 0:
+        result_as_md += f"**Invalid URLs (404 - {invalid_404_count}):**\n\n"
+        result_as_md += "\n".join(invalid_404_urls_md) + "\n\n"
+        result_as_stdout += f"Invalid URLs (404 - {invalid_404_count}):\n"
+        result_as_stdout += "\n".join(invalid_404_urls_md) + "\n"
+
+    if invalid_other_count > 0:
+        result_as_md += f"**Impossible to verify (Other - {invalid_other_count}):**\n\n"
+        result_as_md += "\n".join(invalid_other_urls_md) + "\n\n"
+        result_as_stdout += f"Invalid URLs (Other - {invalid_other_count}):\n"
+        result_as_stdout += "\n".join(invalid_other_urls_md) + "\n"
+
+    if valid_count > 0:
+        result_as_md += f"**Valid URLs (200 - {valid_count}):**\n\n"
+        result_as_md += "\n".join(valid_urls_md) + "\n\n"
+        result_as_stdout += f"Valid URLs (200 - {valid_count}):\n"
+        result_as_stdout += "\n".join(valid_urls_md) + "\n"
+
+    if valid_count == 0 and invalid_404_count == 0 and invalid_other_count == 0:
         result_as_md += "No URLs found in the cells.\n"
-        result_as_stdout = "No URLs found in the cells."
+        result_as_stdout += "No URLs found in the cells."
 
     return result_as_md, result_as_stdout
 
 
 def checkurls(contents):
-    urls = []
-    valid_urls = []
+    urls_dict = {}
+
     # Convert JSON to notebook object
-     # Convert dictionary to JSON string
     json_str = json.dumps(contents)
     # Convert JSON string to notebook object
     notebook = nbformat.reads(json_str, as_version=4)
+
     for cell in notebook.cells:
         cell_urls = extract_url_md_html(cell.source)
         if cell_urls:
             for url in cell_urls:
                 if url[-1] == ')' or url[-1] == ']':
                     url = url[:-1]
-                valid = is_valid_url(url)
-                urls.append(url)
-                valid_urls.append(valid)
+                status_code = is_valid_url(url)
+                urls_dict[url] = status_code
 
-    result_as_md, result_as_stdout = format_output_md(urls, valid_urls)
-
+    result_as_md, result_as_stdout = format_output_md(urls_dict)
     return result_as_md, result_as_stdout
