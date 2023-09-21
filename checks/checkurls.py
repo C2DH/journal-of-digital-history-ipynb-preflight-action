@@ -23,7 +23,7 @@ def is_valid_url(url):
         response = requests.head(url)
         return response.status_code
     except requests.exceptions.RequestException:
-        return False
+        return None
 
 
 def format_output_md(urls_dict):
