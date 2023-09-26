@@ -41,13 +41,13 @@ def format_output_md(urls_dict):
     for url, status_code in urls_dict.items():
         if status_code == 404:
             invalid_404_count += 1
-            invalid_404_urls_md.append(f"- {url} returned a 404 status code.")
+            invalid_404_urls_md.append(f"{url} returned a 404 status code.")
         elif status_code == 200:
             valid_count += 1
-            valid_urls_md.append(f"- {url} is valid: {status_code}")
+            valid_urls_md.append(f"{url} is valid: {status_code}")
         else:
             invalid_other_count += 1
-            invalid_other_urls_md.append(f"- {url} returned an unknown status code: {status_code}")
+            invalid_other_urls_md.append(f"{url} returned an unknown status code: {status_code}")
 
     if invalid_404_count > 0:
         result_as_md += f"**Invalid URLs (404 - {invalid_404_count}):**\n\n"
