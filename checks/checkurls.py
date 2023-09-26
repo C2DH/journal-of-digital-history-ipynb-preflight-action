@@ -28,7 +28,7 @@ def is_valid_url(url):
 
 def format_output_md(urls_dict):
     result_as_md = "\n### Check URLs\n\n"
-    result_as_stdout = "\n### Check URLs\n\n"
+    result_as_stdout = "Check URLs"
 
     valid_count = 0
     invalid_404_count = 0
