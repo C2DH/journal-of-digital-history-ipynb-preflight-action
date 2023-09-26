@@ -27,51 +27,50 @@ def is_valid_url(url):
 
 
 def format_output_md(urls_dict):
-    result_as_md = "\n### Check URLs\n"
+    result_as_md = "\n### Check URLs\n\n"
     result_as_stdout = ""
 
     valid_count = 0
     invalid_404_count = 0
     invalid_other_count = 0
 
-    valid_urls_md = []
-    invalid_404_urls_md = []
-    invalid_other_urls_md = []
+    urls_md = []
 
     for url, status_code in urls_dict.items():
         if status_code == 404:
             invalid_404_count += 1
-            invalid_404_urls_md.append(f"{url} returned a 404 status code.")
+            urls_md.append(f"Invalid URL (404): {url}")
         elif status_code == 200:
             valid_count += 1
-            valid_urls_md.append(f"{url} is valid: {status_code}")
+            urls_md.append(f"Valid URL (200): {url}")
         else:
             invalid_other_count += 1
-            invalid_other_urls_md.append(f"{url} returned an unknown status code: {status_code}")
+            urls_md.append(f"Invalid URL (Other - {status_code}): {url}")
 
     if invalid_404_count > 0:
         result_as_md += f"**Invalid URLs (404 - {invalid_404_count}):**\n\n"
-        result_as_md += "\n".join(invalid_404_urls_md) + "\n\n"
+        result_as_md += "\n".join([url for url in urls_md if "Invalid URL (404):" in url]) + "\n\n"
         result_as_stdout += f"Invalid URLs (404 - {invalid_404_count}):\n"
-        result_as_stdout += "\n".join(invalid_404_urls_md) + "\n"
+        result_as_stdout += "\n".join([url for url in urls_md if "Invalid URL (404):" in url]) + "\n"
 
     if invalid_other_count > 0:
         result_as_md += f"**Impossible to verify (Other - {invalid_other_count}):**\n\n"
-        result_as_md += "\n".join(invalid_other_urls_md) + "\n\n"
+        result_as_md += "\n".join([url for url in urls_md if "Invalid URL (Other" in url]) + "\n\n"
         result_as_stdout += f"Invalid URLs (Other - {invalid_other_count}):\n"
-        result_as_stdout += "\n".join(invalid_other_urls_md) + "\n"
+        result_as_stdout += "\n".join([url for url in urls_md if "Invalid URL (Other" in url]) + "\n"
 
     if valid_count > 0:
         result_as_md += f"**Valid URLs (200 - {valid_count}):**\n\n"
-        result_as_md += "\n".join(valid_urls_md) + "\n\n"
+        result_as_md += "\n".join([url for url in urls_md if "Valid URL (200):" in url]) + "\n\n"
         result_as_stdout += f"Valid URLs (200 - {valid_count}):\n"
-        result_as_stdout += "\n".join(valid_urls_md) + "\n"
+        result_as_stdout += "\n".join([url for url in urls_md if "Valid URL (200):" in url]) + "\n"
 
     if valid_count == 0 and invalid_404_count == 0 and invalid_other_count == 0:
         result_as_md += "No URLs found in the cells.\n"
         result_as_stdout += "No URLs found in the cells."
 
     return result_as_md, result_as_stdout
+
 
 
 def checkurls(contents):
