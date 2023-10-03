@@ -17,8 +17,11 @@ jobs:
           output_md: 'report.md'
       # Use the output from the `preflight` step
       - name: Use the output
-        run: echo "github workspace $GITHUB_WORKSPACE number of cells ${{ steps.preflight.outputs.size }} - output ${{ steps.preflight.outputs.checkmd }}"
+        run: echo "number of cells ${{ steps.preflight.outputs.size }} - output ${{ steps.preflight.outputs.checktags }}"
       - name: commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: '*.md'
+      - name: Run shell cmd
+        run: echo "https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}"
+
