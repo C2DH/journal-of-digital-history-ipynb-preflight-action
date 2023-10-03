@@ -2,7 +2,7 @@ on: [workflow_dispatch]
 
 name: GitHub Actions Ipynb for preflight
 jobs:
-  ipynb_for_publishing:
+  preflight:
     runs-on: ubuntu-latest
     name: Ipynb for preflight
     steps:
@@ -17,7 +17,7 @@ jobs:
           output_md: 'report.md'
       # Use the output from the `preflight` step
       - name: Use the output
-        run: echo "number of cells ${{ steps.preflight.outputs.size }} - output ${{ steps.preflight.outputs.checktags }}"
+        run: echo "Notebook path ${{ steps.preflight.outputs.notebook_path }} - workspace ${{ steps.preflight.outputs.workspace }}"
       - name: commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
