@@ -20,6 +20,12 @@ outputs:
   size:
     description: 'The number of total cells'
     value: ${{ steps.preflight.outputs.size }}
+  notebook_path:
+    description: 'The notebook path'
+    value: ${{ steps.preflight.outputs.notebook_path }}
+  workspace:
+    description: 'The workspace'
+    value: ${{ steps.preflight.outputs.workspace }}
   checkmd:
     description: 'A markdown validation report'
     value: ${{ steps.preflight.outputs.checkmd }}
