@@ -79,7 +79,9 @@ def main(
     output_md="preflight_report.md",
 ):
     workspace = os.getenv("GITHUB_WORKSPACE", "")
+    print(f"::debug::workspace:{workspace}")
     notebook_filepath = os.path.join(workspace, notebook)
+    print(f"::debug::notebook_filepath:{notebook_filepath}")
     if not os.path.exists(notebook_filepath):
         print(f"::error::Path {notebook_filepath} does not exist")
         sys.exit(1)
