@@ -1,6 +1,6 @@
 on: [workflow_dispatch]
 
-name: GitHub Actions Ipynb
+name: GitHub Actions Ipynb for preflight
 jobs:
   ipynb_for_publishing:
     runs-on: ubuntu-latest
