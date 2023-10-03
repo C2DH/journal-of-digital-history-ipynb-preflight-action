@@ -92,7 +92,7 @@ def main(
         [a for a in functions] if isinstance(functions, tuple) else functions.split(",")
     )
     size = len(notebook_json_contents["cells"])
-    actions_outputs = {"notebook path": notebook_filepath, "size": size, workspace: workspace}
+    actions_outputs = {"notebook_path": notebook_filepath, "size": size, "workspace": workspace}
     actions_md_outputs = {"size": f"\n### Size\n**total cells: {size}**"}
     # Import the specified functions from external modules
     for func in function_names:
