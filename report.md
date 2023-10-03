@@ -109,22 +109,30 @@ Total number of tables: 5
 
 
 ### Check URLs
-**WARNING: 16 cells contain URLs.**
 
-- https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7703-1791 is valid: True
-- https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-2003-4200 is valid: True
-- https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/ is valid: False
-- https://creativecommons.org/licenses/by/4.0/ is valid: True
-- http://emlo-portal.bodleian.ox.ac.uk/collections/?page_id=907 is valid: True
-- https://ckcc.huygens.knaw.nl/epistolarium/ is valid: True
-- https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/blob/main/README.md is valid: True
-- https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/tree/main/data/raw is valid: True
-- https://dataverse.nl/dataset.xhtml?persistentId=doi:10.34894/GTV2RN is valid: True
-- https://picarta.oclc.org/ is valid: True
-- https://picarta.on.worldcat.org is valid: False
-- http://www.biografischportaal.nl is valid: True
-- https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/blob/main/data/raw/letters_CEN_1200to1820_cleanedSkillnet.csv is valid: True
-- https://dataverse.nl/dataset.xhtml?persistentId=doi:10.34894/G8XQI0 is valid: True
-- https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/tree/main/src is valid: True
-- https://picarta.oclc.org/psi/DB=3.23/XMLPRS=Y/PPN?PPN=310885922 is valid: True
+**Invalid URLs (404 - 1):**
+
+Invalid URL (404): https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/
+
+**Impossible to verify (Other - 4):**
+
+Invalid URL (Other - 301): https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7703-1791
+Invalid URL (Other - 301): https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-2003-4200
+Invalid URL (Other - 500): https://picarta.on.worldcat.org
+Invalid URL (Other - 302): https://picarta.oclc.org/psi/DB=3.23/XMLPRS=Y/PPN?PPN=310885922
+
+**Valid URLs (200 - 11):**
+
+Valid URL (200): https://creativecommons.org/licenses/by/4.0/
+Valid URL (200): http://emlo-portal.bodleian.ox.ac.uk/collections/?page_id=907
+Valid URL (200): https://ckcc.huygens.knaw.nl/epistolarium/
+Valid URL (200): https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/blob/main/README.md
+Valid URL (200): https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/tree/main/data/raw
+Valid URL (200): https://dataverse.nl/dataset.xhtml?persistentId=doi:10.34894/GTV2RN
+Valid URL (200): https://picarta.oclc.org/
+Valid URL (200): http://www.biografischportaal.nl
+Valid URL (200): https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/blob/main/data/raw/letters_CEN_1200to1820_cleanedSkillnet.csv
+Valid URL (200): https://dataverse.nl/dataset.xhtml?persistentId=doi:10.34894/G8XQI0
+Valid URL (200): https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/tree/main/src
+
 
