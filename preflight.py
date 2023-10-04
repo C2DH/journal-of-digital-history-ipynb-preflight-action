@@ -79,6 +79,7 @@ def main(
     output_md="preflight_report.md",
 ):
     workspace = os.getenv("GITHUB_WORKSPACE", "")
+    branch=os.getenv("GITHUB_REF_NAME", "")
     print(f"::debug::workspace:{workspace}")
     notebook_filepath = os.path.join(workspace, notebook)
     print(f"::debug::notebook_filepath:{notebook_filepath}")
@@ -92,7 +93,7 @@ def main(
         [a for a in functions] if isinstance(functions, tuple) else functions.split(",")
     )
     size = len(notebook_json_contents["cells"])
-    actions_outputs = {"notebook_path": notebook_filepath, "size": size, "workspace": workspace}
+    actions_outputs = {"notebook_path": notebook_filepath, "notebook" : notebook, "workspace": workspace}
     actions_md_outputs = {"size": f"\n### Size\n**total cells: {size}**"}
     # Import the specified functions from external modules
     for func in function_names:

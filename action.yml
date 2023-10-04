@@ -26,6 +26,9 @@ outputs:
   workspace:
     description: 'The workspace'
     value: ${{ steps.preflight.outputs.workspace }}
+  notebook:
+    description: 'The filename of the notebook to check'
+    value: ${{ steps.preflight.outputs.notebook }}
   checkmd:
     description: 'A markdown validation report'
     value: ${{ steps.preflight.outputs.checkmd }}

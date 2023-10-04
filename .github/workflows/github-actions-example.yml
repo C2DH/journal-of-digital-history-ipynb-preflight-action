@@ -27,5 +27,5 @@ jobs:
         with:
           file_pattern: '*.md'
       - name: Run shell cmd
-        run: echo "https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}"
+        run: echo "Preflight check on https://github.com/${{github.repository}}/blob/${{github.ref_name}}/${{steps.preflight.outputs.notebook}}"
 
