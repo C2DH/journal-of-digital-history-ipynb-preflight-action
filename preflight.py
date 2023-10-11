@@ -3,6 +3,56 @@ import os
 import fire
 import json
 import importlib.util
+import re
+import base64
+from urllib.parse import quote
+
+BASE_URL="https://journalofdigitalhistory.org/en/notebook-viewer/"
+
+def encode_notebook_url(url):
+    # URL-encode the string
+    url_encoded = quote(url, safe='')
+    # Base64 encode the URL-encoded string
+    base64_encoded = base64.b64encode(url_encoded.encode('utf-8')).decode('utf-8')
+    # Replace '+' with '/' to match the desired result
+    result = base64_encoded.replace('+', '/')
+    return result
+
+def process_github_url(value):
+    github_regex = r'https?://(github\.com|raw\.githubusercontent\.com)/([A-Za-z0-9-_.]+)/([A-Za-z0-9-_.]+)/(blob/)?(.*)'
+    match = re.match(github_regex, value)
+
+    if match:
+        domain, username, repo, _, filepath = match.groups()
+        proxy_value = f'/proxy-githubusercontent/{username}/{repo}/{filepath}'
+        result = {
+            'value': value,
+            'domain': domain,
+            'proxyValue': proxy_value,
+            'origin': 'github'
+        }
+    else:
+        result = {'value': value, 'origin': 'unknown'}
+    return result
+
+
+def get_github_url(notebook_filepath):
+    github_url= ""
+    branch=os.getenv("GITHUB_REF_NAME", "")
+    repo=os.getenv("GITHUB_REPOSITORY", "")
+    if branch and repo:
+        github_url = f"https://github.com/{repo}/blob/{branch}/{notebook_filepath}"
+    return github_url
+
+
+def get_preview_url(notebook_filepath):
+    preview_url = ""
+    github_url = get_github_url(notebook_filepath)
+    if github_url:
+        result = process_github_url(github_url)
+        encode = encode_notebook_url(result['proxyValue'])
+        preview_url = f"{BASE_URL}{encode}"
+    return preview_url
 
 
 def get_notebook_json(notebook_filepath):
@@ -79,7 +129,7 @@ def main(
     output_md="preflight_report.md",
 ):
     workspace = os.getenv("GITHUB_WORKSPACE", "")
-    branch=os.getenv("GITHUB_REF_NAME", "")
+    preview_url = get_preview_url(notebook)
     print(f"::debug::workspace:{workspace}")
     notebook_filepath = os.path.join(workspace, notebook)
     print(f"::debug::notebook_filepath:{notebook_filepath}")
@@ -104,7 +154,7 @@ def main(
             sys.exit(1)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
-        func_as_md, func_as_output = getattr(module, func)(notebook_json_contents)
+        func_as_md, func_as_output = getattr(module, func)(notebook_json_contents, preview_url)
         actions_outputs[func] = func_as_output
         actions_md_outputs[func] = func_as_md
     # Set the GitHub Action outputs
@@ -121,3 +171,7 @@ def main(
 
 if __name__ == "__main__":
     fire.Fire(main)
+
+
+
+# github_url

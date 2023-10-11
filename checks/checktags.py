@@ -2,7 +2,7 @@ import nbformat
 import json
 import re
 
-def checktags(contents):
+def checktags(contents, preview_url):
     tags_info = []
     result_as_md = "\n### Check Tags\n"
     result_as_stdout = ""

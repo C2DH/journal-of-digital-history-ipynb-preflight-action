@@ -50,7 +50,7 @@ def get_citation_info(citation_id, general_metadata):
     return result_as_md, result_as_stdout
 
 
-def checkcitation(contents):
+def checkcitation(contents, preview_url):
     citations = set()
 
     # Convert JSON to notebook object

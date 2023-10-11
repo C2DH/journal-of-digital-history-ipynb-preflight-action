@@ -1,11 +1,15 @@
-def format_output(warnings, cell_numbers):
+def format_output(warnings, preview_url, cell_numbers):
     result_as_md = "\n### Check JavaScript\n"
     result_as_stdout = ""
 
     if warnings:
         result_as_md += f"**WARNING: {len(warnings)} output cells contain JavaScript code.**\n\n"
         for cell_number in cell_numbers:
-            result_as_md += f"- Cell {cell_number}\n"
+            if preview_url:
+                preview_url+=preview_url + "?idx=" + str(cell_number)
+                result_as_md += f"-  [Check here ]({preview_url})"
+            else:
+                result_as_md += f"- Cell {cell_number}\n"
         result_as_stdout = f"WARNING: {len(warnings)} output cells contain JavaScript code in cells: {cell_numbers}."
     else:
         result_as_md += "No JavaScript code found in output cells.\n"
@@ -14,7 +18,7 @@ def format_output(warnings, cell_numbers):
     return result_as_md, result_as_stdout
 
 
-def checkjavascript(contents):
+def checkjavascript(contents,preview_url):
     print("::debug::checkjavascript")
     cells = contents.get("cells", [])
     size = len(cells)
@@ -36,6 +40,6 @@ def checkjavascript(contents):
                         cell_numbers.append(cells.index(cell) + 1)
                         break
 
-    result_as_md, result_as_stdout = format_output(warnings, cell_numbers)
+    result_as_md, result_as_stdout = format_output(warnings, preview_url, cell_numbers)
 
     return result_as_md, result_as_stdout

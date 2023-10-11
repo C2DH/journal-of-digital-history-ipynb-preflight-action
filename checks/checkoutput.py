@@ -3,7 +3,7 @@ from datetime import datetime
 import nbformat
 import re
 
-def checkoutput(notebook_json):
+def checkoutput(notebook_json,preview_url):
     result_as_md = "\n### Check Output Sizes and Rules\n"
     result_as_stdout = ""
 

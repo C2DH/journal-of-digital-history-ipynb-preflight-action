@@ -63,7 +63,7 @@ def extract_html(text, cell_number):
     parser.feed(text)
     return parser.result_md, parser.result_stdout
 
-def checkhtml(contents):
+def checkhtml(contents, preview_url):
     result_as_md = "\n### Check HTML\n"
     result_as_stdout = ""
 
