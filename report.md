@@ -47,8 +47,7 @@ Total number of tables: 5
 ### Check JavaScript
 **WARNING: 1 output cells contain JavaScript code.**
 
-- Cell 38
-
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5ihttps://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=38)
 
 ### Check Tags
 - Cell 1: Tags: ['title']
