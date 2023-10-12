@@ -55,7 +55,11 @@ def checkoutput(notebook_json,preview_url):
                                     if re.match(allowed_tag_pattern, tag):
                                         result_as_md += f"  - Valid tag: {tag} for image output in cell {i + 1}\n"
                                 if not any(re.match(allowed_tag_pattern, tag) for tag in cell_tags):
-                                    result_as_md += f"  - No valid tags found for image output in cell {i + 1}\n"
+                                    if preview_url:
+                                        cell_preview_url=preview_url + "?idx=" + str(i + 1)
+                                        result_as_md += f"  - No valid tags found for image output  [Check here ]({cell_preview_url})"
+                                    else:
+                                        result_as_md += f"  - No valid tags found for image output in cell {i + 1}\n"
                             else:
                                 result_as_md += f"  - No tags found for image output in cell {i + 1}\n"
 

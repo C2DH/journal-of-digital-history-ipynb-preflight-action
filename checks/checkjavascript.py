@@ -6,8 +6,8 @@ def format_output(warnings, preview_url, cell_numbers):
         result_as_md += f"**WARNING: {len(warnings)} output cells contain JavaScript code.**\n\n"
         for cell_number in cell_numbers:
             if preview_url:
-                preview_url+=preview_url + "?idx=" + str(cell_number)
-                result_as_md += f"-  [Check here ]({preview_url})"
+                cell_preview_url=preview_url + "?idx=" + str(cell_number)
+                result_as_md += f"-  [Check here ]({cell_preview_url})"
             else:
                 result_as_md += f"- Cell {cell_number}\n"
         result_as_stdout = f"WARNING: {len(warnings)} output cells contain JavaScript code in cells: {cell_numbers}."
