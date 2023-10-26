@@ -37,7 +37,7 @@ class MyHTMLParser(HTMLParser):
 
         if not self.ignore_author and not self.ignore_div_cite and tag.lower() != 'cite':
             self.result_md += f"- Cell {self.cell_number} - Encountered a start tag: {tag}\n"
-            self.result_stdout += f"Cell {self.cell_number} - Encountered a start tag: {tag}\n"
+            self.result_stdout += f"Cell {self.cell_number} - Encountered a start tag: {tag}"
 
     def handle_endtag(self, tag):
         if tag.lower() == 'div':
@@ -47,7 +47,7 @@ class MyHTMLParser(HTMLParser):
             self.ignore_author = False
         elif tag.lower() != 'cite':
             self.result_md += f"- Cell {self.cell_number} - Encountered an end tag: {tag}\n"
-            self.result_stdout += f"Cell {self.cell_number} - Encountered an end tag: {tag}\n"
+            self.result_stdout += f"Cell {self.cell_number} - Encountered an end tag: {tag}"
 
     def handle_data(self, data):
         if not self.ignore_data and not self.ignore_author:
