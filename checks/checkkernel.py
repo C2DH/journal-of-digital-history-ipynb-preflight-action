@@ -47,5 +47,5 @@ def checkkernel(contents, output=None):
             md_output+="> [!CAUTION]\n"
             md_output+="> ERROR: Different Python versions. "+read_content+" expected; "+notebook_language+" received\n"
     
-    return [md_output, std_output]
+    return md_output, std_output
     
