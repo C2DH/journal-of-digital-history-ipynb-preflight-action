@@ -15,9 +15,9 @@ code: 21
 
 
 ### Check Output Sizes and Rules
-  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=5)- Output cell 5 size: 2520.78 KB
+  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=5)- Output cell 5 size: 2520.78 KB
 > First words of input cell: library("IRdisplay") setwd("/work/template_repo_JDH_R/media") display_png(file="./cover.png", width =
-  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=24)- Table found in output of cell 36
+  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=24)- Table found in output of cell 36
 > First words of input cell: #importing the edge list of
 - Output cell 38 size: 1481.92 KB
 > First words of input cell: Garfagnini_edges <- Garfagnini_edges[Garfagnini_edges$personStrId_receiver == 'Antonio
@@ -25,11 +25,11 @@ code: 21
 > First words of input cell: # read example files, here
 - Table found in output of cell 48
 > First words of input cell: # read example files, here
-  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=52)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=53)- Table found in output of cell 59
+  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=52)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=53)- Table found in output of cell 59
 > First words of input cell: # Combine the counts for
 - Table found in output of cell 64
 > First words of input cell: # Counting signed triads per
-  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=65)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=69)
+  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=65)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=69)
 Total output size: 4758.78 KB
 Total number of images: 6
 Total number of tables: 5
@@ -41,7 +41,7 @@ Total number of tables: 5
 ### Check JavaScript
 **WARNING: 1 output cells contain JavaScript code.**
 
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=38)
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZqYXZhc2NyaXB0LmlweW5i?idx=38)
 
 ### Check Tags
 - Cell 1: Tags: ['title']
@@ -128,4 +128,8 @@ Valid URL (200): https://github.com/lilimelgar/data_preparation_article_balance_
 Valid URL (200): https://dataverse.nl/dataset.xhtml?persistentId=doi:10.34894/G8XQI0
 Valid URL (200): https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/tree/main/src
 
+
+## Kernel Checks: 
+
+#### Programming Language is R; version - 4.2.3
 
