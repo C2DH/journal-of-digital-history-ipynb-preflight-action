@@ -19,7 +19,7 @@ def checkkernel(contents, output=None):
 
     ## if language is not R
     else:
-        std_output+="Language is NOT R\n"
+        std_output+="Language is NOT R"
 
         # check if runtime.txt exists
         runtimeFileExists = os.path.isfile('./runtime.txt')
@@ -43,7 +43,7 @@ def checkkernel(contents, output=None):
             std_output+="Python versions match\n"
             md_output+=f"#### SUCCESS: Python versions match; {read_content} -> {notebook_language}\n"
         else:
-            std_output+="Python versions dont match\n"
+            std_output+="Python versions dont match"
             md_output+="> [!CAUTION]\n"
             md_output+=f"> ERROR: Different Python versions. {read_content} expected; {notebook_language} received\n"
     
