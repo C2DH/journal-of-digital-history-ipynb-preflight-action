@@ -43,7 +43,7 @@ def checkkernel(contents, output=None):
             std_output+=f"Python versions match\n"
             md_output+=f"#### SUCCESS: Python versions match; {read_content} -> {notebook_language}\n"
         else:
-            std_output+=f"Python versions don't match\n"
+            std_output+=f"Python versions don`t match\n"
             md_output+=f"> [!CAUTION]\n"
             md_output+=f"> ERROR: Different Python versions. {read_content} expected; {notebook_language} received\n"
     
