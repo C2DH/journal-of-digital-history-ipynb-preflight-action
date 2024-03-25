@@ -2,7 +2,7 @@ import os
 import json
 
 def checkkernel(contents, output=None):
-    std_output = ""
+    std_output = "."
     md_output="## Kernel Checks: \n\n"
 
     print("::debug::checkkernel")
@@ -15,11 +15,11 @@ def checkkernel(contents, output=None):
 
     if(kernelJSON["name"]=="R"):
         md_output+="#### Programming Language is R; version - "+kernelJSON["version"]+"\n"
-        std_output+=f"Language is R\n"
+        std_output+="Language is R\n"
 
     ## if language is not R
     else:
-        std_output+=f"Language is NOT R\n"
+        std_output+="Language is NOT R\n"
 
         # check if runtime.txt exists
         runtimeFileExists = os.path.isfile('./runtime.txt')
@@ -40,10 +40,10 @@ def checkkernel(contents, output=None):
         read_content = runtime_txt.read()
         if(read_content==notebook_language):
             
-            std_output+=f"Python versions match\n"
+            std_output+="Python versions match\n"
             md_output+=f"#### SUCCESS: Python versions match; {read_content} -> {notebook_language}\n"
         else:
-            std_output+=f"Python versions dont match\n"
+            std_output+="Python versions dont match\n"
             md_output+="> [!CAUTION]\n"
             md_output+=f"> ERROR: Different Python versions. {read_content} expected; {notebook_language} received\n"
     
