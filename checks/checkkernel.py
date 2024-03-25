@@ -25,7 +25,7 @@ def checkkernel(contents, output=None):
         runtimeFileExists = os.path.isfile('./runtime.txt')
 
         if(runtimeFileExists==False):
-            std_output+=f"runtime.txt file is missing\n"
+            std_output+=f"runtime.txt file is missing"
             md_output+=f"> [!CAUTION]\n"
             md_output+=f"> ERROR: **runtime.txt** is MISSING\n"
             return [md_output, std_output]
@@ -40,13 +40,13 @@ def checkkernel(contents, output=None):
         read_content = runtime_txt.read()
         if(read_content==notebook_language):
             
-            std_output+=f"Python versions match\n"
+            std_output+=f"Python versions match"
             md_output+=f"#### SUCCESS: Python versions match; {read_content} -> {notebook_language}\n"
         else:
-            std_output+=f"Python versions don`t match\n"
+            std_output+=f"Python versions dont match"
             md_output+=f"> [!CAUTION]\n"
             md_output+=f"> ERROR: Different Python versions. {read_content} expected; {notebook_language} received\n"
     
-    std_output+='end of kernel checks'
+    std_output+='\nend of kernel checks'
     return md_output, std_output
     
