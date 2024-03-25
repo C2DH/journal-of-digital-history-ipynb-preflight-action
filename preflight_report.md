@@ -12,5 +12,6 @@ markdown: 3
 ## Kernel Checks: 
 
 > [!CAUTION]
-> ERROR: Different Python versions. python-3.11 expected; python-3.10.5 received
-
+ > Error: Python versions don't match. The notebook is using **python-3.10.5**, when **python-3.10.6** is required.
+> [!TIP]
+ > Try changing **requirements.txt** to resolve the error above.

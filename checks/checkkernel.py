@@ -14,7 +14,7 @@ def checkkernel(contents, output=None):
     kernelJSON = json.loads(json.dumps(kernel))
 
     if(kernelJSON["name"]=="R"):
-        md_output+="#### Programming Language is R; version - "+kernelJSON["version"]+"\n"
+        md_output+=f"Programming language is **R ({kernelJSON["version"]})**\n"
         # std_output+="Language is R\n"
 
     ## if language is not R
@@ -27,7 +27,7 @@ def checkkernel(contents, output=None):
         if(runtimeFileExists==False):
             # std_output+="runtime.txt file is missing\n"
             md_output+=f"> [!CAUTION]\n"
-            md_output+=f"> ERROR: **runtime.txt** is MISSING\n"
+            md_output+=f"> Error: **runtime.txt** is missing\n"
             return [md_output, std_output]
         
         # if runtime.txt exists, then check if the language from notebook matches the one in runtime.txt
@@ -41,11 +41,11 @@ def checkkernel(contents, output=None):
         if(read_content==notebook_language):
             
             # std_output+="Python versions match\n"
-            md_output+=f"#### SUCCESS: Python versions match; {read_content} -> {notebook_language}\n"
+            md_output+=f"Python versions match :white_check_mark:\n"
         else:
             # std_output+="Python versions dont match"
-            md_output+="> [!CAUTION]\n"
-            md_output+=f"> ERROR: Different Python versions. {read_content} expected; {notebook_language} received\n"
+            md_output+=f"> [!CAUTION]\n > Error: Python versions don't match. The notebook is using **{notebook_language}**, when **{read_content}** is required.\n"
+            md_output+=f"> [!TIP]\n > Try changing **requirements.txt** to resolve the error above."
     
     # std_output+=f"end of kernel checks"
     return md_output, std_output
