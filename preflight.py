@@ -125,7 +125,7 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
 
 def main(
     notebook="notebook.ipynb",
-    functions="checkkernel",
+    functions="checkmd,checkurls",
     output_md="preflight_report.md",
 ):
     workspace = os.getenv("GITHUB_WORKSPACE", "")
