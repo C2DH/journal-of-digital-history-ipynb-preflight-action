@@ -47,6 +47,6 @@ def checkkernel(contents, output=None):
             md_output+="> [!CAUTION]\n"
             md_output+=f"> ERROR: Different Python versions. {read_content} expected; {notebook_language} received\n"
     
-    std_output+='\nend of kernel checks'
+    std_output+="\nend of kernel checks"
     return md_output, std_output
     
