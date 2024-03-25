@@ -31,12 +31,12 @@ No JavaScript code found in output cells.
 **WARNING: The following tags are missing or invalid:**
 
 #### Missing Tags:
-- contributor
-- title
-- keywords
-- cover
 - copyright
 - abstract
+- title
+- contributor
+- keywords
+- cover
 
 
 ### Check URLs
@@ -45,6 +45,5 @@ No URLs found in the cells.
 
 ## Kernel Checks: 
 
-> [!CAUTION]
-> ERROR: Different Python versions. python-3.11 expected; python-3.10.5 received
+#### SUCCESS: Python versions match; python-3.10.5 -> python-3.10.5
 
