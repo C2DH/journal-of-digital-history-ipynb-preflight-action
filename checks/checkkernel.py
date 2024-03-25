@@ -14,20 +14,20 @@ def checkkernel(contents, output=None):
     kernelJSON = json.loads(json.dumps(kernel))
 
     if(kernelJSON["name"]=="R"):
-        md_output+="#### Programming Language is R; version - "+kernelJSON["version"]+"\n"
-        std_output+="Language is R\n"
+        md_output+=f"#### Programming Language is R; version - {kernelJSON["version"]}\n"
+        std_output+=f"Language is R\n"
 
     ## if language is not R
     else:
-        std_output+="Language is NOT R\n"
+        std_output+=f"Language is NOT R\n"
 
         # check if runtime.txt exists
         runtimeFileExists = os.path.isfile('./runtime.txt')
 
         if(runtimeFileExists==False):
-            std_output+="runtime.txt file is missing\n"
-            md_output+="> [!CAUTION]\n"
-            md_output+="> ERROR: **runtime.txt** is MISSING\n"
+            std_output+=f"runtime.txt file is missing\n"
+            md_output+=f"> [!CAUTION]\n"
+            md_output+=f"> ERROR: **runtime.txt** is MISSING\n"
             return [md_output, std_output]
         
         # if runtime.txt exists, then check if the language from notebook matches the one in runtime.txt
@@ -40,12 +40,12 @@ def checkkernel(contents, output=None):
         read_content = runtime_txt.read()
         if(read_content==notebook_language):
             
-            std_output+="Python versions match\n"
-            md_output+="#### SUCCESS: Python versions match; "+read_content+" -> "+notebook_language+"\n"
+            std_output+=f"Python versions match\n"
+            md_output+=f"#### SUCCESS: Python versions match; {read_content} -> {notebook_language}\n"
         else:
-            std_output+="Python versions don't match\n"
-            md_output+="> [!CAUTION]\n"
-            md_output+="> ERROR: Different Python versions. "+read_content+" expected; "+notebook_language+" received\n"
+            std_output+=f"Python versions don't match\n"
+            md_output+=f"> [!CAUTION]\n"
+            md_output+=f"> ERROR: Different Python versions. {read_content} expected; {notebook_language} received\n"
     
     return md_output, std_output
     
