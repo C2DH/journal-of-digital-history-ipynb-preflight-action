@@ -2,7 +2,7 @@ import os
 import json
 
 def checkkernel(contents, output=None):
-    std_output = "\n"
+    std_output = ""
     md_output="## Kernel Checks: \n\n"
 
     print("::debug::checkkernel")

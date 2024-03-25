@@ -1,4 +1,4 @@
-# Report for ./example/checkmd.ipynb ❤ 
+# Report for example/checkmd.ipynb ❤ 
 
 ## Cell Counts   
 **all cells: 3 **  
@@ -9,6 +9,25 @@ markdown: 3
 
 ### Size
 **total cells: 3**
+
+### Check markdown
+**FAILED, 1 errors found**
+
+ ```
+  message: Markdown heading found in the middle of cell 2 at line 3 
+  source: 
+[
+  "You cannot put a title in the middle of a Markdown Cell\n",
+  "\n",
+  "## this is not correct"
+] 
+
+```
+
+### Check URLs
+
+No URLs found in the cells.
+
 ## Kernel Checks: 
 
 > [!CAUTION]
