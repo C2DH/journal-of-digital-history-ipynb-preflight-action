@@ -31,12 +31,12 @@ No JavaScript code found in output cells.
 **WARNING: The following tags are missing or invalid:**
 
 #### Missing Tags:
-- copyright
+- contributor
+- cover
 - abstract
 - title
-- contributor
 - keywords
-- cover
+- copyright
 
 
 ### Check URLs
@@ -45,5 +45,6 @@ No URLs found in the cells.
 
 ## Kernel Checks: 
 
-#### SUCCESS: Python versions match; python-3.10.5 -> python-3.10.5
+> [!CAUTION]
+> ERROR: **runtime.txt** is MISSING
 
