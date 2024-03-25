@@ -14,7 +14,7 @@ def checkkernel(contents, output=None):
     kernelJSON = json.loads(json.dumps(kernel))
 
     if(kernelJSON["name"]=="R"):
-        md_output+=f"Programming language is **R ({kernelJSON["version"]})**\n"
+        md_output+=f"Programming language is **R ({kernelJSON['version']})**\n"
         # std_output+="Language is R\n"
 
     ## if language is not R
