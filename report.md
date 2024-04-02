@@ -44,7 +44,10 @@ Total number of tables: 4
 ### Check JavaScript
 **WARNING: 1 output cells contain JavaScript code.**
 
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlLVIuaXB5bmI=?idx=38)**plotly** library is not present in **requirements.txt**
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlLVIuaXB5bmI=?idx=38)
+### Check JavaScript (plotly)
+**plotly** library is not present in **requirements.txt**
+
 
 ### Check Tags
 - Cell 1: Tags: ['title']
