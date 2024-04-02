@@ -1,17 +1,20 @@
-# Report for example/checkmd.ipynb ❤ 
+# Report for example/plotly.ipynb ❤ 
 
 ## Cell Counts   
-**all cells: 3 **  
-code_empty: 0   
-markdown: 3   
+**all cells: 2 **  
+code_empty: 1   
+code: 2   
 
 ## Action Outputs
 
 ### Size
-**total cells: 3**
-## Kernel Checks: 
+**total cells: 2**
 
-> [!CAUTION]
- > Error: Python versions don't match. The notebook is using **python-3.10.5**, when **python-3.10.6** is required.
-> [!TIP]
- > Try changing **requirements.txt** to resolve the error above.
+### Check JavaScript
+**WARNING: 1 output cells contain JavaScript code.**
+
+- Cell 1
+### Check JavaScript (plotly)
+**require.undef("plotly")** is present
+**\* plotly.js** is present
+

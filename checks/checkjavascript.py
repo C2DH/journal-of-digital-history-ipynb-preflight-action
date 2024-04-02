@@ -13,7 +13,7 @@ def format_output(warnings, preview_url, cell_numbers):
         for cell_number in cell_numbers:
             if preview_url:
                 cell_preview_url = preview_url + "?idx=" + str(cell_number)
-                result_as_md += f"-  [Check here ]({cell_preview_url})"
+                result_as_md += f"-  [Check here ]({cell_preview_url})\n"
             else:
                 result_as_md += f"- Cell {cell_number}\n"
         result_as_stdout = f"WARNING: {len(warnings)} output cells contain JavaScript code in cells: {cell_numbers}."
@@ -56,6 +56,7 @@ def checkjavascript(contents, preview_url):
     result_as_md, result_as_stdout = format_output(warnings, preview_url, cell_numbers)
 
     # plotly check begins from here
+    result_as_md += "### Check JavaScript (plotly)\n"
 
     requirementsFileExists = os.path.isfile("./requirements.txt")
 
@@ -70,24 +71,26 @@ def checkjavascript(contents, preview_url):
     # read the file
     read_content = requirements_txt.read()
     if "plotly" not in read_content:
-        result_as_md += "**plotly** library is not present in **requirements.txt**"
+        result_as_md += "**plotly** library is not present in **requirements.txt**\n"
         return result_as_md, result_as_stdout
 
     outputs = json.loads(json.dumps(contents))
     text_html_outputs = outputs["cells"][0]["outputs"][0]["data"]["text/html"]
 
     plotly_code_mandatory = [
-        'requilre.undef("plotly")',
-        "* pllotly.js",
+        'require.undef("plotly")',
+        "* plotly.js",
     ]
     checks_results = {
         "require.undef": {
             "found": False,
-            "message": '**require.undef("plotly")** is missing\n',
+            "not_found_message": '**require.undef("plotly")** is missing\n',
+            "found_message": '**require.undef("plotly")** is present\n',
         },
         "plotly.version": {
             "found": False,
-            "message": "**\* plotly.js** is missing\n",
+            "not_found_message": "**\* plotly.js** is missing\n",
+            "found_message": "**\* plotly.js** is present\n",
         },
     }
 
@@ -101,7 +104,13 @@ def checkjavascript(contents, preview_url):
             checks_results["plotly.version"]["found"] = True
 
     if checks_results["require.undef"]["found"] == False:
-        result_as_md += checks_results["require.undef"]["message"]
+        result_as_md += checks_results["require.undef"]["not_found_message"]
+    elif checks_results["require.undef"]["found"] == True:
+        result_as_md += checks_results["require.undef"]["found_message"]
+
     if checks_results["plotly.version"]["found"] == False:
-        result_as_md += checks_results["plotly.version"]["message"]
+        result_as_md += checks_results["plotly.version"]["not_found_message"]
+    elif checks_results["plotly.version"]["found"] == True:
+        result_as_md += checks_results["plotly.version"]["found_message"]
+
     return result_as_md, result_as_stdout
