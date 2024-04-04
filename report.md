@@ -15,7 +15,8 @@ code: 2
 
 -  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZwbG90bHkuaXB5bmI=?idx=1)
 ### Check JavaScript (plotly)
-**plotly** library is not present in **requirements.txt**
+**require.undef("plotly")** is present
+**\* plotly.js** is present
 
 ## Kernel Checks: 
 
