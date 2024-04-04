@@ -16,8 +16,8 @@ jobs:
         id: preflight
         uses: c2dh/journal-of-digital-history-ipynb-preflight-action@yaroslav-dev
         with:
-          notebook: 'example/article-R.ipynb'
-          functions: 'checkcitation,checkoutput,checkhtml,checkjavascript,checktags,checkurls,checkkernel'
+          notebook: 'example/plotly.ipynb'
+          functions: 'checkjavascript,checkkernel'
           output_md: 'report.md'
       # Use the output from the `preflight` step
       - name: Use the output
