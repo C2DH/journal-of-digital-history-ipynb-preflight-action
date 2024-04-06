@@ -24,6 +24,36 @@ def format_output(warnings, preview_url, cell_numbers):
     return result_as_md, result_as_stdout
 
 
+def checkplotlyconfig(outputs_value):
+    plotly_code_mandatory = [
+        'require.undef("plotly")',
+        "* plotly.js",
+    ]
+    checks_results = [
+        False,
+        False,
+    ]  # first for require.undef, second for plotly.version
+
+    for j in range(0, len(outputs_value), 1):
+        checks_limit = 10
+        m = "text/html" in outputs_value[j]["data"]
+
+        if m == False:
+            continue
+
+        if len(outputs_value[j]["data"]["text/html"]) < 10:
+            checks_limit = len(outputs_value[j]["data"]["text/html"])
+
+        for i in range(0, checks_limit, 1):
+            current_line = str(outputs_value[j]["data"]["text/html"][i].strip())
+            if plotly_code_mandatory[0] in current_line:
+                checks_results[0] = True
+            elif plotly_code_mandatory[1] in current_line:
+                checks_results[1] = True
+
+    return checks_results
+
+
 def checkjavascript(contents, preview_url):
     print("::debug::checkjavascript")
     cells = contents.get("cells", [])
@@ -75,12 +105,12 @@ def checkjavascript(contents, preview_url):
         return result_as_md, result_as_stdout
 
     outputs = json.loads(json.dumps(contents))
-    text_html_outputs = outputs["cells"][0]["outputs"][0]["data"]["text/html"]
-
-    plotly_code_mandatory = [
-        'require.undef("plotly")',
-        "* plotly.js",
+    # text_html_outputs = outputs["cells"][0]["outputs"][0]["data"]["text/html"]
+    text_html_outputs = outputs["cells"]
+    code_cells_list = [
+        element for element in text_html_outputs if element["cell_type"] == "code"
     ]
+
     checks_results = {
         "require.undef": {
             "found": False,
@@ -94,14 +124,13 @@ def checkjavascript(contents, preview_url):
         },
     }
 
-    # failed_line_number = 0
-
-    for i in range(0, 10, 1):
-        current_line = str(text_html_outputs[i].strip())
-        if plotly_code_mandatory[0] in current_line:
-            checks_results["require.undef"]["found"] = True
-        elif plotly_code_mandatory[1] in current_line:
-            checks_results["plotly.version"]["found"] = True
+    for cell in code_cells_list:
+        if len(cell["outputs"]) != 0:
+            checks_output = checkplotlyconfig(cell["outputs"])
+            if checks_output[0] == True:
+                checks_results["require.undef"]["found"] = True
+            if checks_output[1] == True:
+                checks_results["plotly.version"]["found"] = True
 
     if checks_results["require.undef"]["found"] == False:
         result_as_md += checks_results["require.undef"]["not_found_message"]
