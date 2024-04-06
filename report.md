@@ -1,19 +1,23 @@
-# Report for example/plotly.ipynb ❤ 
+# Report for example/articleMaine.ipynb ❤ 
 
 ## Cell Counts   
-**all cells: 2 **  
-code_empty: 1   
-code: 2   
+**all cells: 110 **  
+code_empty: 0   
+markdown: 94   
+code: 16   
 
 ## Action Outputs
 
 ### Size
-**total cells: 2**
+**total cells: 110**
 
 ### Check JavaScript
-**WARNING: 1 output cells contain JavaScript code.**
+**WARNING: 4 output cells contain JavaScript code.**
 
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZwbG90bHkuaXB5bmI=?idx=1)
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlTWFpbmUuaXB5bmI=?idx=24)
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlTWFpbmUuaXB5bmI=?idx=41)
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlTWFpbmUuaXB5bmI=?idx=44)
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlTWFpbmUuaXB5bmI=?idx=48)
 ### Check JavaScript (plotly)
 **require.undef("plotly")** is present
 **\* plotly.js** is present
