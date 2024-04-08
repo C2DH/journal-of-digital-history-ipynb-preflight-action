@@ -14,10 +14,10 @@ jobs:
         id: extract_branch
       - name: preflight
         id: preflight
-        uses: c2dh/journal-of-digital-history-ipynb-preflight-action@yaroslav-dev
+        uses: c2dh/journal-of-digital-history-ipynb-preflight-action@master
         with:
           notebook: 'example/articleMaine.ipynb'
-          functions: 'checkjavascript,checkkernel'
+          functions: ',checkkernel,checkcitation,checkhtml,checkoutput,checktags,checkurls,checkjavascript'
           output_md: 'report.md'
       # Use the output from the `preflight` step
       - name: Use the output
