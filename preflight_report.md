@@ -16,5 +16,6 @@ code: 2
 - Cell 1
 ### Check JavaScript (plotly)
 **require.undef("plotly")** is present
+
 **\* plotly.js** is present
 
