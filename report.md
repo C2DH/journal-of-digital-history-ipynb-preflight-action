@@ -20,6 +20,7 @@ code: 16
 -  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlTWFpbmUuaXB5bmI=?idx=48)
 ### Check JavaScript (plotly)
 **require.undef("plotly")** is present
+
 **\* plotly.js** is present
 
 ## Kernel Checks: 
@@ -27,4 +28,4 @@ code: 16
 > [!CAUTION]
  > Error: Python versions don't match. The notebook is using **python-3.7.10**, when **python-3.11** is required.
 > [!TIP]
- > Try changing **requirements.txt** to resolve the error above.
+ > Try changing **runtime.txt** to resolve the error above.
