@@ -26,14 +26,43 @@ Programming language is **R (4.2.3)**
 
 
 ### Check Output Sizes and Rules
-  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=4)- Output cell 4 size: 1751.10 KB
+- Output cell 4 size: 1751.10 KB
 > First words of input cell: library("IRdisplay") display_png(file="./media/CoverImage.png")
-  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=28)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=32)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=45)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=53)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=67)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=70)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=77)  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=86)- Table found in output of cell 89
+- Table found in output of cell 89
 > First words of input cell: get_KWIC(type_attributes, "ochiale")
-  - No valid tags found for image output  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=93)
-Total output size: 3280.00 KB
+
+Total output size: 3280.85 KB
 Total number of images: 10
 Total number of tables: 1
+> [!WARNING]
+> Notebook's output contains **text/plain** which is deprecated.
+
+| Mimetype | Presence |
+| --- | --- |
+| text/html | True |
+| text/plain | True |
+| image/png | True |
+
+| Output type | Presence |
+| --- | --- |
+| display_data | True |
+| execute_result | False |
+
+| Tag | Cell | Remark |
+| --- | --- | --- |
+| image/png | 4 | Image is not tagged properly [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=4) |
+| image/png | 28 | Image is not tagged properly [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=28) |
+| image/png | 32 | Image is not tagged properly [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=32) |
+| image/png | 45 | Image is not tagged properly [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=45) |
+| image/png | 53 | Image is not tagged properly [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=53) |
+| image/png | 67 | Image is not tagged properly [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=67) |
+| image/png | 70 | Image is not tagged properly [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=70) |
+| image/png | 77 | Image is not tagged properly [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=77) |
+| image/png | 86 | Image is not tagged properly [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=86) |
+| text/html | 89 | Table is not tagged properly |
+| image/png | 93 | Image is not tagged properly [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRnlhcm9zbGF2LWRldiUyRmV4YW1wbGUlMkZhcnRpY2xlX2V4YW1wbGVfY2hlY2tvdXRwdXQuaXB5bmI=?idx=93) |
+| text/plain | 115 | Should be replaced |
+
 
 ### Check Tags
 - Cell 1: Tags: ['title']
@@ -147,8 +176,8 @@ Total number of tables: 1
 - Cell 110: Tags: ['narrative']
 - Cell 111: Tags: ['narrative']
 - Cell 112: Tags: ['narrative']
-
-**WARNING: The following tags are missing or invalid:**
+> [!WARNING]
+> The following tags are missing or invalid
 
 #### Invalid Tags:
 - figure(-insert-name)-*
