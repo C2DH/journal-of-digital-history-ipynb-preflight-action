@@ -18,6 +18,9 @@ def checkoutput(notebook_json, preview_url):
         "image/png": {
             "present": False,
         },
+        "audio": {
+            "present": False,
+        },
     }
 
     output_type_object = {
@@ -37,6 +40,7 @@ def checkoutput(notebook_json, preview_url):
         total_size_kb = 0
         total_images = 0
         total_tables = 0
+        total_audios = 0
 
         # List of accepted MIME types, order is from most important to the least important descending
         accepted_mimetypes = [
@@ -54,8 +58,11 @@ def checkoutput(notebook_json, preview_url):
         # Define the regex pattern for a <table> tag
         table_tag_pattern = r"<table\b[^>]*>"
 
+        # Define the regex pattern for a <audio> tag
+        audio_tag_pattern = r"<audio\b[^>]*>"
+
         # Define the tag pattern
-        allowed_tag_pattern = r"(table|figure)-(\d+|[\w]+-\*)"
+        allowed_tag_pattern = r"(table|figure|sound)-(\d+|[\w]+-\*)"
 
         for i, cell in enumerate(notebook.cells):
             if cell.get("outputs"):
@@ -96,6 +103,7 @@ def checkoutput(notebook_json, preview_url):
                                 html_content = output["data"].get(output_mimetype, [])
                                 # Join the list of strings into a single string
                                 html_content = "".join(html_content)
+
                                 # Use regex to search for the presence of a <table> tag
 
                                 if re.search(table_tag_pattern, html_content):
@@ -121,7 +129,7 @@ def checkoutput(notebook_json, preview_url):
                                                 "Table is not tagged properly"
                                             )
                                         else:
-                                            tag_message += "Correct tagging"
+                                            tag_message += "Correct tagging (table)"
 
                                         if tag_message != "":
                                             tag_analysis_table += f"| text/html | {i+1} | {tag_message} |\n"
@@ -132,6 +140,41 @@ def checkoutput(notebook_json, preview_url):
                                         result_as_md += f"> First words of input cell: {first_words}\n"
 
                                     ## check the tag of the table
+
+                                # search for an audio tag
+                                if re.search(audio_tag_pattern, html_content):
+                                    mimetype_object["audio"]["present"] = True
+                                    total_audios += 1
+                                    tag_message = ""
+                                    if "tags" not in cell.metadata or not hasattr(
+                                        cell.metadata, "tags"
+                                    ):
+                                        tag_message = (
+                                            "Tags are not defined for the cell"
+                                        )
+                                        tag_analysis_table += (
+                                            f"| text/html | {i+1} | {tag_message} |\n"
+                                        )
+                                    else:
+                                        cell_tags = cell.metadata["tags"]
+
+                                        if not any(
+                                            re.match(allowed_tag_pattern, tag)
+                                            for tag in cell_tags
+                                        ):
+                                            tag_message += (
+                                                "Audio is not tagged properly"
+                                            )
+                                        else:
+                                            tag_message += "Correct tagging (audio)"
+
+                                        if tag_message != "":
+                                            tag_analysis_table += f"| text/html | {i+1} | {tag_message} |\n"
+
+                                        result_as_md += (
+                                            f"- Audio found in output of cell {i + 1}\n"
+                                        )
+                                        result_as_md += f"> First words of input cell: {first_words}\n"
 
                             case "image/png":
                                 mimetype_object["image/png"]["present"] = True
@@ -198,7 +241,8 @@ def checkoutput(notebook_json, preview_url):
 
         result_as_md += f"\nTotal output size: {total_size_kb:.2f} KB\n"
         result_as_md += f"Total number of images: {total_images}\n"
-        result_as_md += f"Total number of tables: {total_tables}"
+        result_as_md += f"Total number of tables: {total_tables}\n"
+        result_as_md += f"Total number of audios: {total_tables}\n"
 
         result_as_stdout += f"Total output size: {total_size_kb:.2f} KB\n"
         result_as_stdout += f"Total number of images: {total_images}\n"
