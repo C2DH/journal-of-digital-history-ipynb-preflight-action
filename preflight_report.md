@@ -29,12 +29,14 @@ code: 25
 > [!WARNING]
 > **Invalid URL (404):** https://sloveniatimes.com/number-of-italians-shopping-in-slovenia-on-the-rise/
 
-**Impossible to verify (Other - 2):**
+**Impossible to verify (non-404 error code - 1):**
 
-Invalid URL (Other - 403): https://upload.wikimedia.org/wikipedia/commons/9/9d/Litorale_1.png
 Invalid URL (Other - 301): https://zenodo.org/record/8178990
 
-**Valid URLs (200 - 13):**
+> [!TIP]
+> Even if some of the urls listed above don't seem to be broken, try to replace them with the proper ones as they might become unavailable soon.
+
+**Valid URLs (200 - 14):**
 
 Valid URL (200): https://licensebuttons.net/l/by/4.0/88x31.png
 Valid URL (200): https://creativecommons.org/licenses/by/4.0/
@@ -44,6 +46,7 @@ Valid URL (200): https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/t
 Valid URL (200): https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/transcripts/036_Gift_GamingScorpion.docx
 Valid URL (200): https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/transcripts/025_LostFairy_Response.docx
 Valid URL (200): https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/transcripts/064_Aura_Termine.docx
+Valid URL (200): https://upload.wikimedia.org/wikipedia/commons/9/9d/Litorale_1.png
 Valid URL (200): https://usrfvg.gov.it/it/home/menu/uffici/ufficio-scuole-slovene/scuole/
 Valid URL (200): https://usrfvg.gov.it/it/home/menu/uffici/ufficio-scuole-slovene/presentazione/
 Valid URL (200): https://culture.ec.europa.eu/policies/culture-in-cities-and-regions/designated-capitals-of-culture

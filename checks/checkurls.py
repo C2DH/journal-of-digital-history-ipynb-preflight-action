@@ -29,6 +29,7 @@ def is_valid_url(url):
     try:
         print("trying " + url)
         response = requests.head(url)
+        print(response.status_code)
         return response.status_code
     except requests.exceptions.RequestException:
         print("exception")
@@ -68,12 +69,11 @@ def format_output_md(urls_dict):
         # )
 
     if invalid_other_count > 0:
-        result_as_md += (
-            f"\n**Impossible to verify (Other - {invalid_other_count}):**\n\n"
-        )
+        result_as_md += f"\n**Impossible to verify (non-404 error code - {invalid_other_count}):**\n\n"
         result_as_md += (
             "\n".join([url for url in urls_md if "Invalid URL (Other" in url]) + "\n\n"
         )
+        result_as_md += "> [!TIP]\n> Even if some of the urls listed above don't seem to be broken, try to replace them with the proper ones as they might become unavailable soon.\n\n"
 
     if valid_count > 0:
         result_as_md += f"**Valid URLs (200 - {valid_count}):**\n\n"
