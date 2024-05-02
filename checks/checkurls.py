@@ -58,7 +58,7 @@ def format_output_md(urls_dict):
             urls_md.append(f"Invalid URL (Other - {status_code}): {url}")
 
     if invalid_404_count > 0:
-        result_as_md += "\n> [!CAUTION]\n> **Invalid URLs are present, please review your linked urls.**\n\n"
+        result_as_md += "\n> [!CAUTION]\n> **Invalid URLs are present, please review the referenced URLs list.**\n\n"
         result_as_md += f"**Invalid URLs (404 - {invalid_404_count}):**\n\n"
         for url in urls_md:
             if "Invalid URL (404):" in url:
