@@ -86,6 +86,15 @@ def checkjavascript(contents, preview_url):
     result_as_md, result_as_stdout = format_output(warnings, preview_url, cell_numbers)
 
     # plotly check begins from here
+    # check if language is R
+    metadata = contents.get("metadata", [])
+    kernel = metadata.get("language_info", [])
+    # converting to JSON
+    kernelJSON = json.loads(json.dumps(kernel))
+    if kernelJSON["name"] == "R":
+        result_as_md += "> [!NOTE] \n"
+        result_as_md += f"> **plotly** is not being checked, as programming language used is **R ({kernelJSON['version']})**\n"
+        return result_as_md, result_as_stdout
     result_as_md += "### Check JavaScript (plotly)\n"
 
     requirementsFileExists = os.path.isfile("./requirements.txt")
@@ -119,8 +128,8 @@ def checkjavascript(contents, preview_url):
         },
         "plotly.version": {
             "found": False,
-            "not_found_message": "**\* plotly.js** is missing\n",
-            "found_message": "**\* plotly.js** is present\n",
+            "not_found_message": "\n**\\* plotly.js** is missing\n",
+            "found_message": "\n**\\* plotly.js** is present\n",
         },
     }
 
