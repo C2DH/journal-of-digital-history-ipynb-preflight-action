@@ -64,9 +64,6 @@ def format_output_md(urls_dict):
             if "Invalid URL (404):" in url:
                 # put the url without the "Invalid URL 404" part
                 result_as_md += f"\n> [!WARNING]\n> **Invalid URL (404):** {url[19:]}\n"
-        # result_as_md += (
-        #     "\n".join([url for url in urls_md if "Invalid URL (404):" in url]) + "\n\n"
-        # )
 
     if invalid_other_count > 0:
         result_as_md += f"\n**Impossible to verify (non-404 error code - {invalid_other_count}):**\n\n"
@@ -77,9 +74,12 @@ def format_output_md(urls_dict):
 
     if valid_count > 0:
         result_as_md += f"**Valid URLs (200 - {valid_count}):**\n\n"
-        result_as_md += (
-            "\n".join([url for url in urls_md if "Valid URL (200):" in url]) + "\n\n"
-        )
+
+        for i in range(0, len(urls_md), 1):
+            url = urls_md[i]
+            if "Valid URL (200):" in url:
+                # put the url without the "Valid URL (200)" part
+                result_as_md += f"{i+1}. {url[17:]}\n"
 
     if valid_count == 0 and invalid_404_count == 0 and invalid_other_count == 0:
         result_as_md += "No URLs found in the cells.\n"
