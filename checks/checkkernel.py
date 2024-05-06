@@ -45,7 +45,7 @@ def checkkernel(contents, output=None):
             md_output += f"Python versions match :white_check_mark:\n"
         else:
             # std_output+="Python versions dont match"
-            md_output += f"> [!CAUTION]\n > Error: Python versions don't match. The notebook is using **{notebook_language}**, when **{read_content}** is required.\n\n"
+            md_output += f"> [!CAUTION]\n > Error: Python versions don't match. The notebook is using **{notebook_language}**, when **{read_content.strip()}** is required.\n\n"
 
             md_output += (
                 "> [!TIP]\n > Try changing **runtime.txt** to resolve the error above."
