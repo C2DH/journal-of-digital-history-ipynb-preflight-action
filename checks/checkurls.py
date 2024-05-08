@@ -73,7 +73,7 @@ def format_output_md(urls_dict):
         result_as_md += "> [!TIP]\n> Even if some of the urls listed above don't seem to be broken, try to replace them with the valid ones as they might become unavailable soon.\n\n"
 
     if valid_count > 0:
-        result_as_md += f"**Valid URLs (200 - {valid_count}):**\n\n"
+        result_as_md += f"\n**Valid URLs (200 - {valid_count}):**\n\n"
 
         for i in range(0, len(urls_md), 1):
             url = urls_md[i]
