@@ -1,55 +1,47 @@
-# Report for example/example_audio.ipynb ❤ 
+# Report for example/javascript.ipynb ❤ 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ## Cell Counts   
-**all cells: 174 **  
-code_empty: 0   
-markdown: 149   
-code: 25   
+**all cells: 117**  
+code_empty: 1   
+markdown: 96   
+code: 21   
 
 ## Action Outputs
 
 ### Size
-**total cells: 174**
+**total cells: 117**
 
 ### Check URLs
 
 
-> [!CAUTION]
-> **Invalid URLs are present, please review the referenced URLs list.**
+**Impossible to verify (non-404 error code - 4):**
 
-**Invalid URLs (404 - 3):**
-
-
-> [!WARNING]
-> **Invalid URL (404):** https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/transcripts/085_Thinkerer_Golem.docx
-
-> [!WARNING]
-> **Invalid URL (404):** https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/transcripts/026_Weaselfie_Idea.docx
-
-> [!WARNING]
-> **Invalid URL (404):** https://sloveniatimes.com/number-of-italians-shopping-in-slovenia-on-the-rise/
-
-**Impossible to verify (non-404 error code - 1):**
-
-Invalid URL (Other - 301): https://zenodo.org/record/8178990
+Invalid URL (Other - 301): https://orcid.org/sites/default/files/images/orcid_16x16.png
+Invalid URL (Other - 302): http://hdl.handle.net/10934/RM0001.COLLECT.618986
+Invalid URL (Other - 500): https://picarta.on.worldcat.org
+Invalid URL (Other - 302): https://picarta.oclc.org/psi/DB=3.23/XMLPRS=Y/PPN?PPN=310885922
 
 > [!TIP]
 > Even if some of the urls listed above don't seem to be broken, try to replace them with the valid ones as they might become unavailable soon.
 
-**Valid URLs (200 - 14):**
 
-1. https://licensebuttons.net/l/by/4.0/88x31.png
-2. https://creativecommons.org/licenses/by/4.0/
-3. https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png
-4. https://creativecommons.org/licenses/by-nc-nd/4.0/
-5. https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/transcripts/004_Tec_Creator.docx
-6. https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/transcripts/036_Gift_GamingScorpion.docx
-7. https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/transcripts/025_LostFairy_Response.docx
-8. https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/transcripts/064_Aura_Termine.docx
-9. https://upload.wikimedia.org/wikipedia/commons/9/9d/Litorale_1.png
-10. https://usrfvg.gov.it/it/home/menu/uffici/ufficio-scuole-slovene/scuole/
-11. https://usrfvg.gov.it/it/home/menu/uffici/ufficio-scuole-slovene/presentazione/
-14. https://culture.ec.europa.eu/policies/culture-in-cities-and-regions/designated-capitals-of-culture
-16. https://www.ksh.hu/stadat_files/tur/en/tur0005.html
-18. https://github.com/jdh-observer/6ig87tC5GKjQ/blob/main/script/Digital_Cafe_posts_comments.txt
+**Valid URLs (200 - 15):**
+
+2. https://orcid.org/0000-0002-7703-1791
+3. https://orcid.org/0000-0003-2003-4200
+4. https://licensebuttons.net/l/by/4.0/88x31.png
+5. https://creativecommons.org/licenses/by/4.0/
+7. http://emlo-portal.bodleian.ox.ac.uk/collections/?page_id=907
+8. https://ckcc.huygens.knaw.nl/epistolarium/
+9. https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/blob/main/README.md
+10. https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/tree/main/data/raw
+11. https://dataverse.nl/dataset.xhtml?persistentId=doi:10.34894/GTV2RN
+12. https://picarta.oclc.org/
+14. http://www.biografischportaal.nl
+15. https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/blob/main/data/raw/letters_CEN_1200to1820_cleanedSkillnet.csv
+16. https://dataverse.nl/dataset.xhtml?persistentId=doi:10.34894/G8XQI0
+17. https://github.com/lilimelgar/data_preparation_article_balance_theory_vanVugt/tree/main/src
+18. https://github.com/schochastics/signnet
 
