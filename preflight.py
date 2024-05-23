@@ -7,39 +7,41 @@ import re
 import base64
 from urllib.parse import quote
 
-BASE_URL="https://journalofdigitalhistory.org/en/notebook-viewer/"
+BASE_URL = "https://journalofdigitalhistory.org/en/notebook-viewer/"
+
 
 def encode_notebook_url(url):
     # URL-encode the string
-    url_encoded = quote(url, safe='')
+    url_encoded = quote(url, safe="")
     # Base64 encode the URL-encoded string
-    base64_encoded = base64.b64encode(url_encoded.encode('utf-8')).decode('utf-8')
+    base64_encoded = base64.b64encode(url_encoded.encode("utf-8")).decode("utf-8")
     # Replace '+' with '/' to match the desired result
-    result = base64_encoded.replace('+', '/')
+    result = base64_encoded.replace("+", "/")
     return result
 
+
 def process_github_url(value):
-    github_regex = r'https?://(github\.com|raw\.githubusercontent\.com)/([A-Za-z0-9-_.]+)/([A-Za-z0-9-_.]+)/(blob/)?(.*)'
+    github_regex = r"https?://(github\.com|raw\.githubusercontent\.com)/([A-Za-z0-9-_.]+)/([A-Za-z0-9-_.]+)/(blob/)?(.*)"
     match = re.match(github_regex, value)
 
     if match:
         domain, username, repo, _, filepath = match.groups()
-        proxy_value = f'/proxy-githubusercontent/{username}/{repo}/{filepath}'
+        proxy_value = f"/proxy-githubusercontent/{username}/{repo}/{filepath}"
         result = {
-            'value': value,
-            'domain': domain,
-            'proxyValue': proxy_value,
-            'origin': 'github'
+            "value": value,
+            "domain": domain,
+            "proxyValue": proxy_value,
+            "origin": "github",
         }
     else:
-        result = {'value': value, 'origin': 'unknown'}
+        result = {"value": value, "origin": "unknown"}
     return result
 
 
 def get_github_url(notebook_filepath):
-    github_url= ""
-    branch=os.getenv("GITHUB_REF_NAME", "")
-    repo=os.getenv("GITHUB_REPOSITORY", "")
+    github_url = ""
+    branch = os.getenv("GITHUB_REF_NAME", "")
+    repo = os.getenv("GITHUB_REPOSITORY", "")
     if branch and repo:
         github_url = f"https://github.com/{repo}/blob/{branch}/{notebook_filepath}"
     return github_url
@@ -50,7 +52,7 @@ def get_preview_url(notebook_filepath):
     github_url = get_github_url(notebook_filepath)
     if github_url:
         result = process_github_url(github_url)
-        encode = encode_notebook_url(result['proxyValue'])
+        encode = encode_notebook_url(result["proxyValue"])
         preview_url = f"{BASE_URL}{encode}"
     return preview_url
 
@@ -109,8 +111,15 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
                     if len(cell["source"]) == 0:
                         cell_types["code_empty"] += 1
             # write cell counts
+            config_file = open("config.json")
+
+            config_file_text = json.load(config_file)
+
+            config_file.close()
+            first_paragraph = str(config_file_text["first_paragraph"] + "\n\n")
+            output_file.write(first_paragraph)
             output_file.write("## Cell Counts   \n")
-            output_file.write(f"**all cells: {count} **  \n")
+            output_file.write(f"**all cells: {count}**  \n")
             for cell_type, count in cell_types.items():
                 output_file.write(f"{cell_type}: {count}   \n")
             # write every action_output
@@ -143,7 +152,11 @@ def main(
         [a for a in functions] if isinstance(functions, tuple) else functions.split(",")
     )
     size = len(notebook_json_contents["cells"])
-    actions_outputs = {"notebook_path": notebook_filepath, "notebook" : notebook, "workspace": workspace}
+    actions_outputs = {
+        "notebook_path": notebook_filepath,
+        "notebook": notebook,
+        "workspace": workspace,
+    }
     actions_md_outputs = {"size": f"\n### Size\n**total cells: {size}**"}
     # Import the specified functions from external modules
     for func in function_names:
@@ -154,7 +167,9 @@ def main(
             sys.exit(1)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
-        func_as_md, func_as_output = getattr(module, func)(notebook_json_contents, preview_url)
+        func_as_md, func_as_output = getattr(module, func)(
+            notebook_json_contents, preview_url
+        )
         actions_outputs[func] = func_as_output
         actions_md_outputs[func] = func_as_md
     # Set the GitHub Action outputs
@@ -171,7 +186,6 @@ def main(
 
 if __name__ == "__main__":
     fire.Fire(main)
-
 
 
 # github_url
