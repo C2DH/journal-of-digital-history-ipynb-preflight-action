@@ -36,6 +36,12 @@ def checkplotlyconfig(outputs_value):
 
     for j in range(0, len(outputs_value), 1):
         checks_limit = 10
+        if (
+            "data" not in outputs_value[j]
+            or "text/html" not in outputs_value[j]["data"]
+        ):
+            continue
+
         m = "text/html" in outputs_value[j]["data"]
 
         if m == False:
