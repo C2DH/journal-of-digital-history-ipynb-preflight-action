@@ -1,7 +1,9 @@
 # Report for example/article_example_checkoutput.ipynb ❤ 
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 ## Cell Counts   
-**all cells: 115 **  
+**all cells: 115**  
 code_empty: 0   
 markdown: 88   
 code: 27   
@@ -34,6 +36,8 @@ Programming language is **R (4.2.3)**
 Total output size: 3280.85 KB
 Total number of images: 10
 Total number of tables: 1
+Total number of audios: 1
+
 > [!WARNING]
 > Notebook's output contains **text/plain** which is deprecated.
 
@@ -42,6 +46,7 @@ Total number of tables: 1
 | text/html | True |
 | text/plain | True |
 | image/png | True |
+| audio | False |
 
 | Output type | Presence |
 | --- | --- |
@@ -192,14 +197,19 @@ Total number of tables: 1
 
 ### Check URLs
 
-**Invalid URLs (404 - 1):**
 
-Invalid URL (404): https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/
+**Impossible to verify (non-404 error code - 1):**
 
-**Valid URLs (200 - 1):**
+Invalid URL (Other - 301): http://www.museogalileo.it/esplora/biblioteche/biblioteca/archivionomi.html
 
-Valid URL (200): https://creativecommons.org/licenses/by/4.0/
+> [!TIP]
+> Even if some of the urls listed above don't seem to be broken, try to replace them with the valid ones as they might become unavailable soon.
 
+
+**Valid URLs (200 - 2):**
+
+1. https://licensebuttons.net/l/by/4.0/88x31.png
+2. https://creativecommons.org/licenses/by/4.0/
 
 
 ### Check JavaScript
