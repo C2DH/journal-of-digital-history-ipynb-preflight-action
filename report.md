@@ -3,7 +3,6 @@
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ## Cell Counts   
-
 **all cells: 71**  
 code_empty: 1   
 markdown: 35   
@@ -12,21 +11,20 @@ code: 36
 ## Action Outputs
 
 ### Size
-
 **total cells: 71**
 ## Kernel Checks: 
 
 > [!CAUTION]
-> Error: Python versions don't match. The notebook is using **python-3.7.10**, when **python-3.11** is required.
-
+ > Error: Python versions don't match. The notebook is using **python-3.7.10**, when **python-3.11** is required.
 
 > [!TIP]
-> Try changing **runtime.txt** to resolve the error above.
+ > Try changing **runtime.txt** to resolve the error above.
 
 ### Citations Found with problem:
 
 
 ### Check HTML
+
 
 ### Check Output Sizes and Rules
 - Table found in output of cell 16
@@ -48,7 +46,7 @@ Total number of audios: 4
 | Mimetype | Presence |
 | --- | --- |
 | text/html | True |
-| text/plain | True |
+| text/plain | False |
 | image/png | True |
 | audio | False |
 
@@ -122,8 +120,8 @@ Total number of audios: 4
 > The following tags are missing or invalid
 
 #### Missing Tags:
-- copyright
 - contributor
+- copyright
 - cover
 
 
