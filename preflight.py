@@ -94,42 +94,44 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
     print(f"::debug::generatereport output:{output} notebook:{notebook}")
     output_filepath = os.path.join(workspace, output)
     count = len(contents["cells"])
-    # Open the file for writing and handle any errors
-    try:
-        with open(output_filepath, "w", encoding="utf-8") as output_file:
-            output_file.write(
-                f"# Report for {notebook} \u2764 \n\n"
-            )  # Write "#Hello" with a heart utf8 character
-            # count cells of each type. check for empty cells
-            cell_types = {"code_empty": 0}
-            for cell in contents["cells"]:
-                cell_type = cell["cell_type"]
-                if cell_type not in cell_types:
-                    cell_types[cell_type] = 0
-                cell_types[cell_type] += 1
-                if cell_type == "code":
-                    if len(cell["source"]) == 0:
-                        cell_types["code_empty"] += 1
-            # write cell counts
-            config_file = open("config.json")
 
-            config_file_text = json.load(config_file)
+    def write_result():
+        try:
+            with open(output_filepath, "w", encoding="utf-8") as output_file:
+                output_file.write(
+                    f"# Report for {notebook} \u2764 \n\n"
+                )  # Write "#Hello" with a heart utf8 character
+                # count cells of each type. check for empty cells
+                cell_types = {"code_empty": 0}
+                for cell in contents["cells"]:
+                    cell_type = cell["cell_type"]
+                    if cell_type not in cell_types:
+                        cell_types[cell_type] = 0
+                    cell_types[cell_type] += 1
+                    if cell_type == "code":
+                        if len(cell["source"]) == 0:
+                            cell_types["code_empty"] += 1
+                # write cell counts
+                config_file = open("config.json")
 
-            config_file.close()
-            first_paragraph = str(config_file_text["first_paragraph"] + "\n\n")
-            output_file.write(first_paragraph)
-            output_file.write("## Cell Counts   \n")
-            output_file.write(f"**all cells: {count}**  \n")
-            for cell_type, count in cell_types.items():
-                output_file.write(f"{cell_type}: {count}   \n")
-            # write every action_output
-            output_file.write("\n## Action Outputs\n")
-            for key, value in action_outputs.items():
-                output_file.write(f"{value}\n")
-    except IOError:
-        # bad
-        print(f"::error::Bad things happened when open or write to {output}!")
-        sys.exit(1)
+                config_file_text = json.load(config_file)
+
+                config_file.close()
+                first_paragraph = str(config_file_text["first_paragraph"] + "\n\n")
+                output_file.write(first_paragraph)
+                output_file.write("## Cell Counts   \n")
+                output_file.write(f"**all cells: {count}**  \n")
+                for cell_type, count in cell_types.items():
+                    output_file.write(f"{cell_type}: {count}   \n")
+                # write every action_output
+                output_file.write("\n## Action Outputs\n")
+                for key, value in action_outputs.items():
+                    output_file.write(f"{value}\n")
+        except IOError:
+            # bad
+            write_result()
+
+    write_result()
 
 
 def main(
