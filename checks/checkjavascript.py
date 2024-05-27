@@ -74,8 +74,12 @@ def checkjavascript(contents, preview_url):
     warnings = []
     cell_numbers = []
     for cell in output_cells:
+
         for output in cell.get("outputs", []):
-            if output.get("output_type") == "display_data":
+            if (
+                output.get("output_type") == "display_data"
+                or output.get("output_type") == "execute_result"
+            ):
                 data = output.get("data", {})
                 if "text/html" in data:
                     html_content = data["text/html"]
