@@ -95,7 +95,7 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
     output_filepath = os.path.join(workspace, output)
     count = len(contents["cells"])
 
-    def write_result():
+    def write_result(count):
         try:
             with open(output_filepath, "w", encoding="utf-8") as output_file:
                 output_file.write(
@@ -112,7 +112,7 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
                         if len(cell["source"]) == 0:
                             cell_types["code_empty"] += 1
                 # write cell counts
-                config_file = open("config.json")
+                config_file = open("./article-check-script/config.json")
 
                 config_file_text = json.load(config_file)
 
@@ -127,11 +127,12 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
                 output_file.write("\n## Action Outputs\n")
                 for key, value in action_outputs.items():
                     output_file.write(f"{value}\n")
+            output_file.close()
         except IOError:
             # bad
-            write_result()
+            write_result(count)
 
-    write_result()
+    write_result(count)
 
 
 def main(
