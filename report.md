@@ -313,7 +313,5 @@ Invalid URL (Other - 302): https://github.com/jrladd/network_navigator/pull/7>.
 ### Check JavaScript
 No JavaScript code found in output cells.
 ### Check JavaScript (plotly)
-**require.undef("plotly")** is missing
-
-**\* plotly.js** is missing
+**plotly** library is not present in **requirements.txt**
 
