@@ -9,6 +9,8 @@ from urllib.parse import quote
 
 BASE_URL = "https://journalofdigitalhistory.org/en/notebook-viewer/"
 
+FIRST_PARAGRAPH = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
 
 def encode_notebook_url(url):
     # URL-encode the string
@@ -112,13 +114,7 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
                         if len(cell["source"]) == 0:
                             cell_types["code_empty"] += 1
                 # write cell counts
-                config_file = open("./config.json")
-
-                config_file_text = json.load(config_file)
-
-                config_file.close()
-                first_paragraph = str(config_file_text["first_paragraph"] + "\n\n")
-                output_file.write(first_paragraph)
+                output_file.write(FIRST_PARAGRAPH + "\n\n")
                 output_file.write("## Cell Counts   \n")
                 output_file.write(f"**all cells: {count}**  \n")
                 for cell_type, count in cell_types.items():
