@@ -112,7 +112,7 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
                         if len(cell["source"]) == 0:
                             cell_types["code_empty"] += 1
                 # write cell counts
-                config_file = open("./article-check-script/config.json")
+                config_file = open("./checks/config.json")
 
                 config_file_text = json.load(config_file)
 

@@ -8,7 +8,7 @@ import json
 
 def main_func(REPO_URL, PERSONAL_TOKEN, NEW_REPO_NAME):
 
-    f = open("./config.json")
+    f = open("../checks/config.json")
 
     config_file = json.load(f)
 
