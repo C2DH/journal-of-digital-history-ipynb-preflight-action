@@ -96,32 +96,31 @@ def checkjavascript(contents, preview_url):
     result_as_md, result_as_stdout = format_output(warnings, preview_url, cell_numbers)
 
     # plotly check begins from here
+
     # check if language is R
     metadata = contents.get("metadata", [])
     kernel = metadata.get("language_info", [])
     # converting to JSON
     kernelJSON = json.loads(json.dumps(kernel))
     if kernelJSON["name"] == "R":
-        result_as_md += "> [!NOTE] \n"
-        result_as_md += f"> **plotly** is not being checked, as programming language used is **R ({kernelJSON['version']})**\n"
+        # result_as_md += "> [!NOTE] \n"
+        # result_as_md += f"> **plotly** is not being checked, as programming language used is **R ({kernelJSON['version']})**\n"
         return result_as_md, result_as_stdout
-    result_as_md += "### Check JavaScript (plotly)\n"
 
     requirementsFileExists = os.path.isfile("./requirements.txt")
 
     if requirementsFileExists == False:
-
         result_as_md += f"> [!CAUTION]\n"
         result_as_md += f"> Error: **requirements.txt** is missing\n"
         return result_as_md, result_as_stdout
 
     requirements_txt = open("./requirements.txt", "r")
 
-    # read the file
-    read_content = requirements_txt.read()
-    if "plotly" not in read_content:
-        result_as_md += "**plotly** library is not present in **requirements.txt**\n"
-        return result_as_md, result_as_stdout
+    
+    
+    
+
+    
 
     outputs = json.loads(json.dumps(contents))
     # text_html_outputs = outputs["cells"][0]["outputs"][0]["data"]["text/html"]
@@ -150,6 +149,8 @@ def checkjavascript(contents, preview_url):
                 checks_results["require.undef"]["found"] = True
             if checks_output[1] == True:
                 checks_results["plotly.version"]["found"] = True
+    
+    result_as_md += "### Check JavaScript (plotly)\n"
 
     if checks_results["require.undef"]["found"] == False:
         result_as_md += checks_results["require.undef"]["not_found_message"]
@@ -160,5 +161,12 @@ def checkjavascript(contents, preview_url):
         result_as_md += checks_results["plotly.version"]["not_found_message"]
     elif checks_results["plotly.version"]["found"] == True:
         result_as_md += checks_results["plotly.version"]["found_message"]
+    
+    # read the file
+    read_content = requirements_txt.read()
+    if "plotly" not in read_content and (checks_results["plotly.version"]["found"] == True or checks_results["require.undef"]["found"] == True):
+        result_as_md+="> [!CAUTION]\n"
+        result_as_md+="> **plotly** is NOT present in **requirements.txt**, but it is used in the article\n"
+        return result_as_md, result_as_stdout
 
     return result_as_md, result_as_stdout
