@@ -99,8 +99,10 @@ def checkurls(contents, preview_url):
         cell_urls = find_urls(cell.source)
         if cell_urls:
             for url in cell_urls:
-                if url[-1] == ")" or url[-1] == "]":
+                bad_symbols = ['"', "'", ")", "]", ","]
+                while url[-1] in bad_symbols:  
                     url = url[:-1]
+
                 status_code = is_valid_url(url)
                 urls_dict[url] = status_code
 
