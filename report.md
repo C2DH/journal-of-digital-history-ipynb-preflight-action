@@ -3,7 +3,6 @@
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ## Cell Counts   
-
 **all cells: 71**  
 code_empty: 1   
 markdown: 35   
@@ -12,21 +11,20 @@ code: 36
 ## Action Outputs
 
 ### Size
-
 **total cells: 71**
 ## Kernel Checks: 
 
 > [!CAUTION]
-> Error: Python versions don't match. The notebook is using **python-3.7.10**, when **python-3.11** is required.
-
+ > Error: Python versions don't match. The notebook is using **python-3.7.10**, when **python-3.11** is required.
 
 > [!TIP]
-> Try changing **runtime.txt** to resolve the error above.
+ > Try changing **runtime.txt** to resolve the error above.
 
 ### Citations Found with problem:
 
 
 ### Check HTML
+
 
 ### Check Output Sizes and Rules
 - Table found in output of cell 16
@@ -48,7 +46,7 @@ Total number of audios: 4
 | Mimetype | Presence |
 | --- | --- |
 | text/html | True |
-| text/plain | True |
+| text/plain | False |
 | image/png | True |
 | audio | False |
 
@@ -122,45 +120,37 @@ Total number of audios: 4
 > The following tags are missing or invalid
 
 #### Missing Tags:
+- cover
 - copyright
 - contributor
-- cover
 
 
 ### Check URLs
 
 
-> [!CAUTION]
-> **Invalid URLs are present, please review the referenced URLs list.**
-
-**Invalid URLs (404 - 1):**
-
-
-> [!WARNING]
-> **Invalid URL (404):** https://raw.githubusercontent.com/mkrzmr/jdh/main/script/file_AA_sm.csv"
-
-**Impossible to verify (non-404 error code - 5):**
+**Impossible to verify (non-404 error code - 4):**
 
 Invalid URL (Other - 403): https://www.clamav.net/
 Invalid URL (Other - 500): http://www.example.com/to/somefile.html
 Invalid URL (Other - None): http://'+str(url[0
-Invalid URL (Other - 503): https://web.archive.org/web/20080213093319/http://www.statsbiblioteket.dk/
 Invalid URL (Other - None): http://server/solrwayback/services/web/20140515140841/http://statsbiblioteket.dk/
 
 > [!TIP]
 > Even if some of the urls listed above don't seem to be broken, try to replace them with the valid ones as they might become unavailable soon.
 
 
-**Valid URLs (200 - 10):**
+**Valid URLs (200 - 12):**
 
 1. https://www.merriam-webster.com/dictionary/black%20hat
 2. https://www.merriam-webster.com/dictionary/white%20hat
 3. https://github.com/attrition-org/web-hack-mirror
 5. https://cve.circl.lu/cve/CVE-2015-1761
 6. https://www.f-secure.com/v-descs/ramen.shtml
+7. https://raw.githubusercontent.com/mkrzmr/jdh/main/script/file_AA_sm.csv
 8. https://github.com/webrecorder/warcit
 11. https://github.com/netarchivesuite/solrwayback
 12. https://app.vosviewer.com/?json=https://raw.githubusercontent.com/mkrzmr/jdh/main/media/network/VOSviewer-network.json&dark_ui=True
+13. https://web.archive.org/web/20080213093319/http://www.statsbiblioteket.dk/
 15. https://github.com/DARIAH-DE/TopicsExplorer
 16. https://github.com/mkrzmr/jdh/blob/main/script/ldavis_prepared_10.html
 
@@ -168,7 +158,9 @@ Invalid URL (Other - None): http://server/solrwayback/services/web/2014051514084
 ### Check JavaScript
 **WARNING: 1 output cells contain JavaScript code.**
 
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLmlweW5i?idx=66)
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRmRldiUyRmV4YW1wbGUlMkZhcnRpY2xlLmlweW5i?idx=66)
 ### Check JavaScript (plotly)
-**plotly** library is not present in **requirements.txt**
+**require.undef("plotly")** is missing
+
+**\* plotly.js** is missing
 
