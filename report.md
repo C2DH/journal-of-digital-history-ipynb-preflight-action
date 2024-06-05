@@ -331,5 +331,7 @@ Invalid URL (Other - 301): https://worldcat.org/identities/lccn-no90018047/
 -  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLWFsdGFpci5pcHluYg==?idx=137)
 -  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLWFsdGFpci5pcHluYg==?idx=140)
 ### Check JavaScript (plotly)
-**plotly** library is not present in **requirements.txt**
+**require.undef("plotly")** is missing
+
+**\* plotly.js** is missing
 
