@@ -57,6 +57,10 @@ def checktags(contents, preview_url):
             result_as_md += "\n#### Missing Tags:\n"
             for tag in missing_tags:
                 result_as_md += f"- {tag}\n"
+            
+            if "copyright" in missing_tags:
+                result_as_md +=f">[!CAUTION]\n> **copyright** tag is missing. Make sure to fill this template document [license_to_publish_JDH.dotx](https://github.com/C2DH/journal-of-digital-history-ipynb-preflight-action/blob/master/license_to_publish_JDH.dotx) and send it to jdh.admin@uni.lu\n"
+
         if invalid_tags:
             result_as_md += "\n#### Invalid Tags:\n"
             for tag in invalid_tags:
@@ -65,5 +69,9 @@ def checktags(contents, preview_url):
     else:
         result_as_md += "\nAll mandatory tags are present in the cells.\n"
         result_as_stdout = "All mandatory tags are present in the cells."
+    
+    if "copyright" not in missing_tags:
+        result_as_md+="> Make sure to fill this template document [license_to_publish_JDH.dotx](https://github.com/C2DH/journal-of-digital-history-ipynb-preflight-action/blob/master/license_to_publish_JDH.dotx) and send it to jdh.admin@uni.lu\n"
 
     return result_as_md, result_as_stdout
+ 
