@@ -132,12 +132,10 @@ def checkjavascript(contents, preview_url):
     checks_results = {
         "require.undef": {
             "found": False,
-            "not_found_message": '**require.undef("plotly")** is missing\n',
             "found_message": '**require.undef("plotly")** is present\n',
         },
         "plotly.version": {
             "found": False,
-            "not_found_message": "\n**\\* plotly.js** is missing\n",
             "found_message": "\n**\\* plotly.js** is present\n",
         },
     }
@@ -150,16 +148,14 @@ def checkjavascript(contents, preview_url):
             if checks_output[1] == True:
                 checks_results["plotly.version"]["found"] = True
     
-    result_as_md += "### Check JavaScript (plotly)\n"
+    if checks_results["require.undef"]["found"] == True or checks_results["plotly.version"]["found"]==True:
+        result_as_md += "### Check JavaScript (plotly)\n"
+    
 
-    if checks_results["require.undef"]["found"] == False:
-        result_as_md += checks_results["require.undef"]["not_found_message"]
-    elif checks_results["require.undef"]["found"] == True:
+    if checks_results["require.undef"]["found"] == True:
         result_as_md += checks_results["require.undef"]["found_message"]
 
-    if checks_results["plotly.version"]["found"] == False:
-        result_as_md += checks_results["plotly.version"]["not_found_message"]
-    elif checks_results["plotly.version"]["found"] == True:
+    if checks_results["plotly.version"]["found"] == True:
         result_as_md += checks_results["plotly.version"]["found_message"]
     
     # read the file
