@@ -128,6 +128,15 @@ Total number of audios: 4
 ### Check URLs
 
 
+> [!CAUTION]
+> **Invalid URLs are present, please review the referenced URLs list.**
+
+**Invalid URLs (404 - 1):**
+
+
+> [!WARNING]
+> **Invalid URL (404):** https://raw.githubusercontent.com/mkrzmr/jdh/main/script/file_AA_sm.csv"
+
 **Impossible to verify (non-404 error code - 4):**
 
 Invalid URL (Other - 403): https://www.clamav.net/
@@ -139,14 +148,13 @@ Invalid URL (Other - None): http://server/solrwayback/services/web/2014051514084
 > Even if some of the urls listed above don't seem to be broken, try to replace them with the valid ones as they might become unavailable soon.
 
 
-**Valid URLs (200 - 12):**
+**Valid URLs (200 - 11):**
 
 1. https://www.merriam-webster.com/dictionary/black%20hat
 2. https://www.merriam-webster.com/dictionary/white%20hat
 3. https://github.com/attrition-org/web-hack-mirror
 5. https://cve.circl.lu/cve/CVE-2015-1761
 6. https://www.f-secure.com/v-descs/ramen.shtml
-7. https://raw.githubusercontent.com/mkrzmr/jdh/main/script/file_AA_sm.csv
 8. https://github.com/webrecorder/warcit
 11. https://github.com/netarchivesuite/solrwayback
 12. https://app.vosviewer.com/?json=https://raw.githubusercontent.com/mkrzmr/jdh/main/media/network/VOSviewer-network.json&dark_ui=True
@@ -159,8 +167,4 @@ Invalid URL (Other - None): http://server/solrwayback/services/web/2014051514084
 **WARNING: 1 output cells contain JavaScript code.**
 
 -  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRmRldiUyRmV4YW1wbGUlMkZhcnRpY2xlLmlweW5i?idx=66)
-### Check JavaScript (plotly)
-**require.undef("plotly")** is missing
-
-**\* plotly.js** is missing
 
