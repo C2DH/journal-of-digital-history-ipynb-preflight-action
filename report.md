@@ -120,9 +120,9 @@ Total number of audios: 4
 > The following tags are missing or invalid
 
 #### Missing Tags:
+- contributor
 - cover
 - copyright
-- contributor
 
 
 ### Check URLs
