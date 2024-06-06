@@ -1,21 +1,21 @@
-# Report for example/article-altair.ipynb ❤ 
+# Report for example/article-no-copyright.ipynb ❤ 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ## Cell Counts   
-**all cells: 147**  
+**all cells: 110**  
 code_empty: 0   
-markdown: 115   
-code: 32   
+markdown: 94   
+code: 16   
 
 ## Action Outputs
 
 ### Size
-**total cells: 147**
+**total cells: 110**
 ## Kernel Checks: 
 
 > [!CAUTION]
- > Error: Python versions don't match. The notebook is using **python-3.7.13**, when **python-3.11** is required.
+ > Error: Python versions don't match. The notebook is using **python-3.7.10**, when **python-3.11** is required.
 
 > [!TIP]
  > Try changing **runtime.txt** to resolve the error above.
@@ -24,28 +24,36 @@ code: 32
 
 
 ### Check HTML
-- Cell 125 - Encountered a start tag: dt
-- Cell 125 - Encountered an end tag: dt
-- Cell 125 - Encountered a start tag: dd
-- Cell 125 - Encountered an end tag: dd
-- Cell 125 - Encountered a start tag: dl
-- Cell 125 - Encountered an end tag: dl
+- Cell 62 - Encountered a start tag: todo
+- Cell 62 - Encountered a start tag: el
+- Cell 63 - Encountered a start tag: everything
+- Cell 63 - Encountered a start tag: the
 
 
 ### Check Output Sizes and Rules
-- Table found in output of cell 74
-> First words of input cell: author_country_counts
-- Table found in output of cell 81
-> First words of input cell: pd.options.display.max_rows = 999 overview.sort_values(['total','authors'], ascending=False)
-- Table found in output of cell 87
-> First words of input cell: nw_div
-- Table found in output of cell 92
-> First words of input cell: # Use colour highlighting to
+- Table found in output of cell 22
+> First words of input cell: import pandas as pd df_table1
+- Output cell 24 size: 3597.14 KB
+> First words of input cell: import pandas as pd import
+- Table found in output of cell 30
+> First words of input cell: import pandas as pd df_table2
+- Table found in output of cell 31
+> First words of input cell: import pandas as pd df_table3
+- Table found in output of cell 32
+> First words of input cell: import pandas as pd df_table4
+- Table found in output of cell 33
+> First words of input cell: import pandas as pd df_table5
+- Table found in output of cell 34
+> First words of input cell: import pandas as pd df_table6
+- Table found in output of cell 35
+> First words of input cell: import pandas as pd df_table7
+- Table found in output of cell 36
+> First words of input cell: import pandas as pd df_table8
 
-Total output size: 597.98 KB
+Total output size: 4090.61 KB
 Total number of images: 1
-Total number of tables: 4
-Total number of audios: 4
+Total number of tables: 8
+Total number of audios: 8
 
 | Mimetype | Presence |
 | --- | --- |
@@ -57,15 +65,19 @@ Total number of audios: 4
 | Output type | Presence |
 | --- | --- |
 | display_data | True |
-| execute_result | True |
+| execute_result | False |
 
 | Tag | Cell | Remark |
 | --- | --- | --- |
-| image/png | 45 | Correct tagging |
-| text/html | 74 | Correct tagging (table) |
-| text/html | 81 | Correct tagging (table) |
-| text/html | 87 | Correct tagging (table) |
-| text/html | 92 | Correct tagging (table) |
+| text/html | 22 | Correct tagging (table) |
+| image/png | 27 | Correct tagging |
+| text/html | 30 | Correct tagging (table) |
+| text/html | 31 | Correct tagging (table) |
+| text/html | 32 | Correct tagging (table) |
+| text/html | 33 | Correct tagging (table) |
+| text/html | 34 | Correct tagging (table) |
+| text/html | 35 | Correct tagging (table) |
+| text/html | 36 | Correct tagging (table) |
 
 
 ### Check Tags
@@ -73,262 +85,109 @@ Total number of audios: 4
 - Cell 2: Tags: ['contributor']
 - Cell 3: Tags: ['contributor']
 - Cell 4: Tags: ['contributor']
-- Cell 5: Tags: ['copyright']
-- Cell 6: Tags: ['keywords']
-- Cell 7: Tags: ['abstract']
-- Cell 8: Tags: ['narrative']
-- Cell 9: Tags: ['narrative']
-- Cell 10: Tags: ['hermeneutics']
-- Cell 11: Tags: ['narrative']
-- Cell 12: Tags: ['narrative']
-- Cell 13: Tags: ['narrative']
-- Cell 14: Tags: ['narrative']
-- Cell 15: Tags: ['hermeneutics']
-- Cell 16: Tags: ['narrative']
-- Cell 17: Tags: ['narrative']
-- Cell 18: Tags: ['narrative']
-- Cell 19: Tags: ['narrative']
-- Cell 20: Tags: ['narrative']
-- Cell 21: Tags: ['narrative']
-- Cell 22: Tags: ['narrative']
-- Cell 23: Tags: ['narrative']
-- Cell 24: Tags: ['narrative']
-- Cell 25: Tags: ['narrative']
-- Cell 26: Tags: ['narrative']
-- Cell 27: Tags: ['narrative']
-- Cell 28: Tags: ['narrative']
-- Cell 29: Tags: ['narrative']
-- Cell 30: Tags: ['narrative']
-- Cell 31: Tags: ['narrative']
-- Cell 32: Tags: ['narrative']
-- Cell 33: Tags: ['narrative']
-- Cell 34: Tags: ['narrative']
-- Cell 35: Tags: ['narrative']
-- Cell 36: Tags: ['narrative']
-- Cell 37: Tags: ['narrative']
-- Cell 38: Tags: ['narrative']
-- Cell 39: Tags: ['narrative']
-- Cell 40: Tags: ['narrative']
-- Cell 41: Tags: ['narrative']
-- Cell 42: Tags: ['narrative']
-- Cell 43: Tags: ['narrative']
-- Cell 44: Tags: ['narrative']
-- Cell 45: Tags: ['figure-1', 'narrative', 'hermeneutics']
-- Cell 46: Tags: ['narrative']
-- Cell 47: Tags: ['narrative']
-- Cell 48: Tags: ['narrative']
-- Cell 49: Tags: ['hermeneutics', 'narrative']
-- Cell 50: Tags: ['hermeneutics', 'narrative']
-- Cell 51: Tags: ['hermeneutics', 'narrative']
-- Cell 52: Tags: ['hermeneutics', 'narrative']
-- Cell 53: Tags: ['hermeneutics', 'narrative']
-- Cell 54: Tags: ['hermeneutics', 'narrative']
-- Cell 55: Tags: ['hermeneutics', 'narrative']
-- Cell 56: Tags: ['narrative']
-- Cell 57: Tags: ['hermeneutics', 'narrative']
-- Cell 58: Tags: ['narrative']
-- Cell 59: Tags: ['narrative']
-- Cell 60: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 61: Tags: ['hermeneutics']
-- Cell 62: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 63: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 64: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 65: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 66: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 67: Tags: ['hermeneutics', 'narrative', 'figure-2', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 68: Tags: ['narrative']
-- Cell 69: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 70: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 71: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 72: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 73: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 74: Tags: ['hermeneutics', 'table-1', 'narrative', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 75: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 76: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 77: Tags: ['hermeneutics', 'narrative', 'figure-3', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 78: Tags: ['narrative']
-- Cell 79: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 80: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 81: Tags: ['hermeneutics', 'table-2', 'narrative', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 82: Tags: ['narrative']
-- Cell 83: Tags: ['narrative']
-- Cell 84: Tags: ['narrative']
-- Cell 85: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 86: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 87: Tags: ['hermeneutics', 'table-3', 'narrative', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 88: Tags: ['narrative']
-- Cell 89: Tags: ['narrative']
-- Cell 90: Tags: ['narrative']
-- Cell 91: Tags: ['hermeneutics']
-- Cell 92: Tags: ['hermeneutics', 'table-4', 'narrative']
-- Cell 93: Tags: ['narrative']
-- Cell 94: Tags: ['narrative']
-- Cell 95: Tags: ['hermeneutics']
-- Cell 96: Tags: ['hermeneutics']
-- Cell 97: Tags: ['hermeneutics']
-- Cell 98: Tags: ['figure-4', 'hermeneutics', 'hermeneutics-step', 'narrative']
-  - Invalid tag: hermeneutics-step
-- Cell 99: Tags: ['narrative']
-- Cell 100: Tags: ['narrative']
-- Cell 101: Tags: ['narrative']
-- Cell 102: Tags: ['narrative', 'hermeneutics']
-- Cell 103: Tags: ['hermeneutics']
-- Cell 104: Tags: ['hermeneutics']
-- Cell 105: Tags: ['hermeneutics']
-- Cell 106: Tags: ['narrative']
-- Cell 107: Tags: ['narrative']
-- Cell 108: Tags: ['narrative']
-- Cell 109: Tags: ['narrative']
-- Cell 110: Tags: ['narrative']
-- Cell 111: Tags: ['narrative']
-- Cell 112: Tags: ['narrative']
-- Cell 113: Tags: ['narrative']
-- Cell 114: Tags: ['narrative']
-- Cell 115: Tags: ['narrative']
-- Cell 116: Tags: ['narrative']
-- Cell 117: Tags: ['narrative']
-- Cell 118: Tags: ['narrative']
-- Cell 119: Tags: ['narrative']
-- Cell 120: Tags: ['hermeneutics']
-- Cell 121: Tags: ['hermeneutics', 'narrative']
-- Cell 122: Tags: ['narrative']
-- Cell 123: Tags: ['narrative', 'hermeneutics']
-- Cell 124: Tags: ['narrative', 'hermeneutics']
-- Cell 125: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 126: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 127: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 128: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 129: Tags: ['figure-5', 'narrative', 'hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 130: Tags: ['narrative']
-- Cell 131: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 132: Tags: ['figure-6', 'narrative', 'hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 133: Tags: ['narrative']
-- Cell 134: Tags: ['hermeneutics', 'narrative', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 135: Tags: ['figure-7', 'narrative', 'hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 136: Tags: ['narrative']
-- Cell 137: Tags: ['figure-8', 'narrative', 'hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 138: Tags: ['narrative']
-- Cell 139: Tags: ['hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 140: Tags: ['figure-9', 'narrative', 'hermeneutics', 'hermeneutics-step']
-  - Invalid tag: hermeneutics-step
-- Cell 141: Tags: ['narrative']
-- Cell 142: Tags: ['narrative']
-- Cell 143: Tags: ['narrative']
-- Cell 144: Tags: ['narrative']
-- Cell 145: Tags: ['narrative']
-- Cell 146: Tags: ['narrative']
-- Cell 147: Tags: ['narrative']
+- Cell 5: Tags: ['title']
+- Cell 6: Tags: ['abstract']
+- Cell 7: Tags: ['keywords']
+- Cell 17: Tags: ['hermeneutics']
+- Cell 18: Tags: ['hermeneutics']
+- Cell 19: Tags: ['hermeneutics']
+- Cell 20: Tags: ['hermeneutics']
+- Cell 21: Tags: ['hermeneutics']
+- Cell 22: Tags: ['hermeneutics', 'table-1']
+- Cell 23: Tags: ['hermeneutics']
+- Cell 24: Tags: ['hermeneutics', 'figure-1']
+- Cell 25: Tags: ['hermeneutics']
+- Cell 26: Tags: ['hermeneutics']
+- Cell 27: Tags: ['hermeneutics', 'figure-2']
+- Cell 28: Tags: ['hermeneutics']
+- Cell 29: Tags: ['hermeneutics']
+- Cell 30: Tags: ['hermeneutics', 'table-2']
+- Cell 31: Tags: ['hermeneutics', 'table-3']
+- Cell 32: Tags: ['hermeneutics', 'table-4']
+- Cell 33: Tags: ['hermeneutics', 'table-5']
+- Cell 34: Tags: ['hermeneutics', 'table-6']
+- Cell 35: Tags: ['hermeneutics', 'table-7']
+- Cell 36: Tags: ['hermeneutics', 'table-8']
+- Cell 37: Tags: ['hermeneutics']
+- Cell 41: Tags: ['figure-3']
+- Cell 44: Tags: ['figure-4']
+- Cell 48: Tags: ['figure-5']
+- Cell 71: Tags: ['figure-6']
+- Cell 87: Tags: ['figure-7']
+- Cell 95: Tags: ['figure-8']
 > [!WARNING]
 > The following tags are missing or invalid
 
 #### Missing Tags:
+- copyright
 - cover
+>[!CAUTION]
+> **copyright** tag is missing. Make sure to fill this template document [license_to_publish_JDH.dotx](https://github.com/C2DH/journal-of-digital-history-ipynb-preflight-action/blob/master/license_to_publish_JDH.dotx) and send it to jdh.admin@uni.lu
 
-#### Invalid Tags:
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-- hermeneutics-step
-> Make sure to fill this template document [license_to_publish_JDH.dotx](https://github.com/C2DH/journal-of-digital-history-ipynb-preflight-action/blob/master/license_to_publish_JDH.dotx) and send it to jdh.admin@uni.lu
+
+**Add ONE of the following codeblocks depending on which licence you want to use:**
+
+### CC-BY license:
+
+```
+[![cc-by](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
+©<AUTHOR or ORGANIZATION / FUNDER>. Published by De Gruyter in cooperation with the University of Luxembourg Centre for Contemporary and Digital History. This is an Open Access article distributed under the terms of the [Creative Commons Attribution License CC-BY](https://creativecommons.org/licenses/by/4.0/)
+```
+
+### CC-BY-NC-ND license:
+
+```
+[![cc-by-nc-nd](https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+©<AUTHOR or ORGANIZATION / FUNDER>. Published by De Gruyter in cooperation with the University of Luxembourg Centre for Contemporary and Digital History. This is an Open Access article distributed under the terms of the [Creative Commons Attribution License CC-BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+```
+
 
 
 ### Check URLs
 
 
-**Impossible to verify (non-404 error code - 4):**
+**Impossible to verify (non-404 error code - 3):**
 
 Invalid URL (Other - 301): https://orcid.org/sites/default/files/images/orcid_16x16.png
-Invalid URL (Other - 301): https://worldcat.org/identities/lccn-n50070935/
-Invalid URL (Other - 301): https://worldcat.org/identities/lccn-n50055088/
-Invalid URL (Other - 301): https://worldcat.org/identities/lccn-no90018047/
+Invalid URL (Other - 302): https://chroniclingamerica.loc.gov/data/batches/in_bradlaugh_ver02/data/sn82015679/0041566574A/1898021801/0483.pdf
+Invalid URL (Other - 302): https://hndm.iib.unam.mx/consulta/resultados/visualizar/558a33207d1ed64f16908db9?resultado=14&tipo=pagina&intPagina=1&palabras=Maine#bajar
 
 > [!TIP]
 > Even if some of the urls listed above don't seem to be broken, try to replace them with the valid ones as they might become unavailable soon.
 
 
-**Valid URLs (200 - 6):**
+**Valid URLs (200 - 17):**
 
-2. https://orcid.org/0000-0001-8618-6800
-3. https://orcid.org/0000-0002-6951-8014
-4. https://orcid.org/0000-0002-0301-2029
-5. https://licensebuttons.net/l/by/4.0/88x31.png
-6. https://creativecommons.org/licenses/by/4.0/
-7. https://github.com/jdh-observer/jdh002-VeaK58WBs82C
+2. https://orcid.org/0000-0002-8420-2958
+3. https://orcid.org/0000-0003-2908-0457
+4. https://orcid.org/0000-0002-0956-2873
+5. https://raw.githubusercontent.com/jdh-observer/aADj3Ljjqti2/main/script/corpus.csv
+6. https://github.com/jdh-observer/aADj3Ljjqti2/blob/main/script/Full%20Corpus.xlsx
+7. https://raw.githubusercontent.com/jdh-observer/aADj3Ljjqti2/main/script/Figure%202.csv
+8. https://raw.githubusercontent.com/jdh-observer/aADj3Ljjqti2/main/script/Finland.csv
+9. https://raw.githubusercontent.com/jdh-observer/aADj3Ljjqti2/main/script/Germany.csv
+10. https://raw.githubusercontent.com/jdh-observer/aADj3Ljjqti2/main/script/Mexico.csv
+11. https://raw.githubusercontent.com/jdh-observer/aADj3Ljjqti2/main/script/Netherlands.csv
+12. https://raw.githubusercontent.com/jdh-observer/aADj3Ljjqti2/main/script/Spain.csv
+13. https://raw.githubusercontent.com/jdh-observer/aADj3Ljjqti2/main/script/UK.csv
+14. https://raw.githubusercontent.com/jdh-observer/aADj3Ljjqti2/main/script/USA.csv
+15. https://raw.githubusercontent.com/mpriewe/repo_article_maine/main/script/Figure%203.csv
+16. https://raw.githubusercontent.com/mpriewe/repo_article_maine/main/script/Figure%204.csv
+17. https://raw.githubusercontent.com/mpriewe/repo_article_maine/main/script/Figure%205.csv
+19. https://resolver.kb.nl/resolve?urn=ddd:010177239:mpeg21:pdf
 
 
 ### Check JavaScript
-**WARNING: 8 output cells contain JavaScript code.**
+**WARNING: 4 output cells contain JavaScript code.**
 
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLWFsdGFpci5pcHluYg==?idx=67)
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLWFsdGFpci5pcHluYg==?idx=77)
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLWFsdGFpci5pcHluYg==?idx=98)
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLWFsdGFpci5pcHluYg==?idx=129)
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLWFsdGFpci5pcHluYg==?idx=132)
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLWFsdGFpci5pcHluYg==?idx=135)
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLWFsdGFpci5pcHluYg==?idx=137)
--  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLWFsdGFpci5pcHluYg==?idx=140)
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLW5vLWNvcHlyaWdodC5pcHluYg==?idx=24)
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLW5vLWNvcHlyaWdodC5pcHluYg==?idx=41)
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLW5vLWNvcHlyaWdodC5pcHluYg==?idx=44)
+-  [Check here ](https://journalofdigitalhistory.org/en/notebook-viewer/JTJGcHJveHktZ2l0aHVidXNlcmNvbnRlbnQlMkZDMkRIJTJGam91cm5hbC1vZi1kaWdpdGFsLWhpc3RvcnktaXB5bmItcHJlZmxpZ2h0LWFjdGlvbiUyRm1hc3RlciUyRmV4YW1wbGUlMkZhcnRpY2xlLW5vLWNvcHlyaWdodC5pcHluYg==?idx=48)
+### Check JavaScript (plotly)
+**require.undef("plotly")** is present
+
+**\* plotly.js** is present
+> [!CAUTION]
+> **plotly** is NOT present in **requirements.txt**, but it is used in the article
 
