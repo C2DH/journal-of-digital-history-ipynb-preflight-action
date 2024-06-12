@@ -60,7 +60,7 @@ def checktags(contents, preview_url):
             
             if "copyright" in missing_tags:
                 result_as_md +=f">[!CAUTION]\n> **copyright** tag is missing. Make sure to fill this template document [license_to_publish_JDH.dotx](https://github.com/C2DH/journal-of-digital-history-ipynb-preflight-action/blob/master/license_to_publish_JDH.dotx) and send it to jdh.admin@uni.lu\n"
-                result_as_md+=f"\n\n**Add ONE of the following codeblocks depending on which licence you want to use:**\n\n"
+                result_as_md+=f"\n\n**Add ONE of the following codeblocks depending on which licence you want to use and be sure the cell is tagged as copyright.**\n\n"
                 result_as_md+="### CC-BY license:\n\n```\n[![cc-by](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)\n©<AUTHOR or ORGANIZATION / FUNDER>. Published by De Gruyter in cooperation with the University of Luxembourg Centre for Contemporary and Digital History. This is an Open Access article distributed under the terms of the [Creative Commons Attribution License CC-BY](https://creativecommons.org/licenses/by/4.0/)\n```\n\n"
                 result_as_md+="### CC-BY-NC-ND license:\n\n```\n[![cc-by-nc-nd](https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)\n©<AUTHOR or ORGANIZATION / FUNDER>. Published by De Gruyter in cooperation with the University of Luxembourg Centre for Contemporary and Digital History. This is an Open Access article distributed under the terms of the [Creative Commons Attribution License CC-BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/4.0/)\n```\n\n"
                 
