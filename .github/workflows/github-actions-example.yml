@@ -21,6 +21,7 @@ jobs:
       #     output_md: 'report.md'
       - name: nbconvert run
         run: |
+          pip install -r requirements.txt
           python -m pip install jupyter nbconvert nbformat
           jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 article.ipynb
       # Use the output from the `preflight` step
