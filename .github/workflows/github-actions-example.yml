@@ -12,8 +12,8 @@ jobs:
         shell: bash
         run: |
           echo "GitHub ref_name ${{ github.ref_name }}"
-          git branch aboba
-          git push
+          git checkout -b aboba
+          git push -u origin aboba
         id: extract_branch
       # - name: preflight
       #   id: preflight
