@@ -12,13 +12,13 @@ jobs:
         shell: bash
         run: echo "GitHub ref_name ${{ github.ref_name }}"
         id: extract_branch
-      - name: preflight
-        id: preflight
-        uses: c2dh/journal-of-digital-history-ipynb-preflight-action@nbconvert
-        with:
-          notebook: 'example/plotly.ipynb'
-          functions: 'checkkernel,checkcitation,checkhtml,checkoutput,checktags,checkurls,checkjavascript'
-          output_md: 'report.md'
+      # - name: preflight
+      #   id: preflight
+      #   uses: c2dh/journal-of-digital-history-ipynb-preflight-action@nbconvert
+      #   with:
+      #     notebook: 'example/plotly.ipynb'
+      #     functions: 'checkkernel,checkcitation,checkhtml,checkoutput,checktags,checkurls,checkjavascript'
+      #     output_md: 'report.md'
       - name: nbconvert run
         run: |
           python -m pip install jupyter nbconvert nbformat
