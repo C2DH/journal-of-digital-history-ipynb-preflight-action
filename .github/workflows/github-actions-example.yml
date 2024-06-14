@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt
           python -m pip install jupyter nbconvert nbformat
           python -m spacy download en_core_web_lg
-          jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 article.ipynb
+          jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 checkmd.ipynb
       # Use the output from the `preflight` step
       - name: Use the output
         run: echo "Notebook path ${{ steps.preflight.outputs.notebook_path }} - workspace ${{ steps.preflight.outputs.workspace }}"
