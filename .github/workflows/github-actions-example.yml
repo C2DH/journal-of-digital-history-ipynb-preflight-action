@@ -23,7 +23,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           python -m pip install jupyter nbconvert nbformat
-          python3 -m spacy download en_core_web_lg
+          python -m spacy download en_core_web_lg
           jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 article.ipynb
       # Use the output from the `preflight` step
       - name: Use the output
