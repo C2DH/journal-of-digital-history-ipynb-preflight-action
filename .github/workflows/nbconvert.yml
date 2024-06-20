@@ -42,6 +42,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
           branch: nbconvertt
+          base: master
           delete-branch: true
           title: '[Example] Update report'
           body: |
