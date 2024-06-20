@@ -22,15 +22,12 @@ jobs:
           python -m spacy download en_core_web_lg
           jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 checkmd.ipynb
       # Use the output from the `preflight` step
-      - name: Use the output
-        run: echo "Notebook path ${{ steps.preflight.outputs.notebook_path }} - workspace ${{ steps.preflight.outputs.workspace }}"
       - name: commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Automated commit
           branch: nbconvertt
           create_branch: true
-          file_pattern: '*.ipynb'
           
       - name: Create Pull Request
         id: cpr
@@ -43,7 +40,7 @@ jobs:
           signoff: false
           branch: nbconvertt
           base: master
-          delete-branch: true
+          delete-branch: false
           title: '[Example] Update report'
           body: |
             Update report
