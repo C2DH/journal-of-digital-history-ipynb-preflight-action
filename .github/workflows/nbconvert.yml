@@ -11,7 +11,7 @@ jobs:
     #   - name: Extract branch name & create the nbconvert branch
     #     shell: bash
     #     run: |
-    #       echo "GitHub ref_name ${{ github.ref_name }}"
+    #       echo "GitHub reft_name ${{ github.ref_name }}"
     #       git checkout -b nbconvertt
     #       git push -u origin nbconvertt
     #     id: extract_branch
