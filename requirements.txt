@@ -11,4 +11,5 @@ termcolor==2.2.0 ; python_version >= '3.7'
 tomli==2.0.1 ; python_full_version < '3.11.0a7'
 requests==2.24.0
 nbformat==5.7.3
+spacy
 
