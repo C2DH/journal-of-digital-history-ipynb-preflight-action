@@ -26,10 +26,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: '*.md'
-      - name: create pull request
-        run: gh pr create -B "master" -H "nbconvert" --title 'Merge nbconvert into master' --body 'Created by Github action'
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
       - name: Run shell cmd
