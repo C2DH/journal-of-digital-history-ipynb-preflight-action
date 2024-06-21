@@ -30,6 +30,6 @@ jobs:
           create_branch: true
       
       - name: create pull request
-        run: gh pr create -B master -H nbconvert --title 'Merge **nbconvert** into master' --body 'Created by Github action'
+        run: gh pr create -B master -H nbconvert --title 'Comparison between nbconvert review of the article and the main article' --body 'Created by Github action'
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
