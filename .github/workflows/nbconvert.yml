@@ -9,33 +9,33 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
 
-      - name: delete nbconvert branch
+      - name: deleting nbconvert branch if exists
         shell: bash
         run: |
           git push origin -d nbconvert &>/dev/null || true 
       
-      - name: Extract branch name & create the nbconvert branch (if it doesn't exist)
+      - name: extracting branch name & creating the new nbconvert branch
         shell: bash
         run: |
           echo "GitHub reft_name ${{ github.ref_name }}"
           git checkout -b nbconvert
           git push -u origin nbconvert
         id: extract_branch
-      - name: nbconvert run
+      - name: running nbconvert
         run: |
           pip install -r requirements.txt
           python -m pip install jupyter nbconvert nbformat
           python -m spacy download en_core_web_lg
           jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 checkmd.ipynb
       # Use the output from the `preflight` step
-      - name: commit changes
+      - name: committing changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Automated commit
           branch: nbconvert
           create_branch: true
       
-      - name: create pull request
+      - name: creating pull request
         run: gh pr create -B master -H nbconvert --title 'Comparison between nbconvert review of the article and the main article' --body 'Created by Github action'
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
