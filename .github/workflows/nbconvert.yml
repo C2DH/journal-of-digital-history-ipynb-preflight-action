@@ -25,18 +25,14 @@ jobs:
         id: getfile
         run: |
           FIRST_FILE=$(ls *.ipynb | sort | head -n 1)
-          echo "The first notebook file is: $FIRST_FILE"
+          echo "article name is: $FIRST_FILE"
           echo "FIRST_IPYNB_FILE=$FIRST_FILE" >> $GITHUB_ENV
-
-      - name: Use the notebook file
-        run: |
-          echo "Using the notebook file: $FIRST_IPYNB_FILE"
       - name: running nbconvert
         run: |
           pip install -r requirements.txt
           python -m pip install jupyter nbconvert nbformat
           python -m spacy download en_core_web_lg
-          jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 checkmd.ipynb
+          jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 $FIRST_IPYNB_FILE
       # Use the output from the `preflight` step
       - name: committing changes
         uses: stefanzweifel/git-auto-commit-action@v5
