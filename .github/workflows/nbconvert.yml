@@ -8,12 +8,16 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
+
+      - name: delete nbconvert branch
+        shell: bash
+        run: |
+          git branch -D nbconvert
       
       - name: Extract branch name & create the nbconvert branch (if it doesn't exist)
         shell: bash
         run: |
           echo "GitHub reft_name ${{ github.ref_name }}"
-          git branch -D nbconvert &>/dev/null
           git checkout -b nbconvert
           git push -u origin nbconvert
         id: extract_branch
