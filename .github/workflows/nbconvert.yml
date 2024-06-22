@@ -12,7 +12,7 @@ jobs:
       - name: delete nbconvert branch
         shell: bash
         run: |
-          git push origin -d nbconvert &>/dev/null 
+          git push origin -d nbconvert &>/dev/null || true 
       
       - name: Extract branch name & create the nbconvert branch (if it doesn't exist)
         shell: bash
