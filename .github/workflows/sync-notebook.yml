@@ -14,6 +14,7 @@ jobs:
       
       - name: running jupytext
         run: |
+          pip install jupytext
           jupytext --set-formats ipynb,md article.ipynb
           jupytext --sync article.ipynb
 
