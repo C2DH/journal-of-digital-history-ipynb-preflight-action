@@ -1,0 +1,39 @@
+name: statistics
+on:
+  schedule:
+    - cron: "0 2 * * 1" # every monday at 2am UTC (4am Luxembourg)
+
+jobs:
+  nbconvertstats:
+    runs-on: ubuntu-latest
+    name: stats_nbconvert
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: deleting stats branch if exists
+        shell: bash
+        run: |
+          git push origin -d stats &>/dev/null || true 
+      
+      - name: extracting branch name & creating the new stats branch
+        shell: bash
+        run: |
+          git checkout -b stats
+          git push -u origin stats
+        id: creating_branch
+
+      - name: installing nbconvert & other required libraries
+        run: |
+          pip install -r requirements.txt
+          python -m pip install jupyter nbconvert nbformat notebook==6.4.12
+      - name: running nbconvert
+        run: |
+          jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 jdh_statistics.ipynb
+
+      - name: committing changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Automated commit
+          branch: stats
+          create_branch: true
