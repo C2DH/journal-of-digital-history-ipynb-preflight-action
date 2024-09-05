@@ -28,7 +28,6 @@ jobs:
 
       - name: installing nbconvert & other required libraries
         run: |
-          pip install -r requirements.txt
           python -m pip install jupyter nbconvert nbformat notebook==6.4.12 pandas matplotlib
       - name: setting up credentials
         run: |
