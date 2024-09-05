@@ -3,7 +3,7 @@ name: statistics
 
 on:
   schedule:
-    - cron: "10 14 * * 4" # every monday at 2am UTC (4am Luxembourg)
+    - cron: "*/5 * * * *" # every monday at 2am UTC (4am Luxembourg)
 
 jobs:
   nbconvertstats:
