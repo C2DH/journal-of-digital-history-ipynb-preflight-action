@@ -30,6 +30,9 @@ jobs:
         run: |
           pip install -r requirements.txt
           python -m pip install jupyter nbconvert nbformat notebook==6.4.12 pandas matplotlib
+      - name: setting up credentials
+        run: |
+          python3 defineenv.py ${{ secrets.SECRET_USERNAME }} ${{ secrets.SECRET_PASSWORD }}
       - name: running nbconvert
         run: |
           jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 jdh_statistics.ipynb
