@@ -32,7 +32,7 @@ jobs:
           python -m pip install jupyter nbconvert nbformat notebook==6.4.12 pandas matplotlib
       - name: setting up credentials
         run: |
-          python3 defineenv.py "${{ secrets.JDH_USERNAME }}" "${{ secrets.JDH_PASSWORD }}"
+          python3 defineenv.py "${{ secrets.JDH_USERNAME }}" "${{ secrets.JDH_PASSWORD }}" "${{ secrets.JDH_GITHUB_API }}"
       - name: running nbconvert
         run: |
           jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 jdh_statistics.ipynb
