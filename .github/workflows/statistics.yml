@@ -1,10 +1,9 @@
 name: statistics
 
-on: [workflow_dispatch]
 
-# on:
-#   schedule:
-#     - cron: "0 2 * * 1" # every monday at 2am UTC (4am Luxembourg)
+on:
+  schedule:
+    - cron: "10 14 * * 4" # every monday at 2am UTC (4am Luxembourg)
 
 jobs:
   nbconvertstats:
@@ -28,7 +27,6 @@ jobs:
 
       - name: installing nbconvert & other required libraries
         run: |
-          pip install -r requirements.txt
           python -m pip install jupyter nbconvert nbformat notebook==6.4.12 pandas matplotlib
       - name: setting up credentials
         run: |
