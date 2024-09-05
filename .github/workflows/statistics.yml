@@ -36,7 +36,9 @@ jobs:
       - name: running nbconvert
         run: |
           jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 jdh_statistics.ipynb
-
+      - name: deleting credentials from local environment
+        run: |
+          rm "credentials.json"
       - name: committing changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
