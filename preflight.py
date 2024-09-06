@@ -18,6 +18,7 @@ BASE_URL = "https://journalofdigitalhistory.org/en/notebook-viewer/"
 # FIRST_PARAGRAPH = config_file["first_paragraph"]
 
 FIRST_PARAGRAPH = "Look at the corrections you need to do, if not clear, contact jdh.admin@uni.lu"
+os.listdir()
 
 
 def encode_notebook_url(url):
