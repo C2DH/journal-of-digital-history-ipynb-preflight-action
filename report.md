@@ -1,6 +1,6 @@
 # Report for example/plotly.ipynb ❤ 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Look at the corrections you need to do, if not clear , contact jdh.admin@uni.lu
 
 ## Cell Counts   
 **all cells: 2**  
@@ -55,12 +55,12 @@ Total number of audios: 0
 > The following tags are missing or invalid
 
 #### Missing Tags:
-- title
-- contributor
-- abstract
-- keywords
-- copyright
 - cover
+- keywords
+- abstract
+- contributor
+- copyright
+- title
 >[!CAUTION]
 > **copyright** tag is missing. Make sure to fill this template document [license_to_publish_JDH.dotx](https://github.com/C2DH/journal-of-digital-history-ipynb-preflight-action/blob/master/license_to_publish_JDH.dotx) and send it to jdh.admin@uni.lu
 
