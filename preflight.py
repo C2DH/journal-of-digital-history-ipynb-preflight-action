@@ -9,13 +9,15 @@ from urllib.parse import quote
 
 BASE_URL = "https://journalofdigitalhistory.org/en/notebook-viewer/"
 
-f = open("article-check-script/config.json")
+# f = open("article-check-script/config.json")
 
-config_file = json.load(f)
+# config_file = json.load(f)
 
-f.close()
+# f.close()
 
-FIRST_PARAGRAPH = config_file["first_paragraph"]
+# FIRST_PARAGRAPH = config_file["first_paragraph"]
+
+FIRST_PARAGRAPH = "Look at the corrections you need to do, if not clear, contact jdh.admin@uni.lu"
 
 
 def encode_notebook_url(url):
