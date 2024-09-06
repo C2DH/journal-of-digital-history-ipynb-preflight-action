@@ -9,7 +9,7 @@ from urllib.parse import quote
 
 BASE_URL = "https://journalofdigitalhistory.org/en/notebook-viewer/"
 
-f = open("./article-check-script/config.json")
+f = open("article-check-script/config.json")
 
 config_file = json.load(f)
 
