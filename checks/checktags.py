@@ -22,7 +22,7 @@ def checktags(contents, preview_url):
     ]
     optional_tags = ["hermeneutics", "narrative", "disclaimer", "hidden", "data-table"]
 
-    allowed_tag_pattern = r"^(table|figure|video|sound|dialog)-(?:\d+|[\w]+)-\*$"
+    allowed_tag_pattern = r"^(table|figure|video|sound|dialog)-((\d+)|([a-zA-Z]{1}[a-zA-Z0-9]*-\*))$"
 
     for i, cell in enumerate(notebook.cells):
         if "tags" in cell.metadata and cell.metadata["tags"]:
