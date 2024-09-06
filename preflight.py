@@ -123,7 +123,7 @@ def generate_report(output, notebook, workspace="", action_outputs={}, contents=
                         if len(cell["source"]) == 0:
                             cell_types["code_empty"] += 1
                 # write cell counts
-                output_file.write(os.listdir()+"\n")
+                output_file.write(json.dumps(os.listdir())+"\n")
                 output_file.write(FIRST_PARAGRAPH + "\n\n")
                 output_file.write("## Cell Counts   \n")
                 output_file.write(f"**all cells: {count}**  \n")
