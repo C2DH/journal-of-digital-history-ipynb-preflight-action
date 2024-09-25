@@ -24,7 +24,7 @@ jobs:
       - name: retreiving name of the article
         id: getfile
         run: |
-          FIRST_FILE=$(ls *.ipynb | sort | head -n 1)
+          FIRST_FILE=$(ls *.ipynb | sort | head -n 1 | sed -e 's/\.ipynb$//')
           echo "FIRST_IPYNB_FILE=$FIRST_FILE" >> $GITHUB_ENV
       - name: pandoc convertion to docx
         uses: docker://pandoc/latex:2.9
