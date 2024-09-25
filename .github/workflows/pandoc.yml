@@ -26,11 +26,11 @@ jobs:
         run: |
           FIRST_FILE=$(ls *.ipynb | sort | head -n 1)
           echo "article name is: $FIRST_FILE"
-          echo "FIRST_IPYNB_FILE=$FIRST_FILE" >> $GITHUB_ENV
-    
-      - uses: docker://pandoc/latex:2.9
+          echo "FIRST_IPYNB_FILE=$FIRST_FILE" >> $GITHUB_OUTPUT
+      - name: pandoc convertion to docx
+        uses: docker://pandoc/latex:2.9
         with:
-          args: --output=$FIRST_IPYNB_FILE.docx $FIRST_IPYNB_FILE.ipynb 
+          args: --output=${{ steps.getfie.outputs.FIRST_IPYNB_FILE }}.docx ${{ steps.getfie.outputs.FIRST_IPYNB_FILE }}.ipynb 
 
       - name: committing changes
         uses: stefanzweifel/git-auto-commit-action@v5
