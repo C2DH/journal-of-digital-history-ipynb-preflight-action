@@ -1,12 +1,11 @@
 name: statistics
 
 
-#on:
-#  schedule:
-#    - cron: '0 9 * * 5' # every Friday at 9am UTC (11am Luxembourg)
+on:
+ schedule:
+   - cron: '0 9 * * 5' # every Friday at 9am UTC (11am Luxembourg)
 
-on: [workflow_dispatch]
-
+   
 
 jobs:
   nbconvertstats:
