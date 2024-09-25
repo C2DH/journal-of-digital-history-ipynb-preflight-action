@@ -28,9 +28,6 @@ jobs:
           echo "article name is: $FIRST_FILE"
           echo "FIRST_IPYNB_FILE=$FIRST_FILE" >> $GITHUB_ENV
     
-      - name: pandoc
-        run: |
-          article.ipynb -o article.docx
       - uses: docker://pandoc/latex:2.9
         with:
           args: --output=$FIRST_IPYNB_FILE.docx $FIRST_IPYNB_FILE.ipynb 
