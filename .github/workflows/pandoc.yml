@@ -47,7 +47,7 @@ jobs:
           #
           #  * smtp://user:password@server:port
           #  * smtp+starttls://user:password@server:port
-          connection_url: 'w7003273@gmail.com:"soes wbsg snpk rqno"@smtp.gmail.com:465'
+          connection_url: 'w7003273@gmail.com:soeswbsgsnpkrqno@smtp.gmail.com:465'
           # Required mail server address if not connection_url:
           server_address: smtp.gmail.com
           # Server port, default 25:
