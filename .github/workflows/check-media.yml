@@ -100,8 +100,16 @@ jobs:
           else
             echo "doesn't have R as running language"
           fi
-      - name: Commit and Push Changes
+      - name: Commit and Push Changes (R)
+        if: steps.extract_lang_name.outputs.lang_name == 'R'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-            commit_message: "Convert JPEG images to PNG format"
+            commit_message: "Convert JPEG images to PNG 72dpi format"
+            branch: main # Ensures commits are made to the current branch
+        
+      - name: Commit and Push Changes (Python)
+        if: steps.extract_lang_name.outputs.lang_name != 'R'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+            commit_message: "Convert all images to 72dpi format"
             branch: main # Ensures commits are made to the current branch
