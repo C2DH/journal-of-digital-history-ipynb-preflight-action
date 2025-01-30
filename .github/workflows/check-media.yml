@@ -70,10 +70,28 @@ jobs:
           done
           
       # Conditional Action: If Language is Not R
-      - name: Doing nothing for non-R
+      - name: Changing the resolution for Python
         if: steps.extract_lang_name.outputs.lang_name != 'R'
         run: |
-          echo "Language is not R. Keeping images the same"
+          echo "Language is Python. Performing Python-specific actions..."
+          # Navigate to the media directory
+          cd media
+          
+           find . -type f \( -iname "*.jpeg" -o -iname "*.jpg" -o -iname "*.png" \) -print0 | while IFS= read -r -d '' file; do
+            # Create a temporary file for the conversion
+            temp_file="${file}.tmp"
+
+            # Convert the image to 72 DPI and save to the temporary file
+            convert "$file" -density 72 -units PixelsPerInch "$temp_file" || { echo "Conversion failed for $file"; exit 1; }
+            echo "Converted $file to 72 DPI."
+
+            # Replace the original file with the converted file
+            mv "$temp_file" "$file" || { echo "Failed to replace $file with the converted image"; exit 1; }
+            echo "Replaced original file $file with the 72 DPI version."
+
+            # Optional: List the file details after conversion
+            ls -lh "$file"
+          done
       # Notify the Result
       - name: Notify Result
         run: |
