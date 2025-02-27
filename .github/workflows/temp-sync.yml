@@ -1,9 +1,7 @@
-name: Check Changed Files
+name: Check Changed Files on Main
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   check-files:
@@ -13,8 +11,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Retrieve changed files and check for target files
+      - name: Check branch and changed files
         run: |
+          # Get current branch name by stripping the "refs/heads/" prefix from GITHUB_REF
+          BRANCH=${GITHUB_REF#refs/heads/}
+          echo "Current branch: $BRANCH"
+
+          # If not on main branch, exit the job early
+          if [ "$BRANCH" != "main" ]; then
+            echo "Not on main branch. Skipping file checks."
+            exit 0
+          fi
+
           # Retrieve list of changed files between commits
           CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
           echo "Changed files: $CHANGED_FILES"
