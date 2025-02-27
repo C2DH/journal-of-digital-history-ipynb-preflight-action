@@ -4,28 +4,20 @@ import nbformat
 import json
 
 def find_urls(text):
-    # Updated regex pattern to match URLs.
-    # Stops matching at whitespace, parentheses, brackets, or quotes.
+    # Updated regex pattern to match URLs in plain text.
     url_pattern = r"https?://[^\s)'\"]+"
     urls = re.findall(url_pattern, text)
     return urls
 
 def extract_markdown_image_urls(text):
-    # Regex pattern to capture URLs in markdown image syntax: ![alt](url)
+    # Extract URLs from markdown image syntax: ![alt](url)
     pattern = re.compile(r"!\[[^\]]*\]\((https?://[^\s)]+)\)")
     return pattern.findall(text)
 
-def extract_url_md_html(text):
-    urls = []
-    pattern = re.compile(
-        r"(?P<url>https?://[^\s]+)|\[(?P<label>[^\]]+)\]\((?P<url2>https?://[^\s]+)\)"
-    )
-    for match in pattern.finditer(text):
-        if match.group("url2"):
-            urls.append(match.group("url2"))
-        elif match.group("url"):
-            urls.append(match.group("url"))
-    return urls
+def extract_markdown_link_urls(text):
+    # Extract URLs from markdown link syntax: [label](url)
+    pattern = re.compile(r"\[[^\]]+\]\((https?://[^\s)]+)\)")
+    return pattern.findall(text)
 
 def is_valid_url(url):
     try:
@@ -92,17 +84,20 @@ def checkurls(contents, preview_url):
     notebook = nbformat.reads(json_str, as_version=4)
 
     for cell in notebook.cells:
-        # Prefer markdown image URLs if present
+        # Priority: markdown images > markdown links > plain text URLs.
         img_urls = extract_markdown_image_urls(cell.source)
+        link_urls = extract_markdown_link_urls(cell.source)
         if img_urls:
             cell_urls = img_urls
+        elif link_urls:
+            cell_urls = link_urls
         else:
             cell_urls = find_urls(cell.source)
 
         for url in cell_urls:
-            # Remove any trailing unwanted symbols
+            # Remove any trailing unwanted symbols.
             bad_symbols = ['"', "'", ")", "]", ","]
-            while url and url[-1] in bad_symbols:  
+            while url and url[-1] in bad_symbols:
                 url = url[:-1]
 
             status_code = is_valid_url(url)
