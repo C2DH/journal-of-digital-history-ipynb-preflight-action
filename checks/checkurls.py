@@ -3,14 +3,12 @@ import requests
 import nbformat
 import json
 
-
 def find_urls(text):
-    # Regex pattern to match URLs, avoiding capture of markdown URL delimiters like ')' and ']'
-    url_pattern = r"https?://[^\s)\]]+"
-    # Finding all occurrences of pattern
+    # Updated regex pattern to match URLs.
+    # The pattern stops matching when encountering whitespace, a parenthesis, a bracket, or a quote.
+    url_pattern = r"https?://[^\s)'\"]+"
     urls = re.findall(url_pattern, text)
     return urls
-
 
 def extract_url_md_html(text):
     urls = []
@@ -20,10 +18,9 @@ def extract_url_md_html(text):
     for match in pattern.finditer(text):
         if match.group("url2"):
             urls.append(match.group("url2"))
-        elif match.group("url2"):
-            urls.append(match.group("url2"))
+        elif match.group("url"):
+            urls.append(match.group("url"))
     return urls
-
 
 def is_valid_url(url):
     try:
@@ -34,7 +31,6 @@ def is_valid_url(url):
     except requests.exceptions.RequestException:
         print("exception")
         return None
-
 
 def format_output_md(urls_dict):
     result_as_md = "\n### Check URLs\n\n"
@@ -62,7 +58,6 @@ def format_output_md(urls_dict):
         result_as_md += f"**Invalid URLs (404 - {invalid_404_count}):**\n\n"
         for url in urls_md:
             if "Invalid URL (404):" in url:
-                # put the url without the "Invalid URL 404" part
                 result_as_md += f"\n> [!WARNING]\n> **Invalid URL (404):** {url[19:]}\n"
 
     if invalid_other_count > 0:
@@ -74,11 +69,9 @@ def format_output_md(urls_dict):
 
     if valid_count > 0:
         result_as_md += f"\n**Valid URLs (200 - {valid_count}):**\n\n"
-
         for i in range(0, len(urls_md), 1):
             url = urls_md[i]
             if "Valid URL (200):" in url:
-                # put the url without the "Valid URL (200)" part
                 result_as_md += f"{i+1}. {url[17:]}\n"
 
     if valid_count == 0 and invalid_404_count == 0 and invalid_other_count == 0:
@@ -86,13 +79,11 @@ def format_output_md(urls_dict):
 
     return result_as_md, result_as_stdout
 
-
 def checkurls(contents, preview_url):
     urls_dict = {}
 
     # Convert JSON to notebook object
     json_str = json.dumps(contents)
-    # Convert JSON string to notebook object
     notebook = nbformat.reads(json_str, as_version=4)
 
     for cell in notebook.cells:
@@ -100,7 +91,7 @@ def checkurls(contents, preview_url):
         if cell_urls:
             for url in cell_urls:
                 bad_symbols = ['"', "'", ")", "]", ","]
-                while url[-1] in bad_symbols:  
+                while url and url[-1] in bad_symbols:  
                     url = url[:-1]
 
                 status_code = is_valid_url(url)
