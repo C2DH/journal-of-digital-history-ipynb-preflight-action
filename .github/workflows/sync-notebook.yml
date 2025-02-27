@@ -15,9 +15,8 @@ jobs:
       - name: installing & running jupytext
         run: |
           pip install jupytext || pip install jupytext --break-system-packages
-          echo "Jupytext installed successfully, running the convertion..."
-          jupytext --output article.md article.ipynb
-          echo "article.md in now up to date with article.ipynb"
+          jupytext --set-formats ipynb,md article.ipynb
+          jupytext --sync article.ipynb
 
       - name: committing changes
         uses: stefanzweifel/git-auto-commit-action@v5
