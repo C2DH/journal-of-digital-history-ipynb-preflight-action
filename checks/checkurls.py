@@ -5,10 +5,15 @@ import json
 
 def find_urls(text):
     # Updated regex pattern to match URLs.
-    # The pattern stops matching when encountering whitespace, a parenthesis, a bracket, or a quote.
+    # Stops matching at whitespace, parentheses, brackets, or quotes.
     url_pattern = r"https?://[^\s)'\"]+"
     urls = re.findall(url_pattern, text)
     return urls
+
+def extract_markdown_image_urls(text):
+    # Regex pattern to capture URLs in markdown image syntax: ![alt](url)
+    pattern = re.compile(r"!\[[^\]]*\]\((https?://[^\s)]+)\)")
+    return pattern.findall(text)
 
 def extract_url_md_html(text):
     urls = []
@@ -87,15 +92,21 @@ def checkurls(contents, preview_url):
     notebook = nbformat.reads(json_str, as_version=4)
 
     for cell in notebook.cells:
-        cell_urls = find_urls(cell.source)
-        if cell_urls:
-            for url in cell_urls:
-                bad_symbols = ['"', "'", ")", "]", ","]
-                while url and url[-1] in bad_symbols:  
-                    url = url[:-1]
+        # Prefer markdown image URLs if present
+        img_urls = extract_markdown_image_urls(cell.source)
+        if img_urls:
+            cell_urls = img_urls
+        else:
+            cell_urls = find_urls(cell.source)
 
-                status_code = is_valid_url(url)
-                urls_dict[url] = status_code
+        for url in cell_urls:
+            # Remove any trailing unwanted symbols
+            bad_symbols = ['"', "'", ")", "]", ","]
+            while url and url[-1] in bad_symbols:  
+                url = url[:-1]
+
+            status_code = is_valid_url(url)
+            urls_dict[url] = status_code
 
     result_as_md, result_as_stdout = format_output_md(urls_dict)
     return result_as_md, result_as_stdout
