@@ -50,15 +50,26 @@ jobs:
           echo "Changed files: $CHANGED_FILES"
       - name: Compare the changed files
         run: |
-          # Check for the presence of target files
-          HAS_IPYNB=$(echo "$CHANGED_FILES" | grep -w "article.ipynb" || true)
-          HAS_MD=$(echo "$CHANGED_FILES" | grep -w "article.md" || true)
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+          
+          # Use grep to check for exact matches.
+          IPYNB_PRESENT=false
+          MD_PRESENT=false
 
-          if [[ -n "$HAS_IPYNB" && -n "$HAS_MD" ]]; then
+          if echo "$CHANGED_FILES" | grep -q '^article\.ipynb$'; then
+            IPYNB_PRESENT=true
+          fi
+
+          if echo "$CHANGED_FILES" | grep -q '^article\.md$'; then
+            MD_PRESENT=true
+          fi
+
+          if [ "$IPYNB_PRESENT" = true ] && [ "$MD_PRESENT" = true ]; then
             echo "error"
-          elif [[ -n "$HAS_IPYNB" ]]; then
+          elif [ "$IPYNB_PRESENT" = true ]; then
             echo "ipynb"
-          elif [[ -n "$HAS_MD" ]]; then
+          elif [ "$MD_PRESENT" = true ]; then
             echo "md"
           else
             echo "No target file changed."
