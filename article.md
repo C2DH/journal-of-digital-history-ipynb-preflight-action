@@ -30,7 +30,7 @@ To unlock and make available political web defacements for research, their archi
 
 <!-- #endregion -->
 
-## Introduction 1
+## Introduction
 Web defacements in the context of this article are alterations or replacements of websites by an unauthorized third party. This unauthorized access is usually achieved through compromising the target system (here very broadly named hacking). Of the thousands of websites defaced every day, some are defaced for the purpose of propagating political expression of whatever quality, while others are defaced as part of a campaign to disrupt the digital communication channels of a perceived enemy. Both of these types of defacements are broadly labeled political and are what this article focuses on.
 Specifically for the context of this article, engagement with public discourse, introduction of material into public discourse and online commemoration of events in defacements were in focus. These web defacements are part of the larger realm of hacktivist and web defacement practices. As defaced pages are generally short-lived, research cannot rely on larger, unspecified Internet archiving services to obtain copies, nor can it follow events in real time. Where web defacements are preserved, it is in community-maintained archives of varying scope and quality. One of these community archives was Attrition.org, which archived selected web defacements from 1995 until 2001. The research objective of this article is therefore to present a workflow for the stabilization of web defacements as an academic resource and provide methods for the investigation of large collections of web pages with a focus on the specificities of defacements.
 
