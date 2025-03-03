@@ -18,8 +18,10 @@ jobs:
           echo "Current branch: $BRANCH"
 
           # If not on main branch, exit the job early
-          if [ $BRANCH != "main" ] && [ $BRANCH != "master" ]; then
-            echo "Not on main branch. Skipping file checks."
+          if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; then
+            echo "main branch"
+          else
+            echo "Not on main or master branch. Skipping file checks."
             exit 0
           fi
 
