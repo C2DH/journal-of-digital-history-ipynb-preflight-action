@@ -9,7 +9,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Check branch and changed files
         run: |
@@ -26,14 +28,25 @@ jobs:
           fi
       - name: Get changed files
         run: |
+          # Save the before and after commit hashes
+          BEFORE_COMMIT="${{ github.event.before }}"
+          AFTER_COMMIT="${{ github.event.after }}"
+
           # Determine how to get changed files:
-          # If github.event.before is all zeros, it's likely a new branch or similar situation.
-          if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+          # If BEFORE_COMMIT is all zeros, it's likely a new branch or similar situation.
+          if [ "$BEFORE_COMMIT" = "0000000000000000000000000000000000000000" ]; then
             echo "No previous commit found. Using last commit for file changes."
             CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
           else
-            CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
+            # Optionally, check if the commit exists to avoid fatal errors
+            if ! git rev-parse "$BEFORE_COMMIT" >/dev/null 2>&1; then
+              echo "Before commit not found. Using last commit for file changes."
+              CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
+            else
+              CHANGED_FILES=$(git diff --name-only "$BEFORE_COMMIT" "$AFTER_COMMIT")
+            fi
           fi
+
           echo "Changed files: $CHANGED_FILES"
       - name: Compare the changed files
         run: |
