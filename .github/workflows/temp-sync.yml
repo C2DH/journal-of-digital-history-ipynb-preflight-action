@@ -48,10 +48,6 @@ jobs:
           fi
 
           echo "Changed files: $CHANGED_FILES"
-      - name: Compare the changed files
-        run: |
-          echo "Changed files:"
-          echo "$CHANGED_FILES"
           
           # Use grep to check for exact matches.
           IPYNB_PRESENT=false
@@ -74,3 +70,4 @@ jobs:
           else
             echo "No target file changed."
           fi
+          
