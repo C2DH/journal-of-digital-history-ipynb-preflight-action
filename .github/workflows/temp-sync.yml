@@ -1,4 +1,4 @@
-name: Check Changed Files on Main
+name: Check Changed Files on Main or Master
 
 on:
   push:
@@ -13,11 +13,11 @@ jobs:
 
       - name: Check branch and changed files
         run: |
-          # Get current branch name by stripping the "refs/heads/" prefix from GITHUB_REF
+          # Extract branch name from GITHUB_REF (e.g. "refs/heads/main" becomes "main")
           BRANCH=${GITHUB_REF#refs/heads/}
           echo "Current branch: $BRANCH"
-
-          # If not on main branch, exit the job early
+          
+          # Proceed only if branch is 'main' or 'master'
           if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; then
             echo "main branch"
           else
@@ -25,11 +25,17 @@ jobs:
             exit 0
           fi
 
-          # Retrieve list of changed files between commits
-          CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
+          # Determine how to get changed files:
+          # If github.event.before is all zeros, it's likely a new branch or similar situation.
+          if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+            echo "No previous commit found. Using last commit for file changes."
+            CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r HEAD)
+          else
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
+          fi
           echo "Changed files: $CHANGED_FILES"
           
-          # Check for the presence of the target files
+          # Check for the presence of target files
           HAS_IPYNB=$(echo "$CHANGED_FILES" | grep -w "article.ipynb" || true)
           HAS_MD=$(echo "$CHANGED_FILES" | grep -w "article.md" || true)
 
