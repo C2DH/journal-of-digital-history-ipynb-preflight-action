@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Check branch and changed files
         run: |
@@ -24,7 +24,8 @@ jobs:
             echo "Not on main or master branch. Skipping file checks."
             exit 0
           fi
-
+      - name: Get changed files
+        run: |
           # Determine how to get changed files:
           # If github.event.before is all zeros, it's likely a new branch or similar situation.
           if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
@@ -34,7 +35,8 @@ jobs:
             CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }})
           fi
           echo "Changed files: $CHANGED_FILES"
-          
+      - name: Compare the changed files
+        run: |
           # Check for the presence of target files
           HAS_IPYNB=$(echo "$CHANGED_FILES" | grep -w "article.ipynb" || true)
           HAS_MD=$(echo "$CHANGED_FILES" | grep -w "article.md" || true)
