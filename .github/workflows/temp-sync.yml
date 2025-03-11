@@ -62,11 +62,17 @@ jobs:
           fi
 
           if [ "$IPYNB_PRESENT" = true ] && [ "$MD_PRESENT" = true ]; then
-            echo "error"
+            echo "Error; Both .md and .ipynb files have changed since last commit. Revert changes to one of them in order to perform the syncronization."
           elif [ "$IPYNB_PRESENT" = true ]; then
-            echo "ipynb"
+            pip install jupytext || pip install jupytext --break-system-packages
+            jupytext --set-formats ipynb,md article.ipynb
+            jupytext --sync article.ipynb
+            echo "Successfully synchronized .md with the changed .ipynb file"
           elif [ "$MD_PRESENT" = true ]; then
-            echo "md"
+            pip install jupytext || pip install jupytext --break-system-packages
+            jupytext --set-formats ipynb,md article.ipynb
+            jupytext --sync article.ipynb
+            echo "Successfully synchronized .ipynb with the changed .md file"
           else
             echo "No target file changed."
           fi
