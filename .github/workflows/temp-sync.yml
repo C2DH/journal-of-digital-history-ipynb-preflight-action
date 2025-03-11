@@ -65,7 +65,6 @@ jobs:
             echo "Error; Both .md and .ipynb files have changed since last commit. Revert changes to one of them in order to perform the syncronization."
           elif [ "$IPYNB_PRESENT" = true ]; then
             pip install jupytext || pip install jupytext --break-system-packages
-            jupytext --set-formats ipynb,md article.ipynb
             jupytext --to markdown article.ipynb
             echo "Successfully synchronized .md with the changed .ipynb file"
           elif [ "$MD_PRESENT" = true ]; then
