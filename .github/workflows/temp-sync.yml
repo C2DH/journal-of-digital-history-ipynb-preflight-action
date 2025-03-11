@@ -1,4 +1,4 @@
-name: Check Changed Files on Main or Master
+name: Notebook & Markdown syncing on commit
 
 on:
   push:

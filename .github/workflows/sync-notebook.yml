@@ -1,8 +1,6 @@
 on:
-  pull_request:
-    types:
-      - closed
-name: GitHub Actions for notebook syncing
+  [workflow_dispatch]
+name: notebook syncing (retired)
 jobs:
   if_merged:
     if: github.event.pull_request.merged == true
