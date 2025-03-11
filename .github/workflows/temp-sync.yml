@@ -76,4 +76,9 @@ jobs:
           else
             echo "No target file changed."
           fi
-          
+      - name: committing changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Automated commit
+          branch: ${{ github.ref }}
+          create_branch: false
