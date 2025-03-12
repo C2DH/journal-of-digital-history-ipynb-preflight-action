@@ -13,19 +13,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check branch and changed files
-        run: |
-          # Extract branch name from GITHUB_REF (e.g. "refs/heads/main" becomes "main")
-          BRANCH=${GITHUB_REF#refs/heads/}
-          echo "Current branch: $BRANCH"
+      # - name: Check branch and changed files
+      #   run: |
+      #     # Extract branch name from GITHUB_REF 
+      #     BRANCH=${GITHUB_REF#refs/heads/}
+      #     echo "Current branch: $BRANCH"
           
-          # Proceed only if branch is 'main' or 'master'
-          if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; then
-            echo "main branch"
-          else
-            echo "Not on main or master branch. Skipping file checks."
-            exit 0
-          fi
+      #     # Proceed only if branch is 'main' or 'master'
+      #     if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; then
+      #       echo "main branch"
+      #     else
+      #       echo "Not on main or master branch. Skipping file checks."
+      #       exit 0
+      #     fi
       - name: Get changed files
         run: |
           # Save the before and after commit hashes
