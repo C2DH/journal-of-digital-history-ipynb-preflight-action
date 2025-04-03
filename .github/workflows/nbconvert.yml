@@ -27,6 +27,17 @@ jobs:
           FIRST_FILE=$(ls *.ipynb | sort | head -n 1)
           echo "article name is: $FIRST_FILE"
           echo "FIRST_IPYNB_FILE=$FIRST_FILE" >> $GITHUB_ENV
+      - name: Extract Python version from runtime.txt
+        id: get_python_version
+        run: |
+          # reading runtime.txt and removing the "python-" prefix
+          PYTHON_VERSION=$(sed 's/^python-//' runtime.txt)
+          echo "python_version=$PYTHON_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ steps.get_python_version.outputs.python_version }}
       - name: installing nbconvert & other required libraries
         run: |
           pip install -r requirements.txt
