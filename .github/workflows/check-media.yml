@@ -75,7 +75,7 @@ jobs:
         run: |
           echo "Language is Python. Performing Python-specific actions..."
           cd media
-          find media -type f \( \
+          find . -type f \( \
               -iname "*.jpg" -o -iname "*.jpeg" \
               -o -iname "*.png" -o -iname "*.tiff" \
               -o -iname "*.bmp" -o -iname "*.gif" \
