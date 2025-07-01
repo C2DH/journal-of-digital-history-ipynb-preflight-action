@@ -73,17 +73,21 @@ jobs:
       - name: Changing the resolution for Python
         if: steps.extract_lang_name.outputs.lang_name != 'R'
         run: |
-          echo "Language is Python. Performing Python-specific actions..."
-          cd media
-          find . -type f \( \
+          echo "Language is Python. Performing image optimization..."
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+    
+          find media -type f \( \
               -iname "*.jpg" -o -iname "*.jpeg" \
               -o -iname "*.png" -o -iname "*.tiff" \
               -o -iname "*.bmp" -o -iname "*.gif" \
             \) -print0 \
           | while IFS= read -r -d '' orig; do
-              # 1) Convert non-JPEGs to JPEG
+              # target JPEG path
               base="${orig%.*}"
               jpg="${base}.jpg"
+    
+              # 1) Convert non-JPEGs to JPEG
               ext="${orig##*.}"
               if [[ ! "${ext,,}" =~ ^jpe?g$ ]]; then
                 convert "$orig" -quality 85 "$jpg" && rm "$orig"
@@ -91,36 +95,36 @@ jobs:
               else
                 jpg="$orig"
               fi
-
-              # guard against empty or missing files
+    
+              # guard against empties / missing
               [ -z "$jpg" ] && continue
               [ ! -f "$jpg" ] && continue
-
-              # 2) record size before (on the JPEG)
+    
+              # 2) size before
               size_before=$(stat -c%s "$jpg")
               kb_before=$((size_before/1024))
-
+    
               # 3) DPI normalization
               dpi=$(identify -format "%x" "$jpg" | awk '{print int($1)}')
               if [ "$dpi" -gt 72 ]; then
                 mogrify -density 72 "$jpg"
                 echo "↓ DPI of $jpg: $dpi → 72"
               fi
-
+    
               # 4) dimension downscaling
               read width height < <(identify -format "%w %h" "$jpg")
               if [ "$width" -gt 1920 ] || [ "$height" -gt 1920 ]; then
                 mogrify -filter Lanczos -resize '1920x1920>' "$jpg"
                 echo "↓ Resized $jpg to max 1920px"
               fi
-
-              # 5) record size after & print delta
+    
+              # 5) size after & delta
               size_after=$(stat -c%s "$jpg")
               kb_after=$((size_after/1024))
               delta=$((kb_after - kb_before))
               (( delta >= 0 )) && sign="+" || sign=""
               echo "🗜  Size change for $jpg: ${kb_before}KB → ${kb_after}KB (Δ ${sign}${delta}KB)"
-            done
+          done
       # Notify the Result
       - name: Notify Result
         run: |
