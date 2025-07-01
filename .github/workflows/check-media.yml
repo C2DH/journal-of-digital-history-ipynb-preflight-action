@@ -82,13 +82,16 @@ jobs:
               base="${orig%.*}"
               jpg="${base}.jpg"
               echo "path pass; $orig"
+
+              modified=false
     
               # 1) Convert non-JPEGs to JPEG
               ext="${orig##*.}"
               if [[ ! "${ext,,}" =~ ^jpe?g$ ]]; then
                 echo "running convert"
                 convert "$orig" -quality 85 "$jpg" && rm "$orig"
-                echo "🔄 Converted $orig → $jpg"
+                modified=true
+                echo "Converted $orig → $jpg"
               else
                 echo "no convert run"
                 jpg="$orig"
@@ -111,6 +114,7 @@ jobs:
               if [ "$dpi" -gt 72 ]; then
                 echo "dpi convert start"
                 mogrify -density 72 "$jpg"
+                modified=true
                 echo "↓ DPI of $jpg: $dpi → 72"
               fi
     
@@ -120,15 +124,21 @@ jobs:
               if [ "$width" -gt 1920 ] || [ "$height" -gt 1920 ]; then
                 echo "start reducing dimension"
                 mogrify -filter Lanczos -resize '1920x1920>' "$jpg"
+                modified=true
                 echo "↓ Resized $jpg to max 1920px"
               fi
     
-              # 5) size after & delta
-              size_after=$(stat -c%s "$jpg")
-              kb_after=$((size_after/1024))
-              delta=$((kb_after - kb_before))
-              (( delta >= 0 )) && sign="+" || sign=""
-              echo "🗜  Size change for $jpg: ${kb_before}KB → ${kb_after}KB (Δ ${sign}${delta}KB)"
+              if [ "$modified" = false ]; then
+                echo "No modifications needed for $jpg"
+              else
+                echo "start size after"
+                size_after=$(stat -c%s "$jpg")
+                kb_after=$((size_after/1024))
+                echo "size after success"
+                delta=$((kb_after - kb_before))
+                (( delta >= 0 )) && sign="+" || sign=""
+                echo "Size: ${kb_before}KB → ${kb_after}KB (Δ ${sign}${delta}KB)"
+              fi
           done
       # Notify the Result
       - name: Notify Result
