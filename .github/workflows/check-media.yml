@@ -74,49 +74,51 @@ jobs:
         if: steps.extract_lang_name.outputs.lang_name != 'R'
         run: |
           echo "Language is Python. Performing Python-specific actions..."
-          ls
           find media -type f \( \
-            -iname "*.jpg" -o -iname "*.jpeg" \
-            -o -iname "*.png" -o -iname "*.tiff" \
-            -o -iname "*.bmp" -o -iname "*.gif" \
-          \) -print0 \
+              -iname "*.jpg" -o -iname "*.jpeg" \
+              -o -iname "*.png" -o -iname "*.tiff" \
+              -o -iname "*.bmp" -o -iname "*.gif" \
+            \) -print0 \
           | while IFS= read -r -d '' orig; do
-              # determine target filename (always .jpg)
+              # 1) Convert non-JPEGs to JPEG
               base="${orig%.*}"
               jpg="${base}.jpg"
-
-              # 1) Convert non-JPEGs to JPEG
               ext="${orig##*.}"
               if [[ ! "${ext,,}" =~ ^jpe?g$ ]]; then
-                convert "$orig" -quality 85 "$jpg"
+                convert "$orig" -quality 85 "$jpg" && rm "$orig"
                 echo "🔄 Converted $orig → $jpg"
-                rm "$orig"
               else
                 jpg="$orig"
               fi
-              size_before=$(stat -c%s "$img")
+
+              # guard against empty or missing files
+              [ -z "$jpg" ] && continue
+              [ ! -f "$jpg" ] && continue
+
+              # 2) record size before (on the JPEG)
+              size_before=$(stat -c%s "$jpg")
               kb_before=$((size_before/1024))
-              # get current DPI (truncate to integer)
-              dpi=$(identify -format "%x" "$img" | awk '{print int($1)}')
+
+              # 3) DPI normalization
+              dpi=$(identify -format "%x" "$jpg" | awk '{print int($1)}')
               if [ "$dpi" -gt 72 ]; then
-                mogrify -density 72 "$img"
-                echo "↓ DPI of $img: $dpi → 72"
+                mogrify -density 72 "$jpg"
+                echo "↓ DPI of $jpg: $dpi → 72"
               fi
 
-              # get current dimensions
-              read width height < <(identify -format "%w %h" "$img")
+              # 4) dimension downscaling
+              read width height < <(identify -format "%w %h" "$jpg")
               if [ "$width" -gt 1920 ] || [ "$height" -gt 1920 ]; then
-                mogrify -filter Lanczos -resize '1920x1920>' "$img"
-                echo "↓ Resized $img to max 1920px"
+                mogrify -filter Lanczos -resize '1920x1920>' "$jpg"
+                echo "↓ Resized $jpg to max 1920px"
               fi
-              size_after=$(stat -c%s "$img")
+
+              # 5) record size after & print delta
+              size_after=$(stat -c%s "$jpg")
               kb_after=$((size_after/1024))
               delta=$((kb_after - kb_before))
-              # sign for readability
-              if [ $delta -ge 0 ]; then sign="+"; else sign=""; fi
-
-              echo "🗜  Size change for $img: ${kb_before}KB → ${kb_after}KB (Δ ${sign}${delta}KB)"
-            
+              (( delta >= 0 )) && sign="+" || sign=""
+              echo "🗜  Size change for $jpg: ${kb_before}KB → ${kb_after}KB (Δ ${sign}${delta}KB)"
             done
       # Notify the Result
       - name: Notify Result
