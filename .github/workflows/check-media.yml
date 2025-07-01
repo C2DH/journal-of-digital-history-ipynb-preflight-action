@@ -120,7 +120,11 @@ jobs:
     
               # 4) dimension downscaling
               echo "start dimension check"
-              read width height < <(identify -format "%w %h" "$jpg")
+
+              dims=$(identify -format "%w %h" "$jpg")
+              # …then split on the space
+              width=${dims% *}
+              height=${dims#* }
               echo "width height read; $width $height"
               if [ "$width" -gt 1920 ] || [ "$height" -gt 1920 ]; then
                 echo "start reducing dimension"
