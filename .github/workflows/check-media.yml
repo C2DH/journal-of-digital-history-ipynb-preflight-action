@@ -125,8 +125,10 @@ jobs:
                 echo "start reducing dimension"
                 mogrify -filter Lanczos -resize '1920x1920>' "$jpg"
                 modified=true
-                echo "↓ Resized $jpg to max 1920px"
+                echo "Resized $jpg to max 1920px"
               fi
+
+              echo "dimension check finish"
     
               if [ "$modified" = false ]; then
                 echo "No modifications needed for $jpg"
