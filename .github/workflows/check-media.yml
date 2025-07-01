@@ -74,18 +74,14 @@ jobs:
         if: steps.extract_lang_name.outputs.lang_name != 'R'
         run: |
           echo "Language is Python. Performing image optimization..."
-          sudo apt-get update
-          sudo apt-get install -y imagemagick
+
+          cd media
     
-          find media -type f \( \
-              -iname "*.jpg" -o -iname "*.jpeg" \
-              -o -iname "*.png" -o -iname "*.tiff" \
-              -o -iname "*.bmp" -o -iname "*.gif" \
-            \) -print0 \
-          | while IFS= read -r -d '' orig; do
+          find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.tiff" -o -iname "*.bmp" -o -iname "*.gif" \) -print0 | while IFS= read -r -d '' orig; do
               # target JPEG path
               base="${orig%.*}"
               jpg="${base}.jpg"
+              echo "path pass; $base"
     
               # 1) Convert non-JPEGs to JPEG
               ext="${orig##*.}"
