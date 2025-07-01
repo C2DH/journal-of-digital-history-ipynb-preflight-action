@@ -81,7 +81,20 @@ jobs:
             -o -iname "*.png" -o -iname "*.tiff" \
             -o -iname "*.bmp" -o -iname "*.gif" \
           \) -print0 \
-          | while IFS= read -r -d '' img; do
+          | while IFS= read -r -d '' orig; do
+              # determine target filename (always .jpg)
+              base="${orig%.*}"
+              jpg="${base}.jpg"
+
+              # 1) Convert non-JPEGs to JPEG
+              ext="${orig##*.}"
+              if [[ ! "${ext,,}" =~ ^jpe?g$ ]]; then
+                convert "$orig" -quality 85 "$jpg"
+                echo "🔄 Converted $orig → $jpg"
+                rm "$orig"
+              else
+                jpg="$orig"
+              fi
               size_before=$(stat -c%s "$img")
               kb_before=$((size_before/1024))
               # get current DPI (truncate to integer)
