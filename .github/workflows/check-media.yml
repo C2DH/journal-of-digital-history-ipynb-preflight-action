@@ -76,22 +76,36 @@ jobs:
           echo "Language is Python. Performing Python-specific actions..."
           # Navigate to the media directory
           cd media
-          
-           find . -type f \( -iname "*.jpeg" -o -iname "*.jpg" -o -iname "*.png" \) -print0 | while IFS= read -r -d '' file; do
-            # Create a temporary file for the conversion
-            temp_file="${file}.tmp"
+          find media -type f \( \
+            -iname "*.jpg" -o -iname "*.jpeg" \
+            -o -iname "*.png" -o -iname "*.tiff" \
+            -o -iname "*.bmp" -o -iname "*.gif" \
+          \) -print0 \
+          | while IFS= read -r -d '' img; do
+              size_before=$(stat -c%s "$img")
+              kb_before=$((size_before/1024))
+              # get current DPI (truncate to integer)
+              dpi=$(identify -format "%x" "$img" | awk '{print int($1)}')
+              if [ "$dpi" -gt 72 ]; then
+                mogrify -density 72 "$img"
+                echo "↓ DPI of $img: $dpi → 72"
+              fi
 
-            # Convert the image to 72 DPI and save to the temporary file
-            convert "$file" -density 72 -units PixelsPerInch "$temp_file" || { echo "Conversion failed for $file"; exit 1; }
-            echo "Converted $file to 72 DPI."
+              # get current dimensions
+              read width height < <(identify -format "%w %h" "$img")
+              if [ "$width" -gt 1920 ] || [ "$height" -gt 1920 ]; then
+                mogrify -filter Lanczos -resize '1920x1920>' "$img"
+                echo "↓ Resized $img to max 1920px"
+              fi
+              size_after=$(stat -c%s "$img")
+              kb_after=$((size_after/1024))
+              delta=$((kb_after - kb_before))
+              # sign for readability
+              if [ $delta -ge 0 ]; then sign="+"; else sign=""; fi
 
-            # Replace the original file with the converted file
-            mv "$temp_file" "$file" || { echo "Failed to replace $file with the converted image"; exit 1; }
-            echo "Replaced original file $file with the 72 DPI version."
-
-            # Optional: List the file details after conversion
-            ls -lh "$file"
-          done
+              echo "🗜  Size change for $img: ${kb_before}KB → ${kb_after}KB (Δ ${sign}${delta}KB)"
+            
+            done
       # Notify the Result
       - name: Notify Result
         run: |
