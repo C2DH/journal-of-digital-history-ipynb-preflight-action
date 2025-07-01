@@ -121,6 +121,7 @@ jobs:
               # 4) dimension downscaling
               echo "start dimension check"
               read width height < <(identify -format "%w %h" "$jpg")
+              echo "width height read; $width $height"
               if [ "$width" -gt 1920 ] || [ "$height" -gt 1920 ]; then
                 echo "start reducing dimension"
                 mogrify -filter Lanczos -resize '1920x1920>' "$jpg"
