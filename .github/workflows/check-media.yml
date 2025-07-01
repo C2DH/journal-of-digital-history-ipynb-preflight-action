@@ -74,6 +74,7 @@ jobs:
         if: steps.extract_lang_name.outputs.lang_name != 'R'
         run: |
           echo "Language is Python. Performing Python-specific actions..."
+          cd media
           find media -type f \( \
               -iname "*.jpg" -o -iname "*.jpeg" \
               -o -iname "*.png" -o -iname "*.tiff" \
