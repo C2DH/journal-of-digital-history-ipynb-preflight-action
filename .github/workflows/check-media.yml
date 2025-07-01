@@ -81,14 +81,16 @@ jobs:
               # target JPEG path
               base="${orig%.*}"
               jpg="${base}.jpg"
-              echo "path pass; $base"
+              echo "path pass; $orig"
     
               # 1) Convert non-JPEGs to JPEG
               ext="${orig##*.}"
               if [[ ! "${ext,,}" =~ ^jpe?g$ ]]; then
+                echo "running convert"
                 convert "$orig" -quality 85 "$jpg" && rm "$orig"
                 echo "🔄 Converted $orig → $jpg"
               else
+                echo "no convert run"
                 jpg="$orig"
               fi
     
