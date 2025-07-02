@@ -49,9 +49,6 @@ jobs:
           
           # Navigate to the media directory
           cd media
-
-          #!/usr/bin/env bash
-          set -euo pipefail
           
           # Find all .jpeg and .jpg files recursively
           find . -type f \( -iname "*.jpeg" -o -iname "*.jpg" -o -iname "*.webp" -o -iname "*.tiff" -o -iname "*.tif" -o -iname "*.bmp" \) | while read -r file; do
@@ -68,9 +65,11 @@ jobs:
               width=${dims% *}
               height=${dims#* }
 
+              orig_size=$(stat -c%s "$file")
+
               # Prepare conversion options based on separate checks
               convert_opts=()
-              declare -a actions=()
+              actions=()
 
               # Check DPI > 72
               if (( $(echo "$dpi > 72" | bc -l) )); then
@@ -87,12 +86,21 @@ jobs:
               # Always convert to PNG
               convert "$file" "${convert_opts[@]}" "$png_file"
 
-              if [ \${#actions[@]} -gt 0 ]; then
+              new_size=$(stat -c%s "$png_file")
+              size_diff=$((new_size - orig_size))
+
+              if (( ${#actions[@]} > 0 )); then
                 action_msg=$(IFS=" and "; echo "${actions[*]}")
                 echo "Converted $file to $png_file: $action_msg."
               else
                 echo "Converted $file to $png_file without DPI or size changes."
               fi
+
+              orig_kb=$(awk "BEGIN {printf \"%.1f\", $orig_size/1024}")
+              new_kb=$(awk "BEGIN {printf \"%.1f\", $new_size/1024}")
+              diff_kb=$(awk "BEGIN {printf \"%+.1f\", $size_diff/1024}")
+              printf "Size changed: %d -> %d bytes (%+d bytes), %s KB -> %s KB (%s KB)\n" \
+                "$orig_size" "$new_size" "$size_diff" "$orig_kb" "$new_kb" "$diff_kb"
 
               # Remove the original file
               rm "$file"
