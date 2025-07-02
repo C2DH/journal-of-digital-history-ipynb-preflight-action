@@ -171,7 +171,7 @@ jobs:
               
 
               echo "dimension check finish"
-              new_size=$(stat -c%s "$png_file")
+              new_size=$(stat -c%s "$jpg")
               size_diff=$((new_size - orig_size))
               echo "getting new size finish"
     
