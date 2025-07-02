@@ -46,15 +46,20 @@ jobs:
         if: steps.extract_lang_name.outputs.lang_name == 'R'
         run: |
           echo "Language is R. Performing R-specific actions..."
+          
           # Navigate to the media directory
           cd media
+
+          #!/usr/bin/env bash
+          set -euo pipefail
           
           # Find all .jpeg and .jpg files recursively
           find . -type f \( -iname "*.jpeg" -o -iname "*.jpg" -o -iname "*.webp" -o -iname "*.tiff" -o -iname "*.tif" -o -iname "*.bmp" \) | while read -r file; do
             # Define the new PNG file name
             png_file="${file%.*}.png"
-
             if [[ ! -f "$png_file" || "$file" -nt "$png_file" ]]; then
+            
+              
               # Get DPI (X resolution) and dimensions
               dpi_raw=$(identify -format "%x" "$file")
               dpi=$(echo "$dpi_raw" | sed 's/[^0-9.]//g')
@@ -65,7 +70,7 @@ jobs:
 
               # Prepare conversion options based on separate checks
               convert_opts=()
-              actions=()
+              declare -a actions=()
 
               # Check DPI > 72
               if (( $(echo "$dpi > 72" | bc -l) )); then
