@@ -168,8 +168,12 @@ jobs:
                 mogrify -filter Lanczos -resize '1920x1920>' "$jpg"
                 echo "Resized $jpg to max 1920px"
               fi
+              
 
               echo "dimension check finish"
+              new_size=$(stat -c%s "$png_file")
+              size_diff=$((new_size - orig_size))
+              echo "getting new size finish"
     
               orig_kb=$(awk "BEGIN {printf \"%.1f\", $orig_size/1024}")
               new_kb=$(awk "BEGIN {printf \"%.1f\", $new_size/1024}")
