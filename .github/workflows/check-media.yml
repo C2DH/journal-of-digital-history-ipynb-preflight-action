@@ -34,7 +34,7 @@ jobs:
         id: extract_lang_name
         run: |
           # Extract the language_info.name field
-          LANGUAGE_NAME=$(jq -r '.metadata.language_info.name // "Not Found"' article.ipynb)
+          LANGUAGE_NAME=$(jq -r '.metadata.language_info.name // "Not Found"' article-R.ipynb)
           
           echo "### Extracted language_info.name: $LANGUAGE_NAME"
           
@@ -50,20 +50,48 @@ jobs:
           cd media
           
           # Find all .jpeg and .jpg files recursively
-          find . -type f \( -iname "*.jpeg" -o -iname "*.jpg" \) | while read -r file; do
+          find . -type f \( -iname "*.jpeg" -o -iname "*.jpg" -o -iname "*.webp" -o -iname "*.tiff" -o -iname "*.tif" -o -iname "*.bmp" -o -iname "*.gif" \) | while read -r file; do
             # Define the new PNG file name
             png_file="${file%.*}.png"
-            
-            # Check if PNG already exists and is up-to-date
-            if [ ! -f "$png_file" ] || [ "$file" -nt "$png_file" ]; then
-              # Convert JPEG/JPG to PNG
-              convert "$file" -density 72 -units PixelsPerInch "$png_file"
-              echo "Converted $file to $png_file with 72 DPI resolution."
+
+            if [[ ! -f "$png_file" || "$file" -nt "$png_file" ]]; then
+              # Get DPI (X resolution) and dimensions
+              dpi_raw=$(identify -format "%x" "$file")
+              dpi=$(echo "$dpi_raw" | sed 's/[^0-9.]//g')
+              dims=$(identify -format "%w %h" "$file")
               
-              # Delete the original JPEG/JPG file
+              width=${dims% *}
+              height=${dims#* }
+
+              # Prepare conversion options based on separate checks
+              convert_opts=()
+              actions=()
+
+              # Check DPI > 72
+              if (( $(echo "$dpi > 72" | bc -l) )); then
+                convert_opts+=( -density 72 -units PixelsPerInch )
+                actions+=("reset DPI to 72")
+              fi
+
+              # Check dimensions > 1920px
+              if (( width > 1920 || height > 1920 )); then
+                convert_opts+=( -resize '1920x1920>' )
+                actions+=("resized to max 1920px")
+              fi
+
+              # Always convert to PNG
+              convert "$file" "${convert_opts[@]}" "$png_file"
+
+              if [ \${#actions[@]} -gt 0 ]; then
+                action_msg=$(IFS=" and "; echo "${actions[*]}")
+                echo "Converted $file to $png_file: $action_msg."
+              else
+                echo "Converted $file to $png_file without DPI or size changes."
+              fi
+
+              # Remove the original file
               rm "$file"
               echo "Deleted original file $file"
-              ls
             else
               echo "Skipped $file; PNG is up-to-date."
             fi
@@ -122,9 +150,10 @@ jobs:
               echo "start dimension check"
 
               dims=$(identify -format "%w %h" "$jpg")
-              # …then split on the space
+              
               width=${dims% *}
               height=${dims#* }
+              
               echo "width height read; $width $height"
               if [ "$width" -gt 1920 ] || [ "$height" -gt 1920 ]; then
                 echo "start reducing dimension"
