@@ -50,7 +50,7 @@ jobs:
           cd media
           
           # Find all .jpeg and .jpg files recursively
-          find . -type f \( -iname "*.jpeg" -o -iname "*.jpg" -o -iname "*.webp" -o -iname "*.tiff" -o -iname "*.tif" -o -iname "*.bmp" -o -iname "*.gif" \) | while read -r file; do
+          find . -type f \( -iname "*.jpeg" -o -iname "*.jpg" -o -iname "*.webp" -o -iname "*.tiff" -o -iname "*.tif" -o -iname "*.bmp" \) | while read -r file; do
             # Define the new PNG file name
             png_file="${file%.*}.png"
 
@@ -105,7 +105,7 @@ jobs:
 
           cd media
     
-          find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.tiff" -o -iname "*.bmp" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | while IFS= read -r -d '' orig; do
+          find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.tiff" -o -iname "*.bmp" -o -iname "*.webp" \) -print0 | while IFS= read -r -d '' orig; do
               # target JPEG path
               base="${orig%.*}"
               jpg="${base}.jpg"
