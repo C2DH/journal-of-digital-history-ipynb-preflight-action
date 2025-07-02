@@ -132,53 +132,38 @@ jobs:
                 convert "$orig" -quality 85 "$jpg" && rm "$orig"
                 echo "Converted $orig → $jpg"
               else
-                echo "no convert run"
                 jpg="$orig"
               fi
     
               # guard against empties / missing
               [ -z "$jpg" ] && continue
               [ ! -f "$jpg" ] && continue
-              echo "pass guard"
-    
-              
-              
-              echo "pass size before"
     
               # 3) DPI normalization
               dpi=$(identify -format "%x" "$jpg" | awk '{print int($1)}')
-              echo "start dpi check"
               if [ "$dpi" -gt 72 ]; then
-                echo "dpi convert start"
                 mogrify -density 72 "$jpg"
                 echo "↓ DPI of $jpg: $dpi → 72"
               fi
     
               # 4) dimension downscaling
-              echo "start dimension check"
 
               dims=$(identify -format "%w %h" "$jpg")
               
               width=${dims% *}
               height=${dims#* }
               
-              echo "width height read; $width $height"
+              echo "width height read; $width x $height"
               if [ "$width" -gt 1920 ] || [ "$height" -gt 1920 ]; then
-                echo "start reducing dimension"
                 mogrify -filter Lanczos -resize '1920x1920>' "$jpg"
                 echo "Resized $jpg to max 1920px"
               fi
-              
-
-              echo "dimension check finish"
               new_size=$(stat -c%s "$jpg")
               size_diff=$((new_size - orig_size))
-              echo "getting new size finish"
     
               orig_kb=$(awk "BEGIN {printf \"%.1f\", $orig_size/1024}")
               new_kb=$(awk "BEGIN {printf \"%.1f\", $new_size/1024}")
               diff_kb=$(awk "BEGIN {printf \"%+.1f\", $size_diff/1024}")
-              echo "printf start"
               printf "Size changed: %d -> %d bytes (%+d bytes), %s KB -> %s KB (%s KB)\n" \
                 "$orig_size" "$new_size" "$size_diff" "$orig_kb" "$new_kb" "$diff_kb"
           done
