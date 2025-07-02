@@ -77,7 +77,7 @@ jobs:
 
           cd media
     
-          find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.tiff" -o -iname "*.bmp" -o -iname "*.gif" \) -print0 | while IFS= read -r -d '' orig; do
+          find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.tiff" -o -iname "*.bmp" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | while IFS= read -r -d '' orig; do
               # target JPEG path
               base="${orig%.*}"
               jpg="${base}.jpg"
