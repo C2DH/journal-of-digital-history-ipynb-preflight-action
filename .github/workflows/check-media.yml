@@ -166,5 +166,5 @@ jobs:
         if: steps.extract_lang_name.outputs.lang_name != 'R'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-            commit_message: "Convert all images to 72dpi format"
+            commit_message: "Convert all images to .jpg and 72dpi format (unless they had a smaller dpi)"
             branch: ${{ github.ref_name }} # Ensures commits are made to the current branch
