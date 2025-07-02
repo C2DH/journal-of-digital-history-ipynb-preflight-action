@@ -122,16 +122,14 @@ jobs:
               # target JPEG path
               base="${orig%.*}"
               jpg="${base}.jpg"
-              echo "path pass; $orig"
 
-              modified=false
+              # 1) size before
+              orig_size=$(stat -c%s "$orig")
     
-              # 1) Convert non-JPEGs to JPEG
+              # 2) Convert non-JPEGs to JPEG
               ext="${orig##*.}"
               if [[ ! "${ext,,}" =~ ^jpe?g$ ]]; then
-                echo "running convert"
                 convert "$orig" -quality 85 "$jpg" && rm "$orig"
-                modified=true
                 echo "Converted $orig → $jpg"
               else
                 echo "no convert run"
@@ -143,9 +141,7 @@ jobs:
               [ ! -f "$jpg" ] && continue
               echo "pass guard"
     
-              # 2) size before
-              size_before=$(stat -c%s "$jpg")
-              kb_before=$((size_before/1024))
+              
               
               echo "pass size before"
     
@@ -155,7 +151,6 @@ jobs:
               if [ "$dpi" -gt 72 ]; then
                 echo "dpi convert start"
                 mogrify -density 72 "$jpg"
-                modified=true
                 echo "↓ DPI of $jpg: $dpi → 72"
               fi
     
@@ -171,23 +166,17 @@ jobs:
               if [ "$width" -gt 1920 ] || [ "$height" -gt 1920 ]; then
                 echo "start reducing dimension"
                 mogrify -filter Lanczos -resize '1920x1920>' "$jpg"
-                modified=true
                 echo "Resized $jpg to max 1920px"
               fi
 
               echo "dimension check finish"
     
-              if [ "$modified" = false ]; then
-                echo "No modifications needed for $jpg"
-              else
-                echo "start size after"
-                size_after=$(stat -c%s "$jpg")
-                kb_after=$((size_after/1024))
-                echo "size after success"
-                delta=$((kb_after - kb_before))
-                (( delta >= 0 )) && sign="+" || sign=""
-                echo "Size: ${kb_before}KB → ${kb_after}KB (Δ ${sign}${delta}KB)"
-              fi
+              orig_kb=$(awk "BEGIN {printf \"%.1f\", $orig_size/1024}")
+              new_kb=$(awk "BEGIN {printf \"%.1f\", $new_size/1024}")
+              diff_kb=$(awk "BEGIN {printf \"%+.1f\", $size_diff/1024}")
+              echo "printf start"
+              printf "Size changed: %d -> %d bytes (%+d bytes), %s KB -> %s KB (%s KB)\n" \
+                "$orig_size" "$new_size" "$size_diff" "$orig_kb" "$new_kb" "$diff_kb"
           done
       # Notify the Result
       - name: Notify Result
