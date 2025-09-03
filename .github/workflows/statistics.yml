@@ -3,7 +3,7 @@ name: statistics
 
 on:
  schedule:
-   - cron: '0 9 * * 5' # every Friday at 9am UTC (11am Luxembourg)
+   - cron: '0 12 * * 3' # every Friday at 9am UTC (11am Luxembourg)
 
    
 
@@ -29,7 +29,7 @@ jobs:
 
       - name: installing nbconvert & other required libraries
         run: |
-          python -m pip install jupyter nbconvert nbformat notebook==6.4.12 pandas matplotlib
+          python -m pip install jupyter nbconvert nbformat notebook pandas matplotlib
       - name: setting up credentials
         run: |
           python3 defineenv.py "${{ secrets.JDH_USERNAME }}" "${{ secrets.JDH_PASSWORD }}" "${{ secrets.JDH_GITHUB_API }}"
