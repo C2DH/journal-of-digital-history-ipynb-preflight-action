@@ -3,7 +3,7 @@ name: statistics
 
 on:
  schedule:
-   - cron: '0 12 * * 3' # every Friday at 9am UTC (11am Luxembourg)
+   - cron: '0 17 * * 4' # every Friday at 9am UTC (11am Luxembourg)
 
    
 
