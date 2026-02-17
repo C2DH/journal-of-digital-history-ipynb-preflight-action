@@ -41,8 +41,7 @@ jobs:
       - name: installing nbconvert & other required libraries
         run: |
           pip install -r requirements.txt
-          python -m pip install jupyter nbconvert nbformat notebook==6.4.12 spacy
-          python -m spacy download en_core_web_lg
+          python -m pip install jupyter nbconvert nbformat notebook 
       - name: running nbconvert
         run: |
           jupyter nbconvert --execute --to notebook --inplace --ExecutePreprocessor.timeout=-1 $FIRST_IPYNB_FILE
