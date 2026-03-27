@@ -3,7 +3,7 @@ name: statistics
 
 on:
  schedule:
-   - cron: '0 14 * * 5' #  15:00 CET = 14:00 UTC winter time / 15:00 CEST = 13:00 UTC
+   - cron: '0 16 * * 5' #  15:00 CET = 14:00 UTC winter time / 15:00 CEST = 13:00 UTC
 
    
 
