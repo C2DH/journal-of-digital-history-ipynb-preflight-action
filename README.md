@@ -17,6 +17,8 @@ jobs:
   preflight:
     runs-on: ubuntu-latest
     name: Run preflight checks
+    permissions:
+      contents: write  
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
