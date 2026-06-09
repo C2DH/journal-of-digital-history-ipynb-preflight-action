@@ -2,6 +2,7 @@ name: statistics
 
 
 on:
+ workflow_dispatch:
  schedule:
    - cron: '0 17 * * 5' #  15:00 CET = 14:00 UTC winter time / 15:00 CEST = 13:00 UTC
 
