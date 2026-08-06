@@ -11,12 +11,14 @@ We provide a set of tools to facilitate the life of authors (and reviewers) in p
 To use this action, simply include it in your GitHub Actions workflow file and configure it to run on pull request events. You can then use the outputs of the action to automate certain tasks or to provide additional context to reviewers.
 
 ```yaml
-on: [pull_request,worflow_dispatch]
+on: [pull_request,workflow_dispatch]
 name: GitHub Actions Ipynb for preflight checks
 jobs:
   preflight:
     runs-on: ubuntu-latest
     name: Run preflight checks
+    permissions:
+      contents: write  
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
